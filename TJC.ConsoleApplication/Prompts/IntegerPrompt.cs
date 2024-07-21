@@ -23,11 +23,11 @@ public partial class ConsolePrompt
                     return input;
                 if (!inclusive && input < max && input > min)
                     return input;
-                ConsolePromptHandler.WriteInvalidInput(additionalDetails: $"Must be an integer value {range}");
+                WriteInvalidInput(additionalDetails: $"Must be an integer value {range}");
             }
             catch
             {
-                ConsolePromptHandler.WriteInvalidInput();
+                WriteInvalidInput();
             }
         }
     }

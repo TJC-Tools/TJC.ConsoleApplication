@@ -21,7 +21,7 @@ public partial class ConsolePrompt
             }
             catch
             {
-                ConsolePromptHandler.WriteInvalidInput();
+                WriteInvalidInput();
             }
         }
     }

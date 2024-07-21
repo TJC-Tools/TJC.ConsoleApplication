@@ -2,12 +2,23 @@
 
 public partial class ConsolePrompt
 {
-    public static string GetChoice(string message, IEnumerable<string> choices, int offset = 1) =>
-        choices.ToList()[GetChoiceIndex(message, choices.ToList(), offset)];
-
+    /// <summary>
+    /// Prompts the user to select a choice, and returns the index of the selected choice.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="choices"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
     public static int GetChoiceIndex(string message, IEnumerable<string> choices, int offset = 1) =>
         GetChoiceIndex(message, choices.ToList(), offset);
 
+    /// <summary>
+    /// Prompts user to select a choice, and returns the index of the selected choice.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="choices"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
     public static int GetChoiceIndex(string message, List<string> choices, int offset = 1)
     {
         var numPadding = choices.Count.ToString().Length;
@@ -20,7 +31,7 @@ public partial class ConsolePrompt
             var input = ConsoleInputHandler.ReadLine();
             if (int.TryParse(input, out var result))
                 return result - offset;
-            ConsolePromptHandler.WriteInvalidInput(inputIsReadKey: true);
+            WriteInvalidInput(inputIsReadKey: true);
         }
     }
 }
