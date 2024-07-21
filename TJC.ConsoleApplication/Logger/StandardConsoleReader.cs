@@ -1,14 +1,13 @@
-﻿namespace TJC.ConsoleApplication.Logger
+﻿namespace TJC.ConsoleApplication.Logger;
+
+internal class StandardConsoleReader : IConsoleReader
 {
-    internal class StandardConsoleReader : IConsoleReader
-    {
-        public ConsoleKeyInfo ReadKey() =>
-            Console.ReadKey();
+    public ConsoleKeyInfo ReadKey() =>
+        Console.ReadKey();
 
-        public string? ReadLine() =>
-            Console.ReadLine();
+    public string? ReadLine() =>
+        Console.ReadLine();
 
-        public int Read() =>
-            Console.Read();
-    }
+    public int Read() =>
+        Console.Read();
 }
