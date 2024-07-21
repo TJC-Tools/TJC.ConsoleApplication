@@ -1,4 +1,11 @@
-﻿var yesNo = ConsolePrompt.GetYesNo("Do you want to continue?");
+﻿var options = new List<string> { "Option1", "Option2", "Option3" };
+var index = ConsolePrompt.GetChoiceIndex("Choose an option", options);
+Console.WriteLine(options[index]);
+
+var choice = ConsolePrompt.GetChoice("Choose an option", options);
+Console.WriteLine(choice);
+
+var yesNo = ConsolePrompt.GetYesNo("Do you want to continue?");
 Console.WriteLine(yesNo ? "Yes" : "No");
 
 var str = ConsolePrompt.GetString("Enter a string");

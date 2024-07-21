@@ -1,7 +1,7 @@
-﻿namespace TJC.ConsoleApplication.Tests.Inputs;
+﻿namespace TJC.ConsoleApplication.Tests.Prompts;
 
 [TestClass]
-public class StringInputTests : InputTestsBaseClass
+public class StringPromptTests : InputTestsBaseClass
 {
     [TestMethod]
     public void GetString_ResponseMatchesInput()

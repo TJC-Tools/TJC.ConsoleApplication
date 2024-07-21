@@ -60,6 +60,34 @@ ConsolePrompt.GetInt("Enter Value");
 ConsolePrompt.GetInt("Enter Value", 10, 1);
 ```
 
+### Choices
+
+#### [int ConsolePrompt.GetChoiceIndex(string message, IEnumerable\<string\> choices, int offset = 1)](./TJC.ConsoleApplication/Prompts/ChoicePrompt.cs)
+- Prompts the user to select and option from a list of choices
+- Returns the index of the selected choice
+```c#
+var options = new List<string> { "Option 1", "Option 2", "Option 3" };
+var index = ConsolePrompt.GetChoiceIndex("Choose", options);
+// Outputs:
+// Choose:
+// 1. Option 1
+// 2. Option 2
+// 3. Option 3
+```
+
+#### [string ConsolePrompt.GetChoice(string message, IEnumerable\<string\> choices, int offset = 1)](./TJC.ConsoleApplication/Prompts/ChoicePrompt.cs)
+- Prompts the user to select and option from a list of choices
+- Returns the string of the selected choice
+```c#
+var options = new List<string> { "Option 1", "Option 2", "Option 3" };
+var choice = ConsolePrompt.GetChoice("Choose", options);
+// Outputs:
+// Choose:
+// 1. Option 1
+// 2. Option 2
+// 3. Option 3
+```
+
 ### Collections
 
 #### [ICollection\<string\> ConsolePrompt.GetCollection(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionPrompt.cs)
