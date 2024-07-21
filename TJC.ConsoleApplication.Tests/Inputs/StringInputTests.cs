@@ -1,14 +1,14 @@
 ﻿namespace TJC.ConsoleApplication.Tests.Inputs;
 
 [TestClass]
-public class StringInputTests
+public class StringInputTests : InputTestsBaseClass
 {
     [TestMethod]
     public void GetString_ResponseMatchesInput()
     {
         // Arrange
         var input = "My Test Input";
-        ConsoleReaderMockHelpers.SetReadLineMock(input);
+        MockUserInput.QueueLine(input);
 
         // Act
         var result = ConsoleInput.GetString("Enter Input");
@@ -23,8 +23,8 @@ public class StringInputTests
         // Arrange
         var current = "My Original Value";
         var input = "My New Value";
-        ConsoleReaderMockHelpers.SetReadKeyMock(ConsoleKey.N);
-        ConsoleReaderMockHelpers.SetReadLineMock(input);
+        MockUserInput.QueueKey(ConsoleKey.N);
+        MockUserInput.QueueLine(input);
 
         // Act
         var result = ConsoleInput.GetStringChange("Enter Input", current);
@@ -39,8 +39,8 @@ public class StringInputTests
         // Arrange
         var current = "My Original Value";
         var input = "My New Value";
-        ConsoleReaderMockHelpers.SetReadKeyMock(ConsoleKey.Y);
-        ConsoleReaderMockHelpers.SetReadLineMock(input);
+        MockUserInput.QueueKey(ConsoleKey.Y);
+        MockUserInput.QueueLine(input);
 
         // Act
         var result = ConsoleInput.GetStringChange("Enter Input", current);
@@ -56,8 +56,8 @@ public class StringInputTests
         var original = "My Original Value";
         var result = original;
         var input = "My New Value";
-        ConsoleReaderMockHelpers.SetReadKeyMock(ConsoleKey.N);
-        ConsoleReaderMockHelpers.SetReadLineMock(input);
+        MockUserInput.QueueKey(ConsoleKey.N);
+        MockUserInput.QueueLine(input);
 
         // Act
         ConsoleInput.GetStringChange("Enter Input", ref result);
@@ -73,8 +73,8 @@ public class StringInputTests
         var original = "My Original Value";
         var result = original;
         var input = "My New Value";
-        ConsoleReaderMockHelpers.SetReadKeyMock(ConsoleKey.Y);
-        ConsoleReaderMockHelpers.SetReadLineMock(input);
+        MockUserInput.QueueKey(ConsoleKey.Y);
+        MockUserInput.QueueLine(input);
 
         // Act
         ConsoleInput.GetStringChange("Enter Input", ref result);

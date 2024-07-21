@@ -8,17 +8,22 @@ public partial class ConsoleInput
     /// <param name="message"></param>
     /// <param name="max"></param>
     /// <param name="min"></param>
+    /// <param name="inclusive"></param>
     /// <returns></returns>
-    public static int GetIntRange(string message, int max = int.MaxValue, int min = 0)
+    public static int GetIntRange(string message, int max = int.MaxValue, int min = int.MinValue, bool inclusive = true)
     {
+        var type = inclusive ? "inclusive" : "exclusive";
+        var range = $"{min} to {max}, {type}";
         while (true)
         {
             try
             {
-                var input = GetInt($"{message} ({min} to {max}, inclusive)");
-                if (input <= max & input >= min)
+                var input = GetInt($"{message} ({range})");
+                if (inclusive && input <= max && input >= min)
                     return input;
-                InputHelpers.WriteInvalidInput(additionalDetails: $"Must be an integer value {min} to {max}, inclusive");
+                if (!inclusive && input < max && input > min)
+                    return input;
+                InputHelpers.WriteInvalidInput(additionalDetails: $"Must be an integer value {range}");
             }
             catch
             {
