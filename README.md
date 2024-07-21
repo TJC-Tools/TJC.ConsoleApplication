@@ -62,8 +62,8 @@ ConsolePrompt.GetInt("Enter Value", 10, 1);
 
 ### Choices
 
-#### [int ConsolePrompt.GetChoiceIndex(string message, IEnumerable\<string\> choices, int offset = 1)](./TJC.ConsoleApplication/Prompts/ChoicePrompt.cs)
-- Prompts the user to select and option from a list of choices
+#### [int ConsolePrompt.GetChoiceIndex(string message, IEnumerable\<string\> choices, int offset = 1)](./TJC.ConsoleApplication/Prompts/ChoiceIndexPrompt.cs)
+- Prompts the user to select an option from a list of choices
 - Returns the index of the selected choice
 ```c#
 var options = new List<string> { "Option 1", "Option 2", "Option 3" };
@@ -75,8 +75,8 @@ var index = ConsolePrompt.GetChoiceIndex("Choose", options);
 // 3. Option 3
 ```
 
-#### [string ConsolePrompt.GetChoice(string message, IEnumerable\<string\> choices, int offset = 1)](./TJC.ConsoleApplication/Prompts/ChoicePrompt.cs)
-- Prompts the user to select and option from a list of choices
+#### [string ConsolePrompt.GetChoice(string message, IEnumerable\<string\> choices, int offset = 1)](./TJC.ConsoleApplication/Prompts/ChoiceStringPrompt.cs)
+- Prompts the user to select an option from a list of choices
 - Returns the string of the selected choice
 ```c#
 var options = new List<string> { "Option 1", "Option 2", "Option 3" };
@@ -86,6 +86,30 @@ var choice = ConsolePrompt.GetChoice("Choose", options);
 // 1. Option 1
 // 2. Option 2
 // 3. Option 3
+```
+
+#### [T ConsolePrompt.GetChoice\<T\>(string message) where T: Enum](./TJC.ConsoleApplication/Prompts/ChoiceEnumPrompt.cs)
+- Prompts the user to select an option from an enum
+```c#
+var choice = ConsolePrompt.GetChoice<MyEnum>("Choose");
+// Outputs:
+// Choose:
+// 1. EnumItem1
+// 2. EnumItem2
+// 3. EnumItem3
+```
+
+#### [T? ConsolePrompt.GetChoiceDone\<T\>(string message) where T: Enum](./TJC.ConsoleApplication/Prompts/ChoiceEnumPrompt.cs)
+- Prompts the user to select an option from an enum
+- If the first option is selected, it returns null
+```c#
+var choice = ConsolePrompt.GetChoiceDone<MyEnum>("Choose");
+// Outputs:
+// Choose:
+// 0. Done
+// 1. EnumItem1
+// 2. EnumItem2
+// 3. EnumItem3
 ```
 
 ### Collections

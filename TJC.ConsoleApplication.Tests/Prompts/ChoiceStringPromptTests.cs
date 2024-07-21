@@ -1,7 +1,7 @@
 ﻿namespace TJC.ConsoleApplication.Tests.Prompts;
 
 [TestClass]
-public class ChoicePromptTests : ChoicePromptTestsBase
+public class ChoiceStringPromptTests : ChoicePromptTestsBase
 {
     [TestMethod]
     public void GetChoice_ResponseOption2_ReturnsOption2()
