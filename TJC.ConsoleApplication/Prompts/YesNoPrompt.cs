@@ -22,7 +22,7 @@ public partial class ConsolePrompt
                     ConsoleOutputHandler.Empty();
                     return false;
                 default:
-                    ConsolePromptHandler.WriteInvalidInput(inputIsReadKey: true);
+                    WriteInvalidInput(inputIsReadKey: true);
                     break;
             }
         }

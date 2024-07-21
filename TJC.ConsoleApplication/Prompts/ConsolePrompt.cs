@@ -1,8 +1,11 @@
-﻿namespace TJC.ConsoleApplication.Handlers;
+﻿namespace TJC.ConsoleApplication.Inputs;
 
-internal static class ConsolePromptHandler
+/// <summary>
+/// Allows prompting the user for input of various types.
+/// </summary>
+public partial class ConsolePrompt
 {
-    internal static void WriteInvalidInput(bool inputIsReadKey = false, string? additionalDetails = null)
+    private static void WriteInvalidInput(bool inputIsReadKey = false, string? additionalDetails = null)
     {
         if (inputIsReadKey)
             ConsoleOutputHandler.Empty();

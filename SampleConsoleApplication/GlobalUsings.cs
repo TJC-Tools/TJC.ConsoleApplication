@@ -1,1 +1,2 @@
-﻿global using TJC.ConsoleApplication.Inputs;
+﻿global using SampleConsoleApplication.Enums;
+global using TJC.ConsoleApplication.Inputs;
