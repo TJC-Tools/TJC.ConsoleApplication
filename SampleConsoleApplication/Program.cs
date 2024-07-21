@@ -6,3 +6,9 @@ Console.WriteLine(str);
 
 str = ConsoleInput.GetStringChange("str", str);
 Console.WriteLine(str);
+
+var num = ConsoleInput.GetInt("Enter a number");
+Console.WriteLine(num);
+
+var num2 = ConsoleInput.GetIntRange("Enter a number", 10, 0);
+Console.WriteLine(num2);
