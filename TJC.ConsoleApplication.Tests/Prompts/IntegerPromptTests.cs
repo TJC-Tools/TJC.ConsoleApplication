@@ -1,7 +1,7 @@
-﻿namespace TJC.ConsoleApplication.Tests.Inputs;
+﻿namespace TJC.ConsoleApplication.Tests.Prompts;
 
 [TestClass]
-public class IntegerInputTests : InputTestsBaseClass
+public class IntegerPromptTests : InputTestsBaseClass
 {
     #region GetInt
 

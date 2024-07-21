@@ -1,7 +1,7 @@
-namespace TJC.ConsoleApplication.Tests.Inputs;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
 [TestClass]
-public class BooleanInputTests : InputTestsBaseClass
+public class YesNoPromptTests : InputTestsBaseClass
 {
     [TestMethod]
     public void GetYesNo_ResponseY_ReturnsTrue()

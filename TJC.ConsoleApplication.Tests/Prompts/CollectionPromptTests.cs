@@ -1,7 +1,7 @@
-﻿namespace TJC.ConsoleApplication.Tests.Inputs;
+﻿namespace TJC.ConsoleApplication.Tests.Prompts;
 
 [TestClass]
-public class CollectionInputTests : InputTestsBaseClass
+public class CollectionPromptTests : InputTestsBaseClass
 {
     [TestMethod]
     public void GetCollection_ThreeResponses_ReturnsListOfThree()
