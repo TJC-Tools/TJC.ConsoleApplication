@@ -53,8 +53,8 @@ ConsoleInput.GetStringChange("MyName", ref original);
 ConsoleInput.GetInt("Enter Value");
 ```
 
-#### [ConsoleInput.GetIntRange(string message, int max, int min)](./TJC.ConsoleApplication/Inputs/IntegerInput.cs)
-- Prompts the user to enter an integer within a specified range
+#### [ConsoleInput.GetIntRange(string message, int max, int min, bool inclusive)](./TJC.ConsoleApplication/Inputs/IntegerInput.cs)
+- Prompts the user to enter an integer within a specified range (inclusive or exclusive))
 - Outputs error message and waits for input again if input is invalid
 ```c#
 ConsoleInput.GetInt("Enter Value", 10, 1);

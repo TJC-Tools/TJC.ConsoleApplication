@@ -6,7 +6,7 @@ internal static class InputHelpers
     {
         if (inputIsReadKey)
             ConsoleOutputHandler.Empty();
-        var message = "\aInvalid Input.";
+        var message = "Invalid Input.";
         if (!string.IsNullOrEmpty(additionalDetails))
             message += $" ({additionalDetails})";
         ConsoleOutputHandler.WriteLine(message);
