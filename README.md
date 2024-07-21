@@ -1,43 +1,43 @@
 [![NuGet Version and Downloads count](https://buildstats.info/nuget/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication)
 
-## Inputs
+## Prompts
 
-### Boolean
+### Yes/No
 
-#### [bool ConsoleInput.GetYesNo(string message)](./TJC.ConsoleApplication/Inputs/BooleanInput.cs)
+#### [bool ConsolePrompt.GetYesNo(string message)](./TJC.ConsoleApplication/Prompts/YesNoPrompt.cs)
 - Prompts the user with the message and waits for a 'Y' or 'N' input (case-insensitive)
 - Outputs error message and waits for input again if input is invalid
 - Returns true if 'Y' and false if 'N'
 ```c#
-var result = ConsoleInput.GetYesNo("Do you want to continue?");
+var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 // Outputs: Do you want to continue? (Y/N): 
 ```
 
 ### Text
 
-#### [string ConsoleInput.GetString(string message)](./TJC.ConsoleApplication/Inputs/StringInput.cs)
+#### [string ConsolePrompt.GetString(string message)](./TJC.ConsoleApplication/Prompts/StringPrompt.cs)
 - Prompts the user with the message and waits for a string input
 ```c#
-var result = ConsoleInput.GetString("Enter your name:");
+var result = ConsolePrompt.GetString("Enter your name:");
 // Outputs: Enter your name:
 ```
 
-#### [string ConsoleInput.GetStringChange(string message, string original)](./TJC.ConsoleApplication/Inputs/StringInput.cs)
+#### [string ConsolePrompt.GetStringChange(string message, string original)](./TJC.ConsoleApplication/Prompts/StringPrompt.cs)
 - Prompts the user to choose whether to change from original value or not
 ```c#
 var original = "John"
-var result = ConsoleInput.GetStringChange("MyName", original);
+var result = ConsolePrompt.GetStringChange("MyName", original);
 // Outputs: Do you want to change MyName from [John]? (Y/N):
 // Waits for user input of 'Y' or 'N' (case-insensitive)
 // Returns the original value if 'N' otherwise prompts for a new value like so:
 // Outputs: MyName:
 ```
 
-#### [ConsoleInput.GetStringChange(string message, ref string value)](./TJC.ConsoleApplication/Inputs/StringInput.cs)
+#### [ConsolePrompt.GetStringChange(string message, ref string value)](./TJC.ConsoleApplication/Prompts/StringPrompt.cs)
 - Prompts the user to choose whether to change from original value or not
 ```c#
 var original = "John"
-ConsoleInput.GetStringChange("MyName", ref original);
+ConsolePrompt.GetStringChange("MyName", ref original);
 // Outputs: Do you want to change MyName from [John]? (Y/N):
 // Waits for user input of 'Y' or 'N' (case-insensitive)
 // Returns the original value if 'N' otherwise prompts for a new value like so
@@ -46,16 +46,40 @@ ConsoleInput.GetStringChange("MyName", ref original);
 
 ### Numbers
 
-#### [ConsoleInput.GetInt(string message)](./TJC.ConsoleApplication/Inputs/IntegerInput.cs)
+#### [int ConsolePrompt.GetInt(string message)](./TJC.ConsoleApplication/Prompts/IntegerPrompt.cs)
 - Prompts the user to enter an integer
 - Outputs error message and waits for input again if input is invalid
 ```c#
-ConsoleInput.GetInt("Enter Value");
+ConsolePrompt.GetInt("Enter Value");
 ```
 
-#### [ConsoleInput.GetIntRange(string message, int max, int min, bool inclusive)](./TJC.ConsoleApplication/Inputs/IntegerInput.cs)
-- Prompts the user to enter an integer within a specified range (inclusive or exclusive))
+#### [int ConsolePrompt.GetIntRange(string message, int max, int min, bool inclusive)](./TJC.ConsoleApplication/Prompts/IntegerPrompt.cs)
+- Prompts the user to enter an integer within a specified range (inclusive or exclusive)
 - Outputs error message and waits for input again if input is invalid
 ```c#
-ConsoleInput.GetInt("Enter Value", 10, 1);
+ConsolePrompt.GetInt("Enter Value", 10, 1);
+```
+
+### Collections
+
+#### [ICollection\<string\> ConsolePrompt.GetCollection(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionPrompt.cs)
+- Prompts the user to enter a collection of strings
+- If `messageIndividual` is provided, it will be used as the prompt for each item in the collection
+- If no value is provided, the collection ends, and the response(s) are returned
+```c#
+var collection = ConsolePrompt.GetCollection("Enter a collection of strings", "str");
+// Outputs: Enter a collection of strings (press enter after each item | press enter on an empty line to complete the list):
+// Outputs: str:
+```
+
+#### [ICollection\<int\> ConsolePrompt.GetCollectionInt(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionPrompt.cs)
+- Prompts the user to enter a collection of integers
+```c#
+var collection = ConsolePrompt.GetCollection("Enter a collection of ints");
+```
+
+#### [ICollection\<double\> ConsolePrompt.GetCollectionDouble(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionPrompt.cs)
+- Prompts the user to enter a collection of doubles
+```c#
+var collection = ConsolePrompt.GetCollection("Enter a collection of doubles");
 ```

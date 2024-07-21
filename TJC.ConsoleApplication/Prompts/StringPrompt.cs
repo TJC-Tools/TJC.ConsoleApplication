@@ -1,6 +1,6 @@
 ﻿namespace TJC.ConsoleApplication.Inputs;
 
-public partial class ConsoleInput
+public partial class ConsolePrompt
 {
     /// <summary>
     /// Prompts user whether to change a string value.
@@ -37,7 +37,7 @@ public partial class ConsoleInput
             var input = ConsoleInputHandler.ReadLine();
             if (!string.IsNullOrEmpty(input))
                 return input;
-            InputHelpers.WriteInvalidInput();
+            ConsolePromptHandler.WriteInvalidInput();
         }
     }
 }

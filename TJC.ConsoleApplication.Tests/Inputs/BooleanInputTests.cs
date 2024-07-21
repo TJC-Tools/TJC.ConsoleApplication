@@ -10,7 +10,7 @@ public class BooleanInputTests : InputTestsBaseClass
         MockUserInput.QueueKey(ConsoleKey.Y);
 
         // Act
-        var result = ConsoleInput.GetYesNo("Do you want to continue?");
+        var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 
         // Assert
         Assert.IsTrue(result);
@@ -23,7 +23,7 @@ public class BooleanInputTests : InputTestsBaseClass
         MockUserInput.QueueKey(ConsoleKey.N);
 
         // Act
-        var result = ConsoleInput.GetYesNo("Do you want to continue?");
+        var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 
         // Assert
         Assert.IsFalse(result);
@@ -42,7 +42,7 @@ public class BooleanInputTests : InputTestsBaseClass
         MockUserInput.QueueKey(ConsoleKey.N);
 
         // Act
-        var result = ConsoleInput.GetYesNo("Do you want to continue?");
+        var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 
         // Assert
         Assert.IsTrue(result, "The result should be true, since the first valid input is 'Y'");

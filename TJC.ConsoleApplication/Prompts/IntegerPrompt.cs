@@ -1,6 +1,6 @@
 ﻿namespace TJC.ConsoleApplication.Inputs;
 
-public partial class ConsoleInput
+public partial class ConsolePrompt
 {
     /// <summary>
     /// Prompts user for an integer value within a specified range.
@@ -23,11 +23,11 @@ public partial class ConsoleInput
                     return input;
                 if (!inclusive && input < max && input > min)
                     return input;
-                InputHelpers.WriteInvalidInput(additionalDetails: $"Must be an integer value {range}");
+                ConsolePromptHandler.WriteInvalidInput(additionalDetails: $"Must be an integer value {range}");
             }
             catch
             {
-                InputHelpers.WriteInvalidInput();
+                ConsolePromptHandler.WriteInvalidInput();
             }
         }
     }

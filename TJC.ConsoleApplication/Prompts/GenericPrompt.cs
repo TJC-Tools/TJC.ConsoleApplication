@@ -1,6 +1,6 @@
 ﻿namespace TJC.ConsoleApplication.Inputs;
 
-public partial class ConsoleInput
+public partial class ConsolePrompt
 {
     /// <summary>
     /// Prompts user for a value, and attempts to convert it to a specified type.
@@ -21,7 +21,7 @@ public partial class ConsoleInput
             }
             catch
             {
-                InputHelpers.WriteInvalidInput();
+                ConsolePromptHandler.WriteInvalidInput();
             }
         }
     }
