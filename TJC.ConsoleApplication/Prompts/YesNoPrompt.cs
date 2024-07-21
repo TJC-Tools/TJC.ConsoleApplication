@@ -1,6 +1,6 @@
 ﻿namespace TJC.ConsoleApplication.Inputs;
 
-public partial class ConsoleInput
+public partial class ConsolePrompt
 {
     /// <summary>
     /// Prompts user for a yes or no response.
@@ -22,7 +22,7 @@ public partial class ConsoleInput
                     ConsoleOutputHandler.Empty();
                     return false;
                 default:
-                    InputHelpers.WriteInvalidInput(inputIsReadKey: true);
+                    ConsolePromptHandler.WriteInvalidInput(inputIsReadKey: true);
                     break;
             }
         }

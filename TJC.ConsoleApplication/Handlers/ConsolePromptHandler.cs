@@ -1,6 +1,6 @@
-﻿namespace TJC.ConsoleApplication.Inputs;
+﻿namespace TJC.ConsoleApplication.Handlers;
 
-internal static class InputHelpers
+internal static class ConsolePromptHandler
 {
     internal static void WriteInvalidInput(bool inputIsReadKey = false, string? additionalDetails = null)
     {

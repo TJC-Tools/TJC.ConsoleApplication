@@ -11,7 +11,7 @@ public class StringInputTests : InputTestsBaseClass
         MockUserInput.QueueLine(input);
 
         // Act
-        var result = ConsoleInput.GetString("Enter Input");
+        var result = ConsolePrompt.GetString("Enter Input");
 
         // Assert
         Assert.AreEqual(input, result);
@@ -27,7 +27,7 @@ public class StringInputTests : InputTestsBaseClass
         MockUserInput.QueueLine(input);
 
         // Act
-        var result = ConsoleInput.GetStringChange("Enter Input", current);
+        var result = ConsolePrompt.GetStringChange("Enter Input", current);
 
         // Assert
         Assert.AreEqual(current, result);
@@ -43,7 +43,7 @@ public class StringInputTests : InputTestsBaseClass
         MockUserInput.QueueLine(input);
 
         // Act
-        var result = ConsoleInput.GetStringChange("Enter Input", current);
+        var result = ConsolePrompt.GetStringChange("Enter Input", current);
 
         // Assert
         Assert.AreEqual(input, result);
@@ -60,7 +60,7 @@ public class StringInputTests : InputTestsBaseClass
         MockUserInput.QueueLine(input);
 
         // Act
-        ConsoleInput.GetStringChange("Enter Input", ref result);
+        ConsolePrompt.GetStringChange("Enter Input", ref result);
 
         // Assert
         Assert.AreEqual(original, result);
@@ -77,7 +77,7 @@ public class StringInputTests : InputTestsBaseClass
         MockUserInput.QueueLine(input);
 
         // Act
-        ConsoleInput.GetStringChange("Enter Input", ref result);
+        ConsolePrompt.GetStringChange("Enter Input", ref result);
 
         // Assert
         Assert.AreEqual(input, result);

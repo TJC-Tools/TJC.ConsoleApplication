@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Logger;
+﻿namespace TJC.ConsoleApplication.Handlers;
 
 internal class StandardConsoleReader : IConsoleReader
 {

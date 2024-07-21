@@ -1,2 +1,2 @@
-﻿global using TJC.ConsoleApplication.Interfaces;
-global using TJC.ConsoleApplication.Logger;
+﻿global using TJC.ConsoleApplication.Handlers;
+global using TJC.ConsoleApplication.Interfaces;

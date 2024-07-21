@@ -12,7 +12,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("1");
 
         // Act
-        var result = ConsoleInput.GetInt("Enter Input");
+        var result = ConsolePrompt.GetInt("Enter Input");
 
         // Assert
         Assert.AreEqual(1, result);
@@ -30,7 +30,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("7");
 
         // Act
-        var result = ConsoleInput.GetInt("Enter Input");
+        var result = ConsolePrompt.GetInt("Enter Input");
 
         // Assert
         Assert.AreEqual(5, result, "The result should be 5, since it is the first valid input");
@@ -49,7 +49,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("5");
 
         // Act
-        var result = ConsoleInput.GetIntRange("Enter Input", 10, 1);
+        var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1);
 
         // Assert
         Assert.AreEqual(5, result);
@@ -66,7 +66,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("7");
 
         // Act
-        var result = ConsoleInput.GetIntRange("Enter Input", 10, 1);
+        var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1);
 
         // Assert
         Assert.AreEqual(5, result, "The result should be 5, since it is the first valid input");
@@ -84,7 +84,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("5");
 
         // Act
-        var result = ConsoleInput.GetIntRange("Enter Input", 10, 1, inclusive: true);
+        var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: true);
 
         // Assert
         Assert.AreEqual(1, result);
@@ -98,7 +98,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("5");
 
         // Act
-        var result = ConsoleInput.GetIntRange("Enter Input", 10, 1, inclusive: true);
+        var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: true);
 
         // Assert
         Assert.AreEqual(10, result);
@@ -116,7 +116,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("5");
 
         // Act
-        var result = ConsoleInput.GetIntRange("Enter Input", 10, 1, inclusive: false);
+        var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: false);
 
         // Assert
         Assert.AreEqual(5, result);
@@ -130,7 +130,7 @@ public class IntegerInputTests : InputTestsBaseClass
         MockUserInput.QueueLine("5");
 
         // Act
-        var result = ConsoleInput.GetIntRange("Enter Input", 10, 1, inclusive: false);
+        var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: false);
 
         // Assert
         Assert.AreEqual(5, result);
