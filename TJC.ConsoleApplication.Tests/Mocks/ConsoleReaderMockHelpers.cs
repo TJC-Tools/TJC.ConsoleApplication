@@ -2,7 +2,7 @@
 
 internal static class ConsoleReaderMockHelpers
 {
-    private static Mock<IConsoleReader> _mockConsoleReader = new Mock<IConsoleReader>();
+    private static readonly Mock<IConsoleReader> _mockConsoleReader = new();
 
     public static void SetReadKeyMock(ConsoleKey key)
     {

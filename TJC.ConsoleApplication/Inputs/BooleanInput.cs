@@ -2,6 +2,11 @@
 
 public partial class ConsoleInput
 {
+    /// <summary>
+    /// Prompts user for a yes or no response.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static bool GetYesNo(string message)
     {
         while (true)
