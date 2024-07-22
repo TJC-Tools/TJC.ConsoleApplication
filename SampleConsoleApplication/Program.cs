@@ -1,8 +1,7 @@
 ﻿while (true)
 {
-    var demo = ConsolePrompt.GetChoiceDone<DemoItems>("Select Demo");
-    if (demo == null)
-        return;
+    if (ConsolePrompt.GetChoiceDone<DemoItems>("Select Demo") is not DemoItems demo)
+        return; // If 'Done' is selected, end the program
 
     switch (demo)
     {
@@ -32,6 +31,10 @@
             Console.WriteLine(options[index]);
             var choice = ConsolePrompt.GetChoice("Choose an option", options);
             Console.WriteLine(choice);
+            demo = ConsolePrompt.GetChoiceChange<DemoItems>("demo", demo);
+            ConsolePrompt.GetChoiceChange("demo", ref demo);
+            var enums = ConsolePrompt.GetCollectionEnum<DemoItems>("Select demos", "Demo");
+            Console.WriteLine(enums);
             break;
         default:
             break;
