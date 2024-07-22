@@ -112,6 +112,18 @@ var choice = ConsolePrompt.GetChoiceDone<MyEnum>("Choose");
 // 3. EnumItem3
 ```
 
+#### [T ConsolePrompt.GetChoiceChange\<T\>(string message, T current, T? defaultChoice) where T: Enum](./TJC.ConsoleApplication/Prompts/ChoiceEnumChangePrompt.cs)
+- Prompts the user if they want to change from the currently selected enum
+```c#
+var choice = MyEnum.EnumItem1
+choice = ConsolePrompt.GetChoiceChange<MyEnum>("choice", choice);
+// Outputs:
+// Change choice from [EnumItem1]? (Y/N): Y
+// 1. EnumItem1
+// 2. EnumItem2
+// 3. EnumItem3
+```
+
 ### Collections
 
 #### [ICollection\<string\> ConsolePrompt.GetCollection(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionPrompt.cs)
@@ -134,4 +146,10 @@ var collection = ConsolePrompt.GetCollection("Enter a collection of ints");
 - Prompts the user to enter a collection of doubles
 ```c#
 var collection = ConsolePrompt.GetCollection("Enter a collection of doubles");
+```
+
+#### [ICollection\<T\> ConsolePrompt.GetCollectionEnum(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionEnumPrompt.cs)
+- Prompts the user to enter a collection of enums
+```c#
+var collection = ConsolePrompt.GetCollectionEnum<MyEnum>("Enter a collection of enums");
 ```
