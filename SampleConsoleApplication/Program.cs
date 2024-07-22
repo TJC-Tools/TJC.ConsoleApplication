@@ -1,10 +1,15 @@
-﻿while (true)
+﻿ProcessExitExtensions.ConfigureProcessExitEvent();
+
+while (true)
 {
     if (ConsolePrompt.GetChoiceDone<DemoItems>("Select Demo") is not DemoItems demo)
         return; // If 'Done' is selected, end the program
 
     switch (demo)
     {
+        case DemoItems.ThrowFault:
+            EnvironmentEx.ExitCode(ExitCodes.ProcessFailed, "demo exit");
+            break;
         case DemoItems.YesNo:
             var yesNo = ConsolePrompt.GetYesNo("Are you human?");
             Console.WriteLine(yesNo ? "Yes" : "No");
