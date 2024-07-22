@@ -2,6 +2,7 @@
 
 internal enum DemoItems
 {
+    ThrowFault,
     YesNo,
     Numbers,
     Strings,

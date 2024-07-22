@@ -148,8 +148,15 @@ var collection = ConsolePrompt.GetCollection("Enter a collection of ints");
 var collection = ConsolePrompt.GetCollection("Enter a collection of doubles");
 ```
 
-#### [ICollection\<T\> ConsolePrompt.GetCollectionEnum(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionEnumPrompt.cs)
+#### [ICollection\<T\> ConsolePrompt.GetCollectionEnum\<T\>(string message, string messageIndividual = "")](./TJC.ConsoleApplication/Prompts/CollectionEnumPrompt.cs)
 - Prompts the user to enter a collection of enums
 ```c#
 var collection = ConsolePrompt.GetCollectionEnum<MyEnum>("Enter a collection of enums");
 ```
+
+---
+
+## Exit
+
+### [ProcessExitExtensions.ConfigureProcessExitEvent](./TJC.ConsoleApplication/Exit/ProcessExitExtensions.cs)([ProcessExitOptions](./TJC.ConsoleApplication/Exit/ProcessExitOptions.cs) options)
+- Configures the process to display run time & error messages on exit
