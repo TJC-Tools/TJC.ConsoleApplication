@@ -13,6 +13,7 @@ public static class EnvironmentEx
     [DoesNotReturn]
     public static void ExitCode(ExitCodes exitCode, string? message = null)
     {
+        ConsoleOutputHandler.ResetSilent();
         if (!string.IsNullOrEmpty(message))
             ConsoleOutputHandler.WriteLine(message);
         Environment.Exit((int)exitCode);

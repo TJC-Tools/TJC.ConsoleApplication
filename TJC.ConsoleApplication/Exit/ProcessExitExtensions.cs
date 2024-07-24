@@ -46,6 +46,8 @@ public static class ProcessExitExtensions
 
         processExitOptions ??= ProcessExitOptions.Default;
 
+        ConsoleOutputHandler.ResetSilent();
+
         if (Environment.ExitCode == 0)
         {
             if (processExitOptions.ShowSuccessMessage)
