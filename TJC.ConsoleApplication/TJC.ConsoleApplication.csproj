@@ -36,6 +36,8 @@
 
 
 	<ItemGroup>
+	  <PackageReference Include="NDesk.Options" Version="0.2.1" />
+	  <PackageReference Include="TJC.StringExtensions" Version="0.1.1" />
 	  <PackageReference Include="TJC.TimeExtensions" Version="0.1.0" />
 	</ItemGroup>
 

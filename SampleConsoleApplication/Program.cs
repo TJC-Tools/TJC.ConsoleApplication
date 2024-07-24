@@ -1,4 +1,6 @@
 ﻿ProcessExitExtensions.ConfigureProcessExitEvent();
+ConsoleArgumentsEmpty.Parse(args); // For parsing when no arguments are expected
+Arguments.Parse(args); // For parsing when arguments are expected
 
 while (true)
 {
