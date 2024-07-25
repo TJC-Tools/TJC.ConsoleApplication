@@ -10,7 +10,7 @@ internal static class ConsoleArgumentsHelp
     /// <param name="programName"></param>
     internal static void ShowHelpAndExit(this ConsoleArguments arguments, string? programName)
     {
-        ConsoleOutputHandler.ResetSilent();
+        ConsoleOutputHandler.Silent = false;
         arguments.PrintHelp(programName);
         EnvironmentEx.ExitCode(ExitCodes.Success);
     }

@@ -1,12 +1,12 @@
-﻿namespace TJC.ConsoleApplication.Exit;
+﻿namespace TJC.ConsoleApplication.Settings;
 
-public class ProcessExitOptions
+public class ProcessExitSettings
 {
     #region Predefined Types
 
-    public static ProcessExitOptions Default => new();
+    public static ProcessExitSettings Default => new();
 
-    public static ProcessExitOptions SilentExitOnSuccess => new() { ShowSuccessMessage = false };
+    public static ProcessExitSettings SilentExitOnSuccess => new() { ShowSuccessMessage = false };
 
     #endregion
 

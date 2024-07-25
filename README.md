@@ -1,5 +1,23 @@
 [![NuGet Version and Downloads count](https://buildstats.info/nuget/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication)
 
+## Console Setup
+- Used to setup the console application with exceptions handling, logging, etc.
+
+
+### [ConsoleSetup.Setup](./TJC.ConsoleApplication/ConsoleSetup.cs)([ConsoleSettings](./TJC.ConsoleApplication/Settings/ConsoleSettings.cs)? consoleSettings = null, [ProcessExitOptions](./TJC.ConsoleApplication/Settings/ProcessExitSettings.cs)? processExitSettings = null)
+- Allows setting up the console application with a variety of options.
+```c#
+ConsoleSetup.Setup();
+```
+
+### [ConsoleSetup.SetupSilent](./TJC.ConsoleApplication/ConsoleSetup.cs)()
+- Sets up the console application to be silent (no output to console) unless an exception occurs.
+```c#
+ConsoleSetup.SetupSilent();
+```
+
+---
+
 ## Arguments
 
 ### [Arguments](./SampleConsoleApplication/Arguments.cs) Parsing
@@ -13,12 +31,13 @@ internal class Arguments
     internal static void Parse(string[] args) =>
         ConsoleArguments.ParseAndValidate(args, Assembly.GetCallingAssembly().GetName().Name);
 
+    internal static DryRunArgument DryRun => DryRunArgument.Default;
     internal static bool Item1 { get; private set; }
-    internal static string Item2 { get; private set; }
-
+    internal static string? Item2 { get; private set; }
 
     internal static readonly ConsoleArguments ConsoleArguments = new(flagRequired: true, logParsedOptions: true)
     {
+        DryRun,
         { "item1", v => Item1 = !string.IsNullOrEmpty(v), "Example Item 1" },
         { "item2", v => Item2 = v, "Example Item 2" }
     };
@@ -185,5 +204,5 @@ var collection = ConsolePrompt.GetCollectionEnum<MyEnum>("Enter a collection of 
 
 ## Exit
 
-### [ProcessExitExtensions.ConfigureProcessExitEvent](./TJC.ConsoleApplication/Exit/ProcessExitExtensions.cs)([ProcessExitOptions](./TJC.ConsoleApplication/Exit/ProcessExitOptions.cs) options)
+### [ProcessExitExtensions.ConfigureProcessExitEvent](./TJC.ConsoleApplication/Exit/ProcessExitExtensions.cs)([ProcessExitSettings](./TJC.ConsoleApplication/Settings/ProcessExitSettings.cs) settings)
 - Configures the process to display run time & error messages on exit
