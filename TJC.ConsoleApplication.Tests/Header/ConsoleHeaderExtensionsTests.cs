@@ -13,11 +13,11 @@ public class ConsoleHeaderExtensionsTests
 
         // Assert
         Assert.AreEqual(6, result.Count);
-        Assert.AreEqual("###################################################", result[0]);
-        Assert.AreEqual("###   TJC.ConsoleApplication.Tests - v1.2.3.4   ###", result[1]);
-        Assert.AreEqual("###         Example Copyright (C) 2024          ###", result[2]);
-        Assert.AreEqual("###                     ---                     ###", result[3]);
-        Assert.AreEqual("###     Console Application Testing Project     ###", result[4]);
-        Assert.AreEqual("###################################################", result[5]);
+        Assert.AreEqual("###############################################", result[0]);
+        Assert.AreEqual("###        Example Title - v1.2.3.4         ###", result[1]);
+        Assert.AreEqual("###       Example Copyright (C) 2024        ###", result[2]);
+        Assert.AreEqual("###                   ---                   ###", result[3]);
+        Assert.AreEqual("###   Console Application Testing Project   ###", result[4]);
+        Assert.AreEqual("###############################################", result[5]);
     }
 }

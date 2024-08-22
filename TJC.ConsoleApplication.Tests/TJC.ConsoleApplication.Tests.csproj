@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<AssemblyTitle>Example Title</AssemblyTitle>
 		<Copyright>Example Copyright © 2024</Copyright>
 		<Description>Console Application Testing Project</Description>
 		<AssemblyVersion>1.2.3.4</AssemblyVersion>

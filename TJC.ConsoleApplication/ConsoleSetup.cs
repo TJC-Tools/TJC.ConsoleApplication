@@ -1,4 +1,6 @@
-﻿namespace TJC.ConsoleApplication;
+﻿using System.Reflection;
+
+namespace TJC.ConsoleApplication;
 
 public class ConsoleSetup
 {
@@ -13,6 +15,13 @@ public class ConsoleSetup
         // Configure settings
         ConsoleOutputHandler.Silent = consoleSettings.SilentLogging;
         ProcessExitExtensions.ConfigureProcessExitEvent(processExitSettings);
+
+        // Header (with title, version, copyright, & description)
+        if (consoleSettings.DisplayHeader)
+        {
+            Assembly.GetCallingAssembly().WriteHeader();
+            ConsoleOutputHandler.Empty();
+        }
     }
 
     public static void SetupSilent() =>

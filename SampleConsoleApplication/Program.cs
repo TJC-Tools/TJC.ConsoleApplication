@@ -1,12 +1,8 @@
 ﻿// Setup Console Settings
-using TJC.ConsoleApplication.Header;
-
 ConsoleSetup.Setup(); // ConsoleSetup.SetupSilent(); // For when no output is desired (unless an error occurs)
 
 // Parse Arguments
 Arguments.Parse(args); // ConsoleArgumentsEmpty.Parse(args); // For parsing when no arguments are expected
-
-ConsoleHeaderExtensions.WriteHeader();
 
 while (true)
 {
