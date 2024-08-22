@@ -1,14 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+	<OutputType>Exe</OutputType>
+	<TargetFramework>net8.0</TargetFramework>
+	<Title>Sample Console Application</Title>
+	<Copyright>Example Copyright © 2024</Copyright>
+	<Description>Sample Console Application</Description>
+	<AssemblyVersion>1.2.3.4</AssemblyVersion>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
+	<ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
   </ItemGroup>
 
 </Project>
