@@ -1,5 +1,12 @@
 [![NuGet Version and Downloads count](https://buildstats.info/nuget/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication)
 
+## Header
+
+### [ConsoleHeaderExtensions.WriteConsoleHeader](./TJC.ConsoleApplication/Header/ConsoleHeaderExtensions.cs)();
+- Will write a header to the console with the application title, version, copyright, & description.
+
+---
+
 ## Console Setup
 - Used to setup the console application with exceptions handling, logging, etc.
 
