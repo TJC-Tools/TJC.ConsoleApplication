@@ -4,12 +4,18 @@ using TJC.StringExtensions.Header;
 
 namespace TJC.ConsoleApplication.Header;
 
+/// <summary>
+/// The header will display the <c>AssemblyTitle</c>, <c>AssemblyVersion</c>, <c>Copyright</c>, and <c>Description</c>.
+/// </summary>
 public static class ConsoleHeaderExtensions
 {
-    public static void WriteHeader()
+    public static void WriteHeader() =>
+        Assembly.GetCallingAssembly().GetHeader();
+
+    public static void WriteHeader(this Assembly assembly)
     {
-        foreach (var line in Assembly.GetCallingAssembly().GetHeader())
-            Console.WriteLine(line);
+        foreach (var line in assembly.GetHeader())
+            ConsoleOutputHandler.WriteLine(line);
     }
 
     public static IEnumerable<string> GetHeader() =>
@@ -17,14 +23,20 @@ public static class ConsoleHeaderExtensions
 
     public static IEnumerable<string> GetHeader(this Assembly assembly)
     {
+        // Get assembly information
         var assemblyName = assembly.GetName();
-        var version = $"v{assemblyName.Version}";
         var title = assembly.GetTitle();
+        var version = assemblyName.Version;
         var copyright = assembly.GetCopyright(replaceCopyrightSymbolWithC: true);
         var description = assembly.GetDescription();
 
         // Create lines for the header
-        var lines = new List<string> { $"{title} - {version}" };
+        var lines = new List<string>();
+
+        if (version != null)
+            title += $" - v{version}";
+
+        lines.Add(title);
 
         if (!string.IsNullOrEmpty(copyright))
             lines.Add(copyright);
@@ -35,6 +47,7 @@ public static class ConsoleHeaderExtensions
             lines.Add(description);
         }
 
+        // Convert lines to header
         return lines.GenerateHeader();
     }
 }

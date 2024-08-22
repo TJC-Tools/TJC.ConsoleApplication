@@ -4,6 +4,7 @@ global using TJC.ConsoleApplication.Arguments.Interfaces;
 global using TJC.ConsoleApplication.Arguments.Options;
 global using TJC.ConsoleApplication.Exit;
 global using TJC.ConsoleApplication.Handlers;
+global using TJC.ConsoleApplication.Header;
 global using TJC.ConsoleApplication.Interfaces;
 global using TJC.ConsoleApplication.Settings;
 global using TJC.StringExtensions.Lines;

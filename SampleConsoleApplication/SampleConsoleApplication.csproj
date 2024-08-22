@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<OutputType>Exe</OutputType>
 	<TargetFramework>net8.0</TargetFramework>
-	<Title>Sample Console Application</Title>
+	<AssemblyTitle>Sample Console Application</AssemblyTitle>
 	<Copyright>Example Copyright © 2024</Copyright>
 	<Description>Sample Console Application</Description>
 	<AssemblyVersion>1.2.3.4</AssemblyVersion>

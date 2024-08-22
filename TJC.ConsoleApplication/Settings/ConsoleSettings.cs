@@ -12,6 +12,8 @@ public class ConsoleSettings
 
     #region Properties
 
+    public bool DisplayHeader { get; set; } = true;
+
     public bool SilentLogging { get; set; } = false;
 
     #endregion
