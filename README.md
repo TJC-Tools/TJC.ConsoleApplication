@@ -1,5 +1,14 @@
 [![NuGet Version and Downloads count](https://buildstats.info/nuget/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication)
 
+## Table of Contents
+- [Console Setup](#console-setup)
+- [Header](#header)
+- [Arguments](#arguments)
+- [Prompts](#prompts)
+- [Exit](#exit)
+
+---
+
 ## Console Setup
 - Used to setup the console application with exceptions handling, logging, etc.
 
