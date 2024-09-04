@@ -1,18 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-	<OutputType>Exe</OutputType>
-	<TargetFramework>net8.0</TargetFramework>
-	<AssemblyTitle>Sample Console Application</AssemblyTitle>
-	<Copyright>Example Copyright © 2024</Copyright>
-	<Description>Sample Console Application</Description>
-	<AssemblyVersion>1.2.3.4</AssemblyVersion>
-	<ImplicitUsings>enable</ImplicitUsings>
-	<Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-	<ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
-  </ItemGroup>
-
+	<!-- DETAILS -->
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<AssemblyTitle>Sample Console Application</AssemblyTitle>
+		<Copyright>Example Copyright © 2024</Copyright>
+		<Description>Sample Console Application</Description>
+		<AssemblyVersion>1.2.3.4</AssemblyVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<!-- INCLUDED FILES -->
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<EmbeddedResource Include="..\LICENSE" />
+	</ItemGroup>
+	<!-- DEPENDENCIES -->
+	<ItemGroup>
+		<ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
+	</ItemGroup>
 </Project>
