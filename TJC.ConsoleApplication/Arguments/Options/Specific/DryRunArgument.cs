@@ -11,9 +11,9 @@ public class DryRunArgument : IConsoleArgument
     public static DryRunArgument Default => new();
 
     public DryRunArgument(string description = "Run through the process, writing logs, but do not execute any changes") =>
-        Argument = new ConsoleArgument(null, Prototype, v => DryRun = !string.IsNullOrEmpty(v), isRequired: false, description);
+        Argument = new ConsoleArgument(null, Prototype, v => Selected = !string.IsNullOrEmpty(v), isRequired: false, description);
 
-    public bool DryRun { get; private set; }
+    public bool Selected { get; private set; }
 
     public ConsoleArgument Argument { get; }
 }
