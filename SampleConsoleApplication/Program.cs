@@ -4,7 +4,7 @@ ConsoleSetup.Setup(); // ConsoleSetup.SetupSilent(); // For when no output is de
 // Parse Arguments
 Arguments.Parse(args); // ConsoleArgumentsEmpty.Parse(args); // For parsing when no arguments are expected
 
-// Blank line
+// Blank line for separation
 ConsoleOutputHandler.Empty();
 
 while (true)
