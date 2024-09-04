@@ -10,7 +10,7 @@
     },
     "Details": {
       "commandName": "Project",
-      "commandLineArgs": "--version"
+      "commandLineArgs": "--version\r\n--copyright"
     }
   }
 }
