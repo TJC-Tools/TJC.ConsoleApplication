@@ -4,13 +4,16 @@
       "commandName": "WSL2",
       "distributionName": ""
     },
-    "Help": {
-      "commandName": "Project",
-      "commandLineArgs": "--help"
+    "Empty": {
+      "commandName": "Project"
     },
     "Details": {
       "commandName": "Project",
       "commandLineArgs": "--version\r\n--copyright\r\n--license"
+    },
+    "Help": {
+      "commandName": "Project",
+      "commandLineArgs": "--help"
     }
   }
 }
