@@ -16,34 +16,34 @@ while (true)
             break;
         case DemoItems.YesNo:
             var yesNo = ConsolePrompt.GetYesNo("Are you human?");
-            Console.WriteLine(yesNo ? "Yes" : "No");
+            Trace.WriteLine(yesNo ? "Yes" : "No");
             break;
         case DemoItems.Numbers:
             var num = ConsolePrompt.GetInt("Enter a number");
-            Console.WriteLine(num);
+            Trace.WriteLine(num);
             var numRange = ConsolePrompt.GetIntRange("Enter a number", 10, 0);
-            Console.WriteLine(numRange);
+            Trace.WriteLine(numRange);
             break;
         case DemoItems.Strings:
             var str = ConsolePrompt.GetString("Enter a string");
-            Console.WriteLine(str);
+            Trace.WriteLine(str);
             str = ConsolePrompt.GetStringChange("str", str);
-            Console.WriteLine(str);
+            Trace.WriteLine(str);
             break;
         case DemoItems.Collection:
             var collection = ConsolePrompt.GetCollection("Enter a collection of strings", "str");
-            Console.WriteLine(collection);
+            Trace.WriteLine(collection);
             break;
         case DemoItems.Choices:
             var options = new List<string> { "Option1", "Option2", "Option3" };
             var index = ConsolePrompt.GetChoiceIndex("Choose an option", options);
-            Console.WriteLine(options[index]);
+            Trace.WriteLine(options[index]);
             var choice = ConsolePrompt.GetChoice("Choose an option", options);
             Console.WriteLine(choice);
             demo = ConsolePrompt.GetChoiceChange<DemoItems>("demo", demo);
             ConsolePrompt.GetChoiceChange("demo", ref demo);
             var enums = ConsolePrompt.GetCollectionEnum<DemoItems>("Select demos", "Demo");
-            Console.WriteLine(enums);
+            Trace.WriteLine(enums);
             break;
         default:
             break;

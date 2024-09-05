@@ -1,6 +1,6 @@
 ﻿namespace TJC.ConsoleApplication.Handlers;
 
-public static class ConsoleOutputHandler
+internal static class ConsoleOutputHandler
 {
     public static bool Silent { get; set; }
 

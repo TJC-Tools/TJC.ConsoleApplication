@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 
 namespace TJC.ConsoleApplication;
 
@@ -15,6 +16,13 @@ public class ConsoleSetup
         // Configure settings
         ConsoleOutputHandler.Silent = consoleSettings.SilentLogging;
         ProcessExitExtensions.ConfigureProcessExitEvent(processExitSettings);
+
+        // Re-route trace messages to the console
+        if (consoleSettings.TraceToConsole)
+        {
+            Trace.Listeners.Clear();
+            Trace.Listeners.Add(new ConsoleOutputTraceListener());
+        }
 
         // Header (with title, version, copyright, & description)
         if (consoleSettings.DisplayHeader)
