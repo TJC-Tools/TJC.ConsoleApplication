@@ -6,6 +6,8 @@
 		<AssemblyTitle>Sample Console Application</AssemblyTitle>
 		<Copyright>Example Copyright © 2024</Copyright>
 		<Description>Sample Console Application</Description>
+		<Copyright>Copyright © 2024 Tyler Carrol - All rights reserved.
+This software is proprietary and confidential. Unauthorized use, reproduction, or distribution is prohibited.</Copyright>
 		<AssemblyVersion>1.2.3.4</AssemblyVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
