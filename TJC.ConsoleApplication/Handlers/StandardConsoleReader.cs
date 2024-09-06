@@ -2,8 +2,11 @@
 
 internal class StandardConsoleReader : IConsoleReader
 {
-    public ConsoleKeyInfo ReadKey(bool intercept = false) =>
+    public ConsoleKeyInfo ReadKey(bool intercept) =>
         Console.ReadKey(intercept);
+
+    public ConsoleKeyInfo ReadKey() =>
+        Console.ReadKey();
 
     public string? ReadLine() =>
         Console.ReadLine();
