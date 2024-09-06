@@ -2,7 +2,7 @@
 
 public interface IConsoleReader
 {
-    ConsoleKeyInfo ReadKey();
+    ConsoleKeyInfo ReadKey(bool intercept = false);
 
     string? ReadLine();
 

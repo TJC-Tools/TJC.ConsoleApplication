@@ -7,8 +7,8 @@ internal static class ConsoleInputHandler
     internal static void SetConsoleReader(IConsoleReader consoleReader) =>
         _consoleReader = consoleReader;
 
-    public static char ReadKey() =>
-        _consoleReader.ReadKey().KeyChar;
+    public static char ReadKey(bool intercept = false) =>
+        _consoleReader.ReadKey(intercept).KeyChar;
 
     public static string? ReadLine() =>
         _consoleReader.ReadLine();
