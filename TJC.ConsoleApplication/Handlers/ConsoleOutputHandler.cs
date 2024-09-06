@@ -25,4 +25,12 @@ internal static class ConsoleOutputHandler
     {
         WriteLine(new string('-', 119));
     }
+
+    public static void ClearCurrentLine()
+    {
+        int currentLineCursor = Console.CursorTop;
+        Console.SetCursorPosition(0, Console.CursorTop);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, currentLineCursor);
+    }
 }

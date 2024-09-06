@@ -33,8 +33,11 @@ public static class ProcessExitExtensions
     private static void OnProcessExit(DateTime startTime,
                                       string? programName = null,
                                       string? helpOption = null,
-                                      ProcessExitSettings? processExitSettings = null) =>
+                                      ProcessExitSettings? processExitSettings = null)
+    {
         OnProcessExit<ExitCodes>(startTime, programName, helpOption, processExitSettings);
+        FinalExit(processExitSettings ?? ProcessExitSettings.Default);
+    }
 
     private static void OnProcessExit<T>(DateTime startTime,
                                      string? programName = null,
@@ -81,5 +84,44 @@ public static class ProcessExitExtensions
             return;
         ConsoleOutputHandler.Empty();
         ConsoleOutputHandler.WriteLine($"Try {helpOption} for more information.");
+    }
+
+    private static void FinalExit(ProcessExitSettings processExitSettings)
+    {
+        if (processExitSettings.AutoExit) // Auto-exit (with optional countdown)
+            ExitCountdown(processExitSettings.ExitCountdownSeconds);
+        else // Manual exit only (wait for user input)
+            ConsoleInputHandler.ReadKey(true);
+    }
+
+    private static void ExitCountdown(uint timeoutSeconds)
+    {
+        var startTime = DateTime.Now;
+        ConsoleOutputHandler.Empty();
+        ConsoleOutputHandler.WriteLine($"Press any key to exit...");
+
+        while ((DateTime.Now - startTime).TotalSeconds < timeoutSeconds)
+        {
+            // Check if a key is pressed
+            if (Console.KeyAvailable)
+            {
+                ConsoleInputHandler.ReadKey(true); // Consume the key
+                break;
+            }
+
+            // Calculate remaining time
+            var remainingTime = timeoutSeconds - (int)(DateTime.Now - startTime).TotalSeconds;
+
+            // Clear the current line & write the remaining time
+            ConsoleOutputHandler.ClearCurrentLine();
+            ConsoleOutputHandler.Write($"Timeout in {remainingTime} seconds");
+
+            // Sleep for 100ms to reduce CPU usage (but allow key press detection to feel responsive)
+            Thread.Sleep(100);
+        }
+
+        // Final message after timeout or key press
+        ConsoleOutputHandler.ClearCurrentLine();
+        ConsoleOutputHandler.WriteLine("Exiting...");
     }
 }

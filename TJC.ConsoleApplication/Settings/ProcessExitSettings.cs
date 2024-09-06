@@ -6,7 +6,15 @@ public class ProcessExitSettings
 
     public static ProcessExitSettings Default => new();
 
-    public static ProcessExitSettings SilentExitOnSuccess => new() { ShowSuccessMessage = false };
+    public static ProcessExitSettings SilentExitOnSuccess =>
+        new() { ShowSuccessMessage = false, AutoExit = true, ExitCountdownSeconds = 0 };
+
+    public static ProcessExitSettings ManualExit => new() { AutoExit = false };
+
+    public static ProcessExitSettings AutomaticExit => GetAutomaticExit();
+
+    public static ProcessExitSettings GetAutomaticExit(uint countdownSeconds = 10) =>
+        new() { AutoExit = true, ExitCountdownSeconds = countdownSeconds };
 
     #endregion
 
@@ -16,6 +24,8 @@ public class ProcessExitSettings
     public bool ShowFailedMessage { get; set; } = true;
     public bool ShowSuggestHelp { get; set; } = true;
     public bool ForceExitCode0 { get; set; } = false;
+    public bool AutoExit { get; set; } = true;
+    public uint ExitCountdownSeconds { get; set; } = 5;
 
     #endregion
 }
