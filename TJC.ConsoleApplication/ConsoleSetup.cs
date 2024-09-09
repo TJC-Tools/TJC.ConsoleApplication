@@ -30,7 +30,6 @@ public class ConsoleSetup
         {
             Assembly.GetCallingAssembly().WriteHeader();
             ConsoleOutputHandler.Empty();
-            ConsoleOutputHandler.Empty();
         }
     }
 
