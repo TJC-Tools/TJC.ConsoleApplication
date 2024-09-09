@@ -6,6 +6,7 @@ namespace TJC.ConsoleApplication;
 public class ConsoleSetup
 {
     public static void Setup(
+        Assembly? assembly = null,
         ConsoleSettings? consoleSettings = null,
         ProcessExitSettings? processExitSettings = null)
     {
@@ -15,7 +16,7 @@ public class ConsoleSetup
 
         // Configure settings
         ConsoleOutputHandler.Silent = consoleSettings.SilentLogging;
-        ProcessExitExtensions.ConfigureProcessExitEvent(processExitSettings);
+        ProcessExitExtensions.ConfigureProcessExitEvent(assembly ?? Assembly.GetCallingAssembly(), processExitSettings);
 
         // Re-route trace messages to the console
         if (consoleSettings.TraceToConsole)
@@ -34,6 +35,7 @@ public class ConsoleSetup
     }
 
     public static void SetupSilent() =>
-        Setup(ConsoleSettings.Silent, ProcessExitSettings.SilentExitOnSuccess);
-
+        Setup(Assembly.GetCallingAssembly(),
+            ConsoleSettings.Silent,
+            ProcessExitSettings.SilentExitOnSuccess);
 }
