@@ -13,19 +13,20 @@ public static class ProcessExitExtensions
     /// </summary>
     /// <remarks>If the process fails, it will display exit code, run time &amp; help menu</remarks>
     public static void ConfigureProcessExitEvent_SilentExitOnSuccess() =>
-        ConfigureProcessExitEvent(ProcessExitSettings.SilentExitOnSuccess);
+        ConfigureProcessExitEvent(Assembly.GetCallingAssembly(), ProcessExitSettings.SilentExitOnSuccess);
 
     /// <summary>
     /// Configures an event to run at the end of a process.
     /// </summary>
     /// <remarks>Depending on the options, this may display some of the following; run time, exit code &amp; help menu</remarks>
     /// <param name="settings">Options to determine which outputs should be displayed depending on the results</param>
-    public static void ConfigureProcessExitEvent(ProcessExitSettings? processExitSettings = null)
+    public static void ConfigureProcessExitEvent(Assembly? assembly = null, ProcessExitSettings? processExitSettings = null)
     {
         var startTime = DateTime.Now; // This must be here, otherwise it does not get called until the event occurs
+        assembly ??= Assembly.GetCallingAssembly();
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
             OnProcessExit(startTime,
-                          Assembly.GetCallingAssembly().GetName().Name,
+                          assembly.GetName().Name,
                           "--help",
                           processExitSettings ?? ProcessExitSettings.Default);
     }
