@@ -10,7 +10,7 @@ public static class ConsoleArgumentsParsing
     /// <param name="programName">Name of Program</param>
     public static void ParseAndValidate(this ConsoleArguments arguments,
                                         string[] args,
-                                        string? programName = null
+                                        string? programName = null,
                                         bool exitOnFailureToParse = true)
     {
         var showHelp = false;
