@@ -10,7 +10,8 @@ public static class ConsoleArgumentsParsing
     /// <param name="programName">Name of Program</param>
     public static void ParseAndValidate(this ConsoleArguments arguments,
                                         string[] args,
-                                        string? programName = null)
+                                        string? programName = null
+                                        bool exitOnFailureToParse = true)
     {
         var showHelp = false;
         arguments.Add("h|?|help", v => showHelp = !string.IsNullOrEmpty(v), "Show Help Menu");
@@ -27,7 +28,7 @@ public static class ConsoleArgumentsParsing
             exitCodes |= ExitCodes.InvalidArguments;
         if (arguments.IsMissingRequired())
             exitCodes |= ExitCodes.MissingArguments;
-        if (exitCodes > 0)
+        if (exitCodes > 0 && exitOnFailureToParse)
             EnvironmentEx.ExitCode(exitCodes);
     }
 
