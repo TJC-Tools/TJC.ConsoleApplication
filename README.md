@@ -1,6 +1,6 @@
-![GitHub Tag](https://img.shields.io/github/v/tag/TJC-Tools/TJC.ConsoleApplication) ![NuGet Version](https://img.shields.io/nuget/v/TJC.ConsoleApplication)
+![GitHub Tag](https://img.shields.io/github/v/tag/TJC-Tools/TJC.ConsoleApplication) [![NuGet Version](https://img.shields.io/nuget/v/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication)
 
-![NuGet Downloads](https://img.shields.io/nuget/dt/TJC.ConsoleApplication) ![Size](https://img.shields.io/github/repo-size/TJC-Tools/TJC.ConsoleApplication) ![License](https://img.shields.io/github/license/TJC-Tools/TJC.ConsoleApplication.svg)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication) ![Size](https://img.shields.io/github/repo-size/TJC-Tools/TJC.ConsoleApplication) [![License](https://img.shields.io/github/license/TJC-Tools/TJC.ConsoleApplication.svg)](LICENSE)
 
 ## Table of Contents
 - [Console Setup](#console-setup)
