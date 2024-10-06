@@ -10,7 +10,7 @@ namespace TJC.ConsoleApplication.Header;
 public static class ConsoleHeaderExtensions
 {
     public static void WriteHeader() =>
-        Assembly.GetCallingAssembly().GetHeader();
+        Assembly.GetCallingAssembly().WriteHeader();
 
     public static void WriteHeader(this Assembly assembly)
     {
