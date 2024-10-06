@@ -1,12 +1,16 @@
 ﻿// Setup Console Settings
-ConsoleSetup.Setup(); // ConsoleSetup.SetupSilent(); // For when no output is desired (unless an error occurs)
+
+var processExitSettings = new ProcessExitSettings { ExitCountdownSeconds = 0, AutoExit = args.Length > 0 };
+ConsoleSetup.Setup(processExitSettings: processExitSettings);
+
+//ConsoleSetup.Setup(); // ConsoleSetup.SetupSilent(); // For when no output is desired (unless an error occurs)
 
 // Parse Arguments
 Arguments.Parse(args); // ConsoleArgumentsEmpty.Parse(args); // For parsing when no arguments are expected
 
 while (true)
 {
-    if (ConsolePrompt.GetChoiceDone<DemoItems>("Select Demo") is not DemoItems demo)
+    if (ConsolePrompt.GetChoiceDone<DemoItems>("Select Demo") is not { } demo)
         return; // If 'Done' is selected, end the program
 
     switch (demo)
