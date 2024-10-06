@@ -10,7 +10,7 @@ namespace TJC.ConsoleApplication.Header;
 public static class ConsoleHeaderExtensions
 {
     public static void WriteHeader() =>
-        Assembly.GetCallingAssembly().GetHeader();
+        Assembly.GetCallingAssembly().WriteHeader();
 
     public static void WriteHeader(this Assembly assembly)
     {
@@ -25,10 +25,10 @@ public static class ConsoleHeaderExtensions
     {
         // Get assembly information
         var assemblyName = assembly.GetName();
-        var title = assembly.GetTitle();
-        var version = assemblyName.Version;
-        var copyright = assembly.GetCopyright(replaceCopyrightSymbolWithC: true);
-        var description = assembly.GetDescription();
+        var title        = assembly.GetTitle();
+        var version      = assemblyName.Version;
+        var copyright    = assembly.GetCopyright(replaceCopyrightSymbolWithC: true);
+        var description  = assembly.GetDescription();
 
         // Create lines for the header
         var lines = new List<string>();
@@ -42,10 +42,7 @@ public static class ConsoleHeaderExtensions
             lines.Add(copyright);
 
         if (!string.IsNullOrEmpty(description))
-        {
-            lines.Add("---");
-            lines.Add(description);
-        }
+            lines.AddRange(["---", description]);
 
         // Convert lines to header
         return lines.GenerateHeader();
