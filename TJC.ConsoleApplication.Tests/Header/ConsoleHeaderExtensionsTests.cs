@@ -1,4 +1,5 @@
 ﻿using TJC.ConsoleApplication.Header;
+using TJC.ConsoleApplication.Settings;
 
 namespace TJC.ConsoleApplication.Tests.Header;
 
@@ -8,8 +9,12 @@ public class ConsoleHeaderExtensionsTests
     [TestMethod]
     public void ConsoleHeader()
     {
+        // Arrange
+        var consoleSettings = ConsoleSettings.Default;
+        consoleSettings.VersionDigits = 4;
+
         // Act
-        var result = ConsoleHeaderExtensions.GetHeader().ToList();
+        var result = ConsoleHeaderExtensions.GetHeader(consoleSettings).ToList();
 
         // Assert
         Assert.AreEqual(6, result.Count);
