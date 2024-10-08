@@ -9,32 +9,32 @@ namespace TJC.ConsoleApplication.Header;
 /// </summary>
 public static class ConsoleHeaderExtensions
 {
-    public static void WriteHeader() =>
-        Assembly.GetCallingAssembly().WriteHeader();
+    public static void WriteHeader(ConsoleSettings consoleSettings) =>
+        Assembly.GetCallingAssembly().WriteHeader(consoleSettings);
 
-    public static void WriteHeader(this Assembly assembly)
+    public static void WriteHeader(this Assembly assembly, ConsoleSettings consoleSettings)
     {
-        foreach (var line in assembly.GetHeader())
+        foreach (var line in assembly.GetHeader(consoleSettings))
             ConsoleOutputHandler.WriteLine(line);
     }
 
-    public static IEnumerable<string> GetHeader() =>
-        Assembly.GetCallingAssembly().GetHeader();
+    public static IEnumerable<string> GetHeader(ConsoleSettings consoleSettings) =>
+        Assembly.GetCallingAssembly().GetHeader(consoleSettings);
 
-    public static IEnumerable<string> GetHeader(this Assembly assembly)
+    public static IEnumerable<string> GetHeader(this Assembly assembly, ConsoleSettings consoleSettings)
     {
         // Get assembly information
         var assemblyName = assembly.GetName();
-        var title        = assembly.GetTitle();
-        var version      = assemblyName.Version;
-        var copyright    = assembly.GetCopyright(replaceCopyrightSymbolWithC: true);
-        var description  = assembly.GetDescription();
+        var title = assembly.GetTitle();
+        var version = assemblyName.Version;
+        var copyright = assembly.GetCopyright(replaceCopyrightSymbolWithC: true);
+        var description = assembly.GetDescription();
 
         // Create lines for the header
         var lines = new List<string>();
 
         if (version != null)
-            title += $" - v{version}";
+            title += $" - v{version.ToString(consoleSettings.VersionDigits)}";
 
         lines.Add(title);
 

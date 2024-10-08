@@ -28,7 +28,7 @@ public class ConsoleSetup
         // Header (with title, version, copyright, & description)
         if (consoleSettings.DisplayHeader)
         {
-            Assembly.GetCallingAssembly().WriteHeader();
+            Assembly.GetCallingAssembly().WriteHeader(consoleSettings);
             ConsoleOutputHandler.Empty();
         }
     }
