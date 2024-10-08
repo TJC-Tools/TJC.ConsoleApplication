@@ -5,9 +5,11 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyTitle>Sample Console Application</AssemblyTitle>
 		<Description>Sample Console Application</Description>
-		<Copyright>Copyright © 2024 Tyler Carrol - All rights reserved.
-This software is proprietary and confidential. Unauthorized use, reproduction, or distribution is prohibited.</Copyright>
-		<AssemblyVersion>1.2.3.4</AssemblyVersion>
+		<Copyright>
+			Copyright © 2024 Tyler Carrol - All rights reserved.
+			This software is proprietary and confidential. Unauthorized use, reproduction, or distribution is prohibited.
+		</Copyright>
+		<AssemblyVersion>1.2.3</AssemblyVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
