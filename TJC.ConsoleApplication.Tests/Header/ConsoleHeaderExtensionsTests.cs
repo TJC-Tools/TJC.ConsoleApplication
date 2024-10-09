@@ -10,11 +10,10 @@ public class ConsoleHeaderExtensionsTests
     public void ConsoleHeader()
     {
         // Arrange
-        var consoleSettings = ConsoleSettings.Default;
-        consoleSettings.VersionDigits = 4;
+        ConsoleSettings.Instance.VersionDigits = 4;
 
         // Act
-        var result = ConsoleHeaderExtensions.GetHeader(consoleSettings).ToList();
+        var result = ConsoleHeaderExtensions.GetHeader().ToList();
 
         // Assert
         Assert.AreEqual(6, result.Count);

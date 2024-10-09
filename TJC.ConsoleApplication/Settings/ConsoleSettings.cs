@@ -1,7 +1,15 @@
-﻿namespace TJC.ConsoleApplication.Settings;
+﻿using TJC.Singleton;
 
-public class ConsoleSettings
+namespace TJC.ConsoleApplication.Settings;
+
+public class ConsoleSettings : SingletonBase<ConsoleSettings>
 {
+    #region Constructors
+
+    private ConsoleSettings() { }
+
+    #endregion
+
     #region Predefined Types
 
     public static ConsoleSettings Default => new();
@@ -36,6 +44,13 @@ public class ConsoleSettings
     /// 4: v{major}.{minor}.{build}.{revision}
     /// </summary>
     public int VersionDigits { get; set; } = 3;
+
+    #endregion
+
+    #region Methods
+
+    public static void SetInstance(ConsoleSettings settings) =>
+        SetBaseInstance(settings);
 
     #endregion
 }
