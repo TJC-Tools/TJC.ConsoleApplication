@@ -9,19 +9,19 @@ namespace TJC.ConsoleApplication.Header;
 /// </summary>
 public static class ConsoleHeaderExtensions
 {
-    public static void WriteHeader(ConsoleSettings consoleSettings) =>
-        Assembly.GetCallingAssembly().WriteHeader(consoleSettings);
+    public static void WriteHeader() =>
+        Assembly.GetCallingAssembly().WriteHeader();
 
-    public static void WriteHeader(this Assembly assembly, ConsoleSettings consoleSettings)
+    public static void WriteHeader(this Assembly assembly)
     {
-        foreach (var line in assembly.GetHeader(consoleSettings))
+        foreach (var line in assembly.GetHeader())
             ConsoleOutputHandler.WriteLine(line);
     }
 
-    public static IEnumerable<string> GetHeader(ConsoleSettings consoleSettings) =>
-        Assembly.GetCallingAssembly().GetHeader(consoleSettings);
+    public static IEnumerable<string> GetHeader() =>
+        Assembly.GetCallingAssembly().GetHeader();
 
-    public static IEnumerable<string> GetHeader(this Assembly assembly, ConsoleSettings consoleSettings)
+    public static IEnumerable<string> GetHeader(this Assembly assembly)
     {
         // Get assembly information
         var assemblyName = assembly.GetName();
@@ -34,7 +34,7 @@ public static class ConsoleHeaderExtensions
         var lines = new List<string>();
 
         if (version != null)
-            title += $" - v{version.ToString(consoleSettings.VersionDigits)}";
+            title += $" - v{version.ToString(ConsoleSettings.Instance.VersionDigits)}";
 
         lines.Add(title);
 
