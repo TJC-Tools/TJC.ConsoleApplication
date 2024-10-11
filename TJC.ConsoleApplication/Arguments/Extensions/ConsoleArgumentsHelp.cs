@@ -8,11 +8,10 @@ internal static class ConsoleArgumentsHelp
     /// </summary>
     /// <param name="arguments"></param>
     /// <param name="programName"></param>
-    internal static void ShowHelpAndExit(this ConsoleArguments arguments, string? programName)
+    internal static void ShowHelp(this ConsoleArguments arguments, string? programName)
     {
         ConsoleOutputHandler.Silent = false;
         arguments.PrintHelp(programName);
-        EnvironmentEx.ExitCode(ExitCodes.Success);
     }
 
     /// <summary>
