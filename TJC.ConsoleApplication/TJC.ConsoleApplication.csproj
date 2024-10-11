@@ -33,10 +33,10 @@
 	</ItemGroup>
 	<!-- DEPENDENCIES -->
 	<ItemGroup>
-		<PackageReference Include="TJC.AssemblyExtensions" Version="0.5.0" />
+		<PackageReference Include="TJC.AssemblyExtensions" Version="0.6.0" />
 		<PackageReference Include="TJC.Singleton" Version="0.3.0" />
 		<PackageReference Include="TJC.StringExtensions" Version="0.2.0" />
-		<PackageReference Include="TJC.TimeExtensions" Version="0.1.6" />
+		<PackageReference Include="TJC.TimeExtensions" Version="0.2.0" />
 		<PackageReference Include="NDesk.Options" Version="0.2.1">
 			<NoWarn>NU1701</NoWarn>
 		</PackageReference>
