@@ -21,7 +21,10 @@ public static class ConsoleArgumentsParsing
         arguments.ParseArguments(args, out var invalidArguments);
 
         if (showHelp)
-            arguments.ShowHelpAndExit(programName);
+            arguments.ShowHelp(programName);
+
+        if (showHelp || arguments.Any(x => x.IsUsed && x.ExitIfUsed))
+            EnvironmentEx.ExitCode(ExitCodes.Success);
 
         var exitCodes = new ExitCodes();
         if (invalidArguments.HasInvalid())

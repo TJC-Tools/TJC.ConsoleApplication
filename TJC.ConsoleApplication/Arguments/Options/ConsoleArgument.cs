@@ -12,12 +12,13 @@ public class ConsoleArgument
     #region Constructors
 
     public ConsoleArgument(ConsoleArguments? parent,
-                          string prototype,
-                          Action<string> setOptionValue,
-                          bool? isRequired = false,
-                          string? description = null,
-                          string? propertyName = null)
-        : this(parent, prototype, setOptionValue, () => isRequired, description, propertyName)
+                           string prototype,
+                           Action<string> setOptionValue,
+                           bool? isRequired = false,
+                           string? description = null,
+                           string? propertyName = null,
+                           bool exitIfUsed = true)
+        : this(parent, prototype, setOptionValue, () => isRequired, description, propertyName, exitIfUsed)
     {
     }
 
@@ -26,7 +27,8 @@ public class ConsoleArgument
                            Action<string> setOptionValue,
                            Func<bool?>? getIsRequired = null,
                            string? description = null,
-                           string? propertyName = null)
+                           string? propertyName = null,
+                           bool exitIfUsed = true)
     {
         _parent = parent;
         Prototype = prototype;
@@ -35,19 +37,51 @@ public class ConsoleArgument
         PropertyName = propertyName;
         SetOptionValue += SetOptionValueTriggers;
         _getIsRequired = getIsRequired ?? (() => false);
+        ExitIfUsed = exitIfUsed;
     }
 
     #endregion
 
     #region Properties
 
+    /// <summary>
+    /// Text for the argument to trigger this option.
+    /// </summary>
     public string Prototype { get; }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public Action<string> SetOptionValue { get; }
+
+    /// <summary>
+    /// Description for use in the help menu.
+    /// </summary>
     public string? Description { get; }
+
+    /// <summary>
+    /// Name of the input property for use in the help menu.
+    /// </summary>
     public string? PropertyName { get; }
+
+    /// <summary>
+    /// This argument is required.
+    /// </summary>
     public bool? IsRequired => _getIsRequired?.Invoke();
+
+    /// <summary>
+    /// This argument was selected.
+    /// </summary>
     public bool IsUsed { get; private set; }
 
+    /// <summary>
+    /// Exit the application (after all argument were parsed &amp; resolved) if this argument is used.
+    /// </summary>
+    public bool ExitIfUsed { get; set; }
+
+    /// <summary>
+    /// Flags to display in the help menu.
+    /// </summary>
     public string Flags
     {
         get

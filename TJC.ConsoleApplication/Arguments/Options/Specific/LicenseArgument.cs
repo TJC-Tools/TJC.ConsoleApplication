@@ -12,12 +12,15 @@ public class LicenseArgument : IConsoleArgument
 
     public static LicenseArgument Default => new();
 
-    public LicenseArgument(string description = "Print the license of the application") =>
+    public LicenseArgument(string description = "Print the license of the application", bool exitIfUsed = true) =>
         Argument = new ConsoleArgument(null, Prototype, v =>
         {
             Selected = true;
             Execute();
-        }, isRequired: false, description);
+        },
+        isRequired: false,
+        description: description,
+        exitIfUsed: exitIfUsed);
 
     public bool Selected { get; private set; }
 

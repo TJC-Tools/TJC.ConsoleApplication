@@ -12,12 +12,15 @@ public class ChangelogArgument : IConsoleArgument
 
     public static ChangelogArgument Default => new();
 
-    public ChangelogArgument(string description = "Print the changelog of the application") =>
+    public ChangelogArgument(string description = "Print the changelog of the application", bool exitIfUsed = true) =>
         Argument = new ConsoleArgument(null, Prototype, v =>
         {
             Selected = true;
             Execute();
-        }, isRequired: false, description);
+        },
+        isRequired: false,
+        description: description,
+        exitIfUsed: exitIfUsed);
 
     public bool Selected { get; private set; }
 
