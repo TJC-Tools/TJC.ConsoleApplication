@@ -24,6 +24,11 @@
 			<PackagePath>\</PackagePath>
 		</None>
 		<EmbeddedResource Include="..\LICENSE" />
+		<None Include="..\CHANGELOG.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<EmbeddedResource Include="..\CHANGELOG.md" />
 	</ItemGroup>
 	<!-- DEPENDENCIES -->
 	<ItemGroup>

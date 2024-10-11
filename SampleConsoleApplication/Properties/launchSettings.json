@@ -9,7 +9,7 @@
     },
     "Details": {
       "commandName": "Project",
-      "commandLineArgs": "--version\r\n--copyright\r\n--license"
+      "commandLineArgs": "--version\r\n--copyright\r\n--license\r\n--changelog"
     },
     "Help": {
       "commandName": "Project",
