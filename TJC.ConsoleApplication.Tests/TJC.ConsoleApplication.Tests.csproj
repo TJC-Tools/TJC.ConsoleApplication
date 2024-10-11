@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+	<!-- DETAILS -->
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<AssemblyTitle>Example Title</AssemblyTitle>
@@ -11,7 +11,7 @@
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
-
+	<!-- NUGET PACKAGES -->
 	<ItemGroup>
 		<PackageReference Include="coverlet.collector" Version="6.0.2" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
@@ -22,13 +22,25 @@
 			<NoWarn>NU1701</NoWarn>
 		</PackageReference>
 	</ItemGroup>
-
+	<!-- INCLUDED FILES -->
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<EmbeddedResource Include="..\LICENSE" />
+		<None Include="..\CHANGELOG.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<EmbeddedResource Include="..\CHANGELOG.md" />
+	</ItemGroup>
+	<!-- DEPENDENCIES -->
 	<ItemGroup>
 		<ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
 	</ItemGroup>
-
+	<!-- TESTING -->
 	<ItemGroup>
 		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
 	</ItemGroup>
-
 </Project>
