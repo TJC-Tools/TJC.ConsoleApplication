@@ -12,12 +12,15 @@ public class CopyrightArgument : IConsoleArgument
 
     public static CopyrightArgument Default => new();
 
-    public CopyrightArgument(string description = "Print the copyright of the application") =>
+    public CopyrightArgument(string description = "Print the copyright of the application", bool exitIfUsed = true) =>
         Argument = new ConsoleArgument(null, Prototype, v =>
         {
             Selected = true;
             Execute();
-        }, isRequired: false, description);
+        },
+        isRequired: false,
+        description: description,
+        exitIfUsed: exitIfUsed);
 
     public bool Selected { get; private set; }
 
