@@ -8,6 +8,7 @@ public static class ConsoleArgumentsParsing
     /// <param name="arguments">Valid Argument Options</param>
     /// <param name="args">Arguments from console application call</param>
     /// <param name="programName">Name of Program</param>
+    /// <param name="exitOnFailureToParse">Exit Program on Failure to Parse</param>
     public static void ParseAndValidate(this ConsoleArguments arguments,
                                         string[] args,
                                         string? programName = null,
@@ -23,7 +24,7 @@ public static class ConsoleArgumentsParsing
         if (showHelp)
             arguments.ShowHelp(programName);
 
-        if (showHelp || arguments.Any(x => x.IsUsed && x.ExitIfUsed))
+        if (showHelp || arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
             EnvironmentEx.ExitCode(ExitCodes.Success);
 
         var exitCodes = new ExitCodes();
