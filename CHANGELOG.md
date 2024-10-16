@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.2] - 2024-10-16
+
 ## [0.7.1] - 2024-10-13
 
 ## [0.7.0] - 2024-10-11
@@ -33,7 +35,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create a setting for the number of digits in the version display
 
-[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.2...HEAD
+
+[0.7.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.1...v0.7.2
 
 [0.7.1]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.0...v0.7.1
 
