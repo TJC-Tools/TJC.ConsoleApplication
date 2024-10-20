@@ -2,6 +2,8 @@
 
 [![NuGet Downloads](https://img.shields.io/nuget/dt/TJC.ConsoleApplication)](https://www.nuget.org/packages/TJC.ConsoleApplication) ![Size](https://img.shields.io/github/repo-size/TJC-Tools/TJC.ConsoleApplication) [![License](https://img.shields.io/github/license/TJC-Tools/TJC.ConsoleApplication.svg)](LICENSE)
 
+[![codecov](https://codecov.io/gh/TJC-Tools/TJC.ConsoleApplication/graph/badge.svg?token=37ULK6N3LP)](https://codecov.io/gh/TJC-Tools/TJC.ConsoleApplication)
+
 ## Table of Contents
 - [Console Setup](#console-setup)
 - [Header](#header)
