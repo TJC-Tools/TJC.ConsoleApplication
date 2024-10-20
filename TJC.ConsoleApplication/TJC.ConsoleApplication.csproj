@@ -34,13 +34,11 @@
   </ItemGroup>
   <!-- DEPENDENCIES -->
   <ItemGroup>
-    <PackageReference Include="TJC.AssemblyExtensions" Version="0.6.0" />
-    <PackageReference Include="TJC.Singleton" Version="0.3.0" />
-    <PackageReference Include="TJC.StringExtensions" Version="0.2.0" />
-    <PackageReference Include="TJC.TimeExtensions" Version="0.2.0" />
-    <PackageReference Include="NDesk.Options" Version="0.2.1">
-      <NoWarn>NU1701</NoWarn>
-    </PackageReference>
+    <PackageReference Include="NDesk.Options.Core" Version="1.2.8" />
+    <PackageReference Include="TJC.AssemblyExtensions" Version="0.6.2" />
+    <PackageReference Include="TJC.Singleton" Version="0.3.2" />
+    <PackageReference Include="TJC.StringExtensions" Version="0.2.2" />
+    <PackageReference Include="TJC.TimeExtensions" Version="0.2.2" />
   </ItemGroup>
   <!-- TESTS -->
   <ItemGroup>
