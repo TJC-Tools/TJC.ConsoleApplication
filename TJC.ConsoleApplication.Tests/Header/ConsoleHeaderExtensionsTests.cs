@@ -13,7 +13,7 @@ public class ConsoleHeaderExtensionsTests
         ConsoleSettings.Instance.VersionDigits = 4;
 
         // Act
-        var result = ConsoleHeaderExtensions.GetHeader().ToList();
+        var result = ConsoleHeaderExtensions.CreateHeader().ToList();
 
         // Assert
         Assert.AreEqual(6, result.Count);

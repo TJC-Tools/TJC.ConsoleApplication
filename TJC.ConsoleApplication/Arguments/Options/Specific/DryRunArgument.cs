@@ -4,16 +4,19 @@
 /// This argument is intended for applications that require the option to run a test process that doesn't make any changes.
 /// <para>But, writes logs based on what it would have done.</para>
 /// </summary>
-public class DryRunArgument : IConsoleArgument
+public class DryRunArgument(string description = "Run through the process, writing logs, but do not execute any changes")
+    : IConsoleArgument
 {
     private const string Prototype = "dry-run|dryrun";
 
+    /// <summary>
+    /// Default settings for the dry-run argument.
+    /// </summary>
     public static DryRunArgument Default => new();
 
-    public DryRunArgument(string description = "Run through the process, writing logs, but do not execute any changes") =>
-        Argument = new ConsoleArgument(null, Prototype, v => Selected = !string.IsNullOrEmpty(v), isRequired: false, description);
-
-    public bool Selected { get; private set; }
-
-    public ConsoleArgument Argument { get; }
+    /// <summary>
+    /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
+    /// </summary>
+    public ConsoleArgument Argument =>
+        new(null, Prototype, v => { }, isRequired: false, description);
 }

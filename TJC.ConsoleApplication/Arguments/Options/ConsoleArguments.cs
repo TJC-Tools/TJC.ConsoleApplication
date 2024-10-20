@@ -1,8 +1,14 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Options;
 
+/// <summary>
+/// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
+/// </summary>
+/// <param name="flagRequired"></param>
+/// <param name="flagOptional"></param>
+/// <param name="logParsedOptions"></param>
 public class ConsoleArguments(
-    bool flagRequired     = false,
-    bool flagOptional     = false,
+    bool flagRequired = false,
+    bool flagOptional = false,
     bool logParsedOptions = false)
     : List<ConsoleArgument>
 {
@@ -44,10 +50,10 @@ public class ConsoleArguments(
     /// <param name="description">Description for help menu</param>
     /// <param name="propertyName">Property name for help menu</param>
     /// <returns></returns>
-    public ConsoleArguments Add(string         prototype,
+    public ConsoleArguments Add(string prototype,
                                 Action<string> setOptionValue,
-                                string?        description  = null,
-                                string?        propertyName = null) =>
+                                string? description = null,
+                                string? propertyName = null) =>
         Add(prototype, setOptionValue, description, propertyName, required: false, exitIfUsed: false);
 
     /// <summary>
@@ -67,12 +73,12 @@ public class ConsoleArguments(
     /// <param name="required">Whether the argument is always required</param>
     /// <param name="exitIfUsed">Exit if argument is used</param>
     /// <returns></returns>
-    public ConsoleArguments Add(string         prototype,
+    public ConsoleArguments Add(string prototype,
                                 Action<string> setOptionValue,
-                                string?        description,
-                                string?        propertyName,
-                                bool?          required,
-                                bool           exitIfUsed)
+                                string? description,
+                                string? propertyName,
+                                bool? required,
+                                bool exitIfUsed)
     {
         VerifyAdd(prototype, setOptionValue);
         Add(new ConsoleArgument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed));
@@ -97,12 +103,12 @@ public class ConsoleArguments(
     /// <param name="getIsRequired">Function to determine if this argument is required is these circumstances</param>
     /// <param name="exitIfUsed">Exit if argument is used</param>
     /// <returns></returns>
-    public ConsoleArguments Add(string         prototype,
+    public ConsoleArguments Add(string prototype,
                                 Action<string> setOptionValue,
-                                string?        description,
-                                string?        propertyName,
-                                Func<bool?>?   getIsRequired,
-                                bool           exitIfUsed)
+                                string? description,
+                                string? propertyName,
+                                Func<bool?>? getIsRequired,
+                                bool exitIfUsed)
     {
         VerifyAdd(prototype, setOptionValue);
         Add(new ConsoleArgument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed));

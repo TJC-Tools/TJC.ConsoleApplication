@@ -9,19 +9,35 @@ namespace TJC.ConsoleApplication.Header;
 /// </summary>
 public static class ConsoleHeaderExtensions
 {
+    /// <summary>
+    /// Write the header for the calling assembly.
+    /// </summary>
     public static void WriteHeader() =>
         Assembly.GetCallingAssembly().WriteHeader();
 
+    /// <summary>
+    /// Write the header for the assembly.
+    /// </summary>
+    /// <param name="assembly"></param>
     public static void WriteHeader(this Assembly assembly)
     {
-        foreach (var line in assembly.GetHeader())
+        foreach (var line in assembly.CreateHeader())
             ConsoleOutputHandler.WriteLine(line);
     }
 
-    public static IEnumerable<string> GetHeader() =>
-        Assembly.GetCallingAssembly().GetHeader();
+    /// <summary>
+    /// Create the header for the calling assembly.
+    /// </summary>
+    /// <returns></returns>
+    public static IEnumerable<string> CreateHeader() =>
+        Assembly.GetCallingAssembly().CreateHeader();
 
-    public static IEnumerable<string> GetHeader(this Assembly assembly)
+    /// <summary>
+    /// Create the header for the assembly.
+    /// </summary>
+    /// <param name="assembly"></param>
+    /// <returns></returns>
+    public static IEnumerable<string> CreateHeader(this Assembly assembly)
     {
         // Get assembly information
         var assemblyName = assembly.GetName();

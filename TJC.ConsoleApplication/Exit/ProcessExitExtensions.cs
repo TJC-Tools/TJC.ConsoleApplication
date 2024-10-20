@@ -22,7 +22,7 @@ public static class ProcessExitExtensions
     /// Configures an event to run at the end of a process.
     /// </summary>
     /// <remarks>Depending on the options, this may display some of the following; run time, exit code &amp; help menu</remarks>
-    /// <param name="settings">Options to determine which outputs should be displayed depending on the results</param>
+    /// <param name="assembly"></param>
     public static void ConfigureProcessExitEvent(Assembly? assembly = null)
     {
         var startTime = DateTime.Now; // This must be here, otherwise it does not get called until the event occurs

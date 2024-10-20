@@ -14,19 +14,26 @@ public class ChangelogArgument : IConsoleArgument
     private readonly bool _includeUnreleasedSection;
     private readonly bool _includePaths;
 
+    /// <summary>
+    /// Default settings for the changelog argument.
+    /// </summary>
     public static ChangelogArgument Default => new();
 
+    /// <summary>
+    /// Constructor for the changelog argument.
+    /// </summary>
+    /// <param name="description"></param>
+    /// <param name="exitIfUsed"></param>
+    /// <param name="includeHeader"></param>
+    /// <param name="includeUnreleasedSection"></param>
+    /// <param name="includePaths"></param>
     public ChangelogArgument(string description = "Print the changelog of the application",
                              bool exitIfUsed = true,
                              bool includeHeader = false,
                              bool includeUnreleasedSection = false,
                              bool includePaths = false)
     {
-        Argument = new ConsoleArgument(null, Prototype, v =>
-        {
-            Selected = true;
-            Execute();
-        },
+        Argument = new ConsoleArgument(null, Prototype, v => Execute(),
         isRequired: false,
         description: description,
         exitIfUsed: exitIfUsed);
@@ -36,14 +43,13 @@ public class ChangelogArgument : IConsoleArgument
         _includePaths = includePaths;
     }
 
-    public bool Selected { get; private set; }
-
+    /// <summary>
+    /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
+    /// </summary>
     public ConsoleArgument Argument { get; }
 
-    public void Execute()
+    private void Execute()
     {
-        if (!Selected)
-            return;
         var assembly = Assembly.GetEntryAssembly();
         var changelog = assembly?.GetChangelog(
             includeHeader: _includeHeader,

@@ -2,6 +2,9 @@
 
 namespace TJC.ConsoleApplication.Settings;
 
+/// <summary>
+/// Settings for the console application input &amp; output.
+/// </summary>
 public class ConsoleSettings : SingletonBase<ConsoleSettings>
 {
     #region Constructors
@@ -12,10 +15,19 @@ public class ConsoleSettings : SingletonBase<ConsoleSettings>
 
     #region Predefined Types
 
+    /// <summary>
+    /// Default console settings.
+    /// </summary>
     public static ConsoleSettings Default => new();
 
+    /// <summary>
+    /// Console settings without any messages routed to the console.
+    /// </summary>
     public static ConsoleSettings Silent => new() { SilentLogging = false };
 
+    /// <summary>
+    /// Console settings without trace messages routed to the console.
+    /// </summary>
     public static ConsoleSettings Traceless => new() { TraceToConsole = false };
 
     #endregion
@@ -49,6 +61,10 @@ public class ConsoleSettings : SingletonBase<ConsoleSettings>
 
     #region Methods
 
+    /// <summary>
+    /// Set the instance of the console settings.
+    /// </summary>
+    /// <param name="settings"></param>
     public static void SetInstance(ConsoleSettings settings) =>
         SetBaseInstance(settings);
 
