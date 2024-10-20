@@ -2,10 +2,15 @@
 
 namespace TJC.ConsoleApplication.Exit;
 
+/// <summary>
+/// Extra environment methods.
+/// </summary>
 public static class EnvironmentEx
 {
     /// <summary>
-    /// Uses <see cref="ExitCodes"/> to end the process
+    /// Uses <see cref="ExitCodes"/> to end the process.
+    /// <para></para>
+    /// It also disables <seealso cref="ConsoleOutputHandler.Silent"/>, so that any errors will be displayed.
     /// </summary>
     /// <remarks>Recommended to use this with <see cref="ProcessExitExtensions"/></remarks>
     /// <param name="exitCode"></param>

@@ -1,5 +1,8 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
+/// <summary>
+/// Extension methods used to parse console arguments.
+/// </summary>
 public static class ConsoleArgumentsParsing
 {
     /// <summary>

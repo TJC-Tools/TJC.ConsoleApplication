@@ -23,11 +23,22 @@ public class VerbosityArgument : IConsoleArgument
     /// </summary>
     public static VerbosityArgument ValueOnly => new(prototype: $"{_prototype}=", description: "Set Message Verbosity");
 
+    /// <summary>
+    /// Constructor for the verbosity argument.
+    /// </summary>
+    /// <param name="prototype"></param>
+    /// <param name="description"></param>
     public VerbosityArgument(string prototype, string description = "Logging Verbosity") =>
         Argument = new ConsoleArgument(null, prototype, SetVerbosity, isRequired: false, description);
 
+    /// <summary>
+    /// Verbosity level set by the argument.
+    /// </summary>
     public int Verbosity { get; private set; }
 
+    /// <summary>
+    /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
+    /// </summary>
     public ConsoleArgument Argument { get; }
 
     private void SetVerbosity(string input)

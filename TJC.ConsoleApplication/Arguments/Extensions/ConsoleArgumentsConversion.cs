@@ -1,6 +1,6 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
-public static class ConsoleArgumentsConversion
+internal static class ConsoleArgumentsConversion
 {
     /// <summary>
     /// Uses <see cref="OptionSet"/> to attempt to parse the arguments.

@@ -1,5 +1,8 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Options;
 
+/// <summary>
+/// Console argument to be used in the <seealso cref="ConsoleArguments"/>.
+/// </summary>
 public class ConsoleArgument
 {
     #region Fields
@@ -11,6 +14,16 @@ public class ConsoleArgument
 
     #region Constructors
 
+    /// <summary>
+    /// Constructor for the console argument.
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="prototype"></param>
+    /// <param name="setOptionValue"></param>
+    /// <param name="isRequired"></param>
+    /// <param name="description"></param>
+    /// <param name="propertyName"></param>
+    /// <param name="exitIfUsed"></param>
     public ConsoleArgument(ConsoleArguments? parent,
                            string prototype,
                            Action<string> setOptionValue,
@@ -22,6 +35,16 @@ public class ConsoleArgument
     {
     }
 
+    /// <summary>
+    /// Base constructor for the console argument.
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="prototype"></param>
+    /// <param name="setOptionValue"></param>
+    /// <param name="getIsRequired"></param>
+    /// <param name="description"></param>
+    /// <param name="propertyName"></param>
+    /// <param name="exitIfUsed"></param>
     public ConsoleArgument(ConsoleArguments? parent,
                            string prototype,
                            Action<string> setOptionValue,
@@ -67,7 +90,8 @@ public class ConsoleArgument
     /// <summary>
     /// This argument is required.
     /// </summary>
-    public bool? IsRequired => _getIsRequired?.Invoke();
+    public bool? IsRequired =>
+        _getIsRequired?.Invoke();
 
     /// <summary>
     /// This argument was selected.
@@ -103,7 +127,7 @@ public class ConsoleArgument
 
     #region Parent
 
-    public void SetParent(ConsoleArguments parent)
+    internal void SetParent(ConsoleArguments parent)
     {
         if (_parent != null)
             throw new Exception($"{nameof(ConsoleArgument)}.{nameof(_parent)} can only be set once");
@@ -117,7 +141,7 @@ public class ConsoleArgument
     private static int? _maxPrototypeWidth;
     private static int? _maxPropertyWidth;
 
-    public string GetHelpString(bool formatted = false)
+    internal string GetHelpString(bool formatted = false)
     {
         ArgumentNullException.ThrowIfNull(_parent);
         if (!formatted)
@@ -129,10 +153,10 @@ public class ConsoleArgument
         return string.Concat(prototype, property);
     }
 
-    public string GetPrototypeFormat() =>
+    internal string GetPrototypeFormat() =>
         $"--{Prototype.TrimEnd('=').TrimEnd(':')}";
 
-    public string GetPropertyHelp() =>
+    internal string GetPropertyHelp() =>
         string.IsNullOrEmpty(PropertyName) ? string.Empty : $" {PropertyName}";
 
     #endregion
