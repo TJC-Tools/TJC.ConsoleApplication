@@ -40,9 +40,9 @@ internal static class ConsoleArgumentsHelp
     /// <param name="arguments"></param>
     private static void PrintOptions(this ConsoleArguments arguments)
     {
-        ConsoleOutputHandler.WriteLine("Options:");
+        ConsoleOutputHandler.WriteLine("Flags:");
         foreach (var argument in arguments)
-            PrintLinesWithTitle($"    {argument.GetHelpString(true)}", string.Concat(argument.Flags, argument.Description));
+            PrintLinesWithTitle($"  {argument.GetHelpString(true)}", string.Concat(argument.Flags, argument.Description));
     }
 
     private static void PrintLinesWithTitle(string title, string line) =>

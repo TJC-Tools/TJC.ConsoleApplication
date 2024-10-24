@@ -156,8 +156,20 @@ public class ConsoleArgument
         return string.Concat(prototype, property);
     }
 
-    internal string GetPrototypeFormat() =>
-        $"--{Prototype.TrimEnd('=').TrimEnd(':')}";
+    internal string GetPrototypeFormat(bool formatted = false)
+    {
+        if (!formatted) // Default format 
+            return $"--{Prototype.TrimEnd('=').TrimEnd(':')}";
+        var flags = Prototype.TrimEnd('=').TrimEnd(':').Split('|');
+        var prototype = string.Empty;
+        // Single character flag is at the start with single dash (-) and a comma (,) separator 
+        var singleCharFlag = flags.FirstOrDefault(x => x.Length == 1);
+        prototype += singleCharFlag == null ? new string(' ', 4) : $"-{singleCharFlag}, ";
+        // Other flags are at the end with double dash (--) and a pipe (|) separator 
+        var otherFlags = flags.Where(x => x != singleCharFlag).ToList();
+        prototype += $"--{string.Join('|', otherFlags)}";
+        return prototype;
+    }
 
     internal string GetPropertyHelp() =>
         string.IsNullOrEmpty(PropertyName) ? string.Empty : $" {PropertyName}";

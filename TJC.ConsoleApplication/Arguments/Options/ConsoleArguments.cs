@@ -3,8 +3,7 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <summary>
 /// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
 /// </summary>
-public class ConsoleArguments
-    : List<ConsoleArgument>
+public class ConsoleArguments : List<ConsoleArgument>
 {
     #region Constructor
 
@@ -22,7 +21,7 @@ public class ConsoleArguments
         FlagRequired = flagRequired;
         FlagOptional = flagOptional;
         LogParsedOptions = logParsedOptions;
-        Insert(0, HelpArgument.Instance);
+        Add(HelpArgument.Instance);
     }
 
     #endregion
