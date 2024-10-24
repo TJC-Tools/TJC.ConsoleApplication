@@ -123,8 +123,8 @@ public class ConsoleArguments(
     public ConsoleArguments Add(IConsoleArgument argument)
     {
         VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
-        argument.Argument.SetParent(this);
         Add(argument.Argument);
+        SetParents();
         return this;
     }
 
@@ -132,6 +132,12 @@ public class ConsoleArguments(
     {
         ArgumentException.ThrowIfNullOrEmpty(prototype);
         ArgumentNullException.ThrowIfNull(setOptionValue);
+    }
+
+    private void SetParents()
+    {
+        foreach (var argument in this.Where(x => !x.HasParent))
+            argument.SetParent(this);
     }
 
     #endregion

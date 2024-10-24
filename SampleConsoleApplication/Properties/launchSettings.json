@@ -13,7 +13,7 @@
     },
     "Help": {
       "commandName": "Project",
-      "commandLineArgs": "--help"
+      "commandLineArgs": "-h"
     }
   }
 }

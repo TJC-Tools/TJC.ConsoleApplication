@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Options;
+namespace TJC.ConsoleApplication.Arguments.Options;
 
 /// <summary>
 /// Console argument to be used in the <seealso cref="ConsoleArguments"/>.
@@ -120,6 +120,9 @@ public class ConsoleArgument
             };
         }
     }
+
+    internal bool HasParent =>
+        _parent != null;
 
     #endregion
 
