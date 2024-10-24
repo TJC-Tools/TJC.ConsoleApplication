@@ -21,7 +21,7 @@ namespace TJC.ConsoleApplication.Tests.Options
             var result = arguments.Count;
 
             // Assert
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(4, result, $"4 Arguments are expected, because 3 were added, and {nameof(HelpArgument)} is always present.");
         }
 
         [TestMethod]
