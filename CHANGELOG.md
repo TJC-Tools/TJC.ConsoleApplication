@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2024-10-24
+
 ### Added
 
 - Help argument singleton
@@ -51,11 +53,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create a setting for the number of digits in the version display
 
-[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.8.2...HEAD
+[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.9.0...HEAD
 
-[0.8.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.8.1...v0.8.2
-
-[0.8.1]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.8.0...v0.8.1
+[0.9.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.8.0...v0.9.0
 
 [0.8.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.5...v0.8.0
 
