@@ -1,4 +1,4 @@
-﻿using TJC.ConsoleApplication.Arguments.Options;
+using TJC.ConsoleApplication.Arguments.Options;
 using TJC.ConsoleApplication.Arguments.Options.Specific;
 
 namespace TJC.ConsoleApplication.Tests.Options
@@ -40,6 +40,83 @@ namespace TJC.ConsoleApplication.Tests.Options
 
             // Assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_Changelog_HasParent()
+        {
+            // Arrange
+            var argument = ChangelogArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_Copyright_HasParent()
+        {
+            // Arrange
+            var argument = CopyrightArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_DryRun_HasParent()
+        {
+            // Arrange
+            var argument = DryRunArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_Labels_HasParent()
+        {
+            // Arrange
+            var argument = LabelsArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_License_HasParent()
+        {
+            // Arrange
+            var argument = LicenseArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_Verbosity_HasParent()
+        {
+            // Arrange
+            var argument = VerbosityArgument.Both;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_Version_HasParent()
+        {
+            // Arrange
+            var argument = VersionArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
         }
     }
 }
