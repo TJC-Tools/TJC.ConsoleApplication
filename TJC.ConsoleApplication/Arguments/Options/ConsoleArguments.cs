@@ -14,7 +14,10 @@ public class ConsoleArguments
     /// <param name="flagRequired"></param>
     /// <param name="flagOptional"></param>
     /// <param name="logParsedOptions"></param>
-    public ConsoleArguments(bool flagRequired = false, bool flagOptional = false, bool logParsedOptions = false)
+    public ConsoleArguments(
+        bool flagRequired = false,
+        bool flagOptional = false,
+        bool logParsedOptions = false)
     {
         FlagRequired = flagRequired;
         FlagOptional = flagOptional;
