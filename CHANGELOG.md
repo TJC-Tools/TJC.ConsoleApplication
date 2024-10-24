@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.8.2] - 2024-10-24
+### Added
 
-## [0.8.1] - 2024-10-24
+- Help argument singleton
 
 ## [0.8.0] - 2024-10-20
 

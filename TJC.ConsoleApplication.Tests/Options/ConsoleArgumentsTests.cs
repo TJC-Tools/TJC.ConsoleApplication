@@ -1,4 +1,4 @@
-using TJC.ConsoleApplication.Arguments.Options;
+﻿using TJC.ConsoleApplication.Arguments.Options;
 using TJC.ConsoleApplication.Arguments.Options.Specific;
 
 namespace TJC.ConsoleApplication.Tests.Options
@@ -21,7 +21,7 @@ namespace TJC.ConsoleApplication.Tests.Options
             var result = arguments.Count;
 
             // Assert
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(4, result, $"4 Arguments are expected, because 3 were added, and {nameof(HelpArgument)} is always present.");
         }
 
         [TestMethod]
@@ -69,6 +69,17 @@ namespace TJC.ConsoleApplication.Tests.Options
         {
             // Arrange
             var argument = DryRunArgument.Default;
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
+        public void ConstructConsoleArguments_Help_HasParent()
+        {
+            // Arrange
+            var argument = HelpArgument.Default;
             _ = new ConsoleArguments { argument };
 
             // Assert

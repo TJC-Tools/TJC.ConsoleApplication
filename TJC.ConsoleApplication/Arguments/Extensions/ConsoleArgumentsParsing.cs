@@ -17,17 +17,14 @@ public static class ConsoleArgumentsParsing
                                         string? programName = null,
                                         bool exitOnFailureToParse = true)
     {
-        var showHelp = false;
-        arguments.Add("h|?|help", v => showHelp = !string.IsNullOrEmpty(v), "Show Help Menu");
-
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
         arguments.ParseArguments(args, out var invalidArguments);
 
-        if (showHelp)
+        if (HelpArgument.Instance.Argument.IsUsed)
             arguments.ShowHelp(programName);
 
-        if (showHelp || arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
+        if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
             EnvironmentEx.ExitCode(ExitCodes.Success);
 
         var exitCodes = new ExitCodes();
