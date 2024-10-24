@@ -3,31 +3,43 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <summary>
 /// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
 /// </summary>
-/// <param name="flagRequired"></param>
-/// <param name="flagOptional"></param>
-/// <param name="logParsedOptions"></param>
-public class ConsoleArguments(
-    bool flagRequired = false,
-    bool flagOptional = false,
-    bool logParsedOptions = false)
+public class ConsoleArguments
     : List<ConsoleArgument>
 {
+    #region Constructor
+
+    /// <summary>
+    /// Create Console Arguments with optional settings.
+    /// </summary>
+    /// <param name="flagRequired"></param>
+    /// <param name="flagOptional"></param>
+    /// <param name="logParsedOptions"></param>
+    public ConsoleArguments(bool flagRequired = false, bool flagOptional = false, bool logParsedOptions = false)
+    {
+        FlagRequired = flagRequired;
+        FlagOptional = flagOptional;
+        LogParsedOptions = logParsedOptions;
+        Insert(0, HelpArgument.Instance);
+    }
+
+    #endregion
+
     #region Properties
 
     /// <summary>
     /// Flag required options in help menu.
     /// </summary>
-    public bool FlagRequired { get; set; } = flagRequired;
+    public bool FlagRequired { get; set; }
 
     /// <summary>
     /// Flag optional options in help menu.
     /// </summary>
-    public bool FlagOptional { get; set; } = flagOptional;
+    public bool FlagOptional { get; set; }
 
     /// <summary>
     /// Write parsed options to the console.
     /// </summary>
-    public bool LogParsedOptions { get; set; } = logParsedOptions;
+    public bool LogParsedOptions { get; set; }
 
     #endregion
 

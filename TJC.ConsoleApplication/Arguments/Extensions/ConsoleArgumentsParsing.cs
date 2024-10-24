@@ -1,17 +1,10 @@
-﻿using TJC.ConsoleApplication.Arguments.Options.Specific;
-
-namespace TJC.ConsoleApplication.Arguments.Extensions;
+﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 /// <summary>
 /// Extension methods used to parse console arguments.
 /// </summary>
 public static class ConsoleArgumentsParsing
 {
-    /// <summary>
-    /// Help Argument for Parsing
-    /// </summary>
-    public readonly static HelpArgument HelpArgument = HelpArgument.Default;
-
     /// <summary>
     /// Parses Options, and Validates that there are no Invalid or Missing Arguments
     /// </summary>
@@ -24,13 +17,11 @@ public static class ConsoleArgumentsParsing
                                         string? programName = null,
                                         bool exitOnFailureToParse = true)
     {
-        arguments.Insert(0, HelpArgument);
-
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
         arguments.ParseArguments(args, out var invalidArguments);
 
-        if (HelpArgument.Argument.IsUsed)
+        if (HelpArgument.Instance.Argument.IsUsed)
             arguments.ShowHelp(programName);
 
         if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
