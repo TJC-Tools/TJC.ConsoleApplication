@@ -1,10 +1,17 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
+﻿using TJC.ConsoleApplication.Arguments.Options.Specific;
+
+namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 /// <summary>
 /// Extension methods used to parse console arguments.
 /// </summary>
 public static class ConsoleArgumentsParsing
 {
+    /// <summary>
+    /// Help Argument for Parsing
+    /// </summary>
+    public readonly static HelpArgument HelpArgument = HelpArgument.Default;
+
     /// <summary>
     /// Parses Options, and Validates that there are no Invalid or Missing Arguments
     /// </summary>
@@ -17,17 +24,16 @@ public static class ConsoleArgumentsParsing
                                         string? programName = null,
                                         bool exitOnFailureToParse = true)
     {
-        var showHelp = false;
-        arguments.Add("h|?|help", v => showHelp = !string.IsNullOrEmpty(v), "Show Help Menu");
+        arguments.Insert(0, HelpArgument);
 
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
         arguments.ParseArguments(args, out var invalidArguments);
 
-        if (showHelp)
+        if (HelpArgument.Argument.IsUsed)
             arguments.ShowHelp(programName);
 
-        if (showHelp || arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
+        if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
             EnvironmentEx.ExitCode(ExitCodes.Success);
 
         var exitCodes = new ExitCodes();
