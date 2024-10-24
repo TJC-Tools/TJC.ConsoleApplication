@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Options;
+namespace TJC.ConsoleApplication.Arguments.Options;
 
 /// <summary>
 /// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
@@ -112,6 +112,20 @@ public class ConsoleArguments(
     {
         VerifyAdd(prototype, setOptionValue);
         Add(new ConsoleArgument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed));
+        return this;
+    }
+
+    /// <summary>
+    /// Insert Common Argument
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="argument"></param>
+    /// <returns></returns>
+    public ConsoleArguments Insert(int index, IConsoleArgument argument)
+    {
+        VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
+        Insert(index, argument.Argument);
+        SetParents();
         return this;
     }
 
