@@ -7,10 +7,10 @@ internal static class ConsoleArgumentsConversion
     /// </summary>
     /// <param name="arguments">Options</param>
     /// <returns></returns>
-    internal static OptionSet ToOptionSet(this List<ConsoleArgument> arguments)
+    internal static OptionSet ToOptionSet(this IEnumerable<ConsoleArgument> arguments)
     {
         var optionSet = new OptionSet();
-        arguments.ForEach(x => x.AddTo(optionSet));
+        arguments.ToList().ForEach(x => x.AddTo(optionSet));
         return optionSet;
     }
 
@@ -29,8 +29,8 @@ internal static class ConsoleArgumentsConversion
     /// <summary>
     /// Add a <see cref="ConsoleArgument"/> to <see cref="OptionSet"/>.
     /// </summary>
-    /// <param name="option"></param>
+    /// <param name="argument"></param>
     /// <param name="optionSet"></param>
-    internal static void AddTo(this ConsoleArgument option, OptionSet optionSet) =>
-        optionSet.Add(option.Prototype, option.Description, option.SetOptionValue);
+    internal static void AddTo(this ConsoleArgument argument, OptionSet optionSet) =>
+        optionSet.Add(argument.Prototype, argument.Description, argument.SetOptionValue);
 }
