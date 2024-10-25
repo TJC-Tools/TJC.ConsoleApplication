@@ -31,8 +31,11 @@ internal static class ConsoleArgumentsHelp
     /// </summary>
     /// <param name="arguments"></param>
     /// <param name="programName"></param>
-    private static void PrintUsage(this ConsoleArguments arguments, string? programName) =>
-        PrintLinesWithTitle($"Usage: {programName}", arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim());
+    private static void PrintUsage(this ConsoleArguments arguments, string? programName)
+    {
+        ConsoleOutputHandler.WriteLine("Usage:");
+        PrintLinesWithTitle($"  {programName}", $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}");
+    }
 
     /// <summary>
     /// Prints Table of Options with Property, Description, Required/Optional
