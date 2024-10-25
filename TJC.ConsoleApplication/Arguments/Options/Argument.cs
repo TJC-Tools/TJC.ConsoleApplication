@@ -175,7 +175,7 @@ public class Argument : Option
     }
 
     /// <summary>
-    /// 
+    /// Event on parse complete.
     /// </summary>
     /// <param name="c"></param>
     protected override void OnParseComplete(OptionContext c)

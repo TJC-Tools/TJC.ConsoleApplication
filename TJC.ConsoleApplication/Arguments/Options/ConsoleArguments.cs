@@ -180,7 +180,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     #region Parse
 
     /// <inheritdoc/>
-    public virtual void ParseAndValidate(string[] args, string? programName, bool exitOnFailureToParse) =>
+    public virtual void ParseAndValidate(string[] args, string? programName = null, bool exitOnFailureToParse = true) =>
         ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
 
     #endregion
