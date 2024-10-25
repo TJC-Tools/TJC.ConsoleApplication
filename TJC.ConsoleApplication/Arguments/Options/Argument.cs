@@ -9,32 +9,32 @@ public class Argument : Option
 
     private IConsoleArguments? _parent;
     private readonly Func<bool?> _getIsRequired;
-    private readonly Action<string> _setOptionValue;
+    private readonly Action<string> _action;
 
     #endregion
 
     #region Constructors
 
     /// <summary>
-    /// Constructor for the console argument.
+    /// Constructor for an argument.
     /// </summary>
     /// <param name="parent"></param>
     /// <param name="prototype"></param>
-    /// <param name="setOptionValue"></param>
+    /// <param name="action"></param>
     /// <param name="isRequired"></param>
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
     public Argument(IConsoleArguments? parent,
                     string prototype,
-                    Action<string> setOptionValue,
+                    Action<string> action,
                     bool? isRequired = false,
                     string? description = null,
                     string? propertyName = null,
                     bool exitIfUsed = true)
         : this(parent,
               prototype,
-              setOptionValue,
+              action,
               () => isRequired,
               description,
               propertyName,
@@ -43,18 +43,18 @@ public class Argument : Option
     }
 
     /// <summary>
-    /// Base constructor for the console argument.
+    /// Base constructor an argument.
     /// </summary>
     /// <param name="parent"></param>
     /// <param name="prototype"></param>
-    /// <param name="setOptionValue"></param>
+    /// <param name="action"></param>
     /// <param name="getIsRequired"></param>
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
     public Argument(IConsoleArguments? parent,
                     string prototype,
-                    Action<string> setOptionValue,
+                    Action<string> action,
                     Func<bool?>? getIsRequired = null,
                     string? description = null,
                     string? propertyName = null,
@@ -62,9 +62,9 @@ public class Argument : Option
         : base(prototype, description)
     {
         _parent = parent;
-        _setOptionValue = setOptionValue;
+        _action = action;
         PropertyName = propertyName;
-        _setOptionValue += SetOptionValueTriggers;
+        _action += OnActionTriggered;
         _getIsRequired = getIsRequired ?? (() => false);
         ExitIfUsed = exitIfUsed;
     }
@@ -117,11 +117,11 @@ public class Argument : Option
     internal void Verify()
     {
         ArgumentException.ThrowIfNullOrEmpty(Prototype);
-        ArgumentNullException.ThrowIfNull(_setOptionValue);
+        ArgumentNullException.ThrowIfNull(_action);
     }
 
     internal void AddTo(OptionSet optionSet) =>
-        optionSet.Add(Prototype, Description, _setOptionValue);
+        optionSet.Add(Prototype, Description, _action);
 
     #endregion
 
@@ -172,7 +172,7 @@ public class Argument : Option
 
     #region Events
 
-    private void SetOptionValueTriggers(string value)
+    private void OnActionTriggered(string value)
     {
         ArgumentNullException.ThrowIfNull(_parent);
         IsUsed = !string.IsNullOrEmpty(value);
