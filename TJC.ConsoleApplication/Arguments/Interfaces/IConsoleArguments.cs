@@ -27,4 +27,10 @@ public interface IConsoleArguments : IEnumerable<Argument>
     /// <param name="programName">Name of Program</param>
     /// <param name="exitOnFailureToParse">Exit Program on Failure to Parse</param>
     void ParseAndValidate(string[] args, string? programName = null, bool exitOnFailureToParse = true);
+
+    /// <summary>
+    /// Writes a help menu for the options.
+    /// </summary>
+    /// <param name="programName"></param>
+    void WriteHelp(string? programName = null);
 }

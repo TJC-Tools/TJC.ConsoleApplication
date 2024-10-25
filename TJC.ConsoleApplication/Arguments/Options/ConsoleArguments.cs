@@ -183,13 +183,18 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
 
     #endregion
 
-    #region Parse
-
     /// <inheritdoc/>
     public virtual void ParseAndValidate(string[] args, string? programName = null, bool exitOnFailureToParse = true) =>
         ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
 
-    #endregion
+    /// <inheritdoc/>
+    public virtual void WriteHelp(string? programName = null)
+    {
+        ConsoleOutputHandler.Silent = false;
+        this.WriteUsage(programName);
+        ConsoleOutputHandler.Empty();
+        this.WriteFlags();
+    }
 
     #endregion
 }

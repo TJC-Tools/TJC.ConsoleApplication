@@ -2,22 +2,9 @@
 
 internal static class ConsoleArgumentsHelp
 {
-    /// <summary>
-    /// Writes a help menu for the options.
-    /// </summary>
-    /// <param name="arguments"></param>
-    /// <param name="programName"></param>
-    internal static void WriteHelp(this IConsoleArguments arguments, string? programName = null)
-    {
-        ConsoleOutputHandler.Silent = false;
-        arguments.WriteUsage(programName);
-        ConsoleOutputHandler.Empty();
-        arguments.WriteFlags();
-    }
-
     #region Usage
 
-    private static void WriteUsage(this IEnumerable<Argument> arguments, string? programName)
+    internal static void WriteUsage(this IEnumerable<Argument> arguments, string? programName)
     {
         ConsoleOutputHandler.WriteLine("Usage:");
         var options = $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}";
@@ -28,7 +15,19 @@ internal static class ConsoleArgumentsHelp
 
     #region Flags
 
-    private static void WriteFlags(this IConsoleArguments arguments)
+    internal static void WriteEnums<TEnum>(this IConsoleArguments arguments, EnumArgument<TEnum> enumArgument, string title)
+        where TEnum : struct, Enum
+    {
+        ConsoleOutputHandler.WriteLine(title);
+        foreach (var enumItem in Enum.GetValues<TEnum>())
+            WriteLinesWithTitle($"  {enumItem.}", option.GetHelpDescription(arguments));
+    }
+
+    #endregion
+
+    #region Flags
+
+    internal static void WriteFlags(this IConsoleArguments arguments)
     {
         var maxPrototypeWidth = arguments.Max(x => x.GetPrototypeHelpString().Length);
         var maxPropertyWidth = arguments.Max(x => x.PropertyName?.Length ?? 0);
