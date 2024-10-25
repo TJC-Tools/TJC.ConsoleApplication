@@ -5,6 +5,14 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// </summary>
 public class ConsoleArguments : List<Argument>, IConsoleArguments
 {
+    #region Fields
+
+    private bool _flagRequired;
+    private bool _flagOptional;
+    private bool _logParsedOptions;
+
+    #endregion
+
     #region Constructor
 
     /// <summary>
@@ -18,9 +26,9 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
         bool flagOptional = false,
         bool logParsedOptions = false)
     {
-        FlagRequired = flagRequired;
-        FlagOptional = flagOptional;
-        LogParsedOptions = logParsedOptions;
+        _flagRequired = flagRequired;
+        _flagOptional = flagOptional;
+        _logParsedOptions = logParsedOptions;
         Add(HelpArgument.Instance);
     }
 
@@ -28,20 +36,23 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
 
     #region Properties
 
-    /// <summary>
-    /// Flag required options in help menu.
-    /// </summary>
-    public bool FlagRequired { get; set; }
+    bool IConsoleArguments.FlagRequired
+    {
+        get => _flagRequired;
+        set => _flagRequired = value;
+    }
 
-    /// <summary>
-    /// Flag optional options in help menu.
-    /// </summary>
-    public bool FlagOptional { get; set; }
+    bool IConsoleArguments.FlagOptional
+    {
+        get => _flagOptional;
+        set => _flagOptional = value;
+    }
 
-    /// <summary>
-    /// Write parsed options to the console.
-    /// </summary>
-    public bool LogParsedOptions { get; set; }
+    bool IConsoleArguments.LogParsedOptions
+    {
+        get => _logParsedOptions;
+        set => _logParsedOptions = value;
+    }
 
     #endregion
 
@@ -166,24 +177,21 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
 
     #endregion
 
-    #region Parse
-
-    /// <summary>
-    /// Parses Options, and Validates that there are no Invalid or Missing Arguments
-    /// </summary>
-    /// <param name="args">Arguments from console application call</param>
-    /// <param name="programName">Name of Program</param>
-    /// <param name="exitOnFailureToParse">Exit Program on Failure to Parse</param>
-    public virtual void ParseAndValidate(string[] args,
-                                        string? programName = null,
-                                        bool exitOnFailureToParse = true) =>
-        ConsoleArgumentsParsing.DoParseAndValidate(this, args, programName, exitOnFailureToParse);
+    #region Enumerator
 
     IEnumerator<Argument> IEnumerable<Argument>.GetEnumerator()
     {
         foreach (var argument in this)
             yield return argument;
     }
+
+    #endregion
+
+    #region Parse
+
+    void IConsoleArguments.ParseAndValidate(string[] args, string? programName, bool exitOnFailureToParse) =>
+        ConsoleArgumentsParsing.DoParseAndValidate(this, args, programName, exitOnFailureToParse);
+
 
     #endregion
 
