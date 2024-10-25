@@ -106,7 +106,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
                                 bool exitIfUsed)
     {
         var argument = new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed);
-        argument.Verify();
+        VerifyAdd(argument.Argument);
         Add(argument);
         return this;
     }
@@ -137,7 +137,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
                                 bool exitIfUsed)
     {
         var argument = new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed);
-        argument.Verify();
+        VerifyAdd(argument.Argument);
         Add(argument);
         return this;
     }
@@ -150,7 +150,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <returns></returns>
     public ConsoleArguments Insert(int index, ICustomArgument argument)
     {
-        argument.Argument.Verify();
+        VerifyAdd(argument.Argument);
         Insert(index, argument.Argument);
         SetParents();
         return this;
@@ -163,10 +163,16 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <returns></returns>
     public ConsoleArguments Add(ICustomArgument argument)
     {
-        argument.Argument.Verify();
+        VerifyAdd(argument.Argument);
         Add(argument.Argument);
         SetParents();
         return this;
+    }
+
+    private void VerifyAdd(Argument argument)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(argument.Prototype);
+        ArgumentNullException.ThrowIfNull(argument.Action);
     }
 
     private void SetParents()

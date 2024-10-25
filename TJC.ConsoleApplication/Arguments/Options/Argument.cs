@@ -9,7 +9,6 @@ public class Argument : Option
 
     private IConsoleArguments? _parent;
     private readonly Func<bool?> _getIsRequired;
-    private readonly Action<string> _action;
 
     #endregion
 
@@ -62,9 +61,9 @@ public class Argument : Option
         : base(prototype, description)
     {
         _parent = parent;
-        _action = action;
+        Action = action;
         PropertyName = propertyName;
-        _action += OnActionTriggered;
+        Action += OnActionTriggered;
         _getIsRequired = getIsRequired ?? (() => false);
         ExitIfUsed = exitIfUsed;
     }
@@ -94,6 +93,9 @@ public class Argument : Option
     /// </summary>
     public bool ExitIfUsed { get; set; }
 
+
+    internal readonly Action<string> Action;
+
     internal bool HasParent =>
         _parent != null;
 
@@ -101,72 +103,12 @@ public class Argument : Option
 
     #region Methods
 
-    #region Parent
-
     internal void SetParent(ConsoleArguments parent)
     {
         if (_parent != null)
-            throw new Exception($"{nameof(Argument)}.{nameof(_parent)} can only be set once");
+            throw new Exception($"{nameof(Argument)}.{nameof(_parent)} can only be set once.");
         _parent = parent;
     }
-
-    #endregion
-
-    #region Option Set
-
-    internal void Verify()
-    {
-        ArgumentException.ThrowIfNullOrEmpty(Prototype);
-        ArgumentNullException.ThrowIfNull(_action);
-    }
-
-    internal void AddTo(OptionSet optionSet) =>
-        optionSet.Add(Prototype, Description, _action);
-
-    #endregion
-
-    #region Format Help String
-
-    internal string GetHelpString(bool formatted = false, int prototypeWidth = 0, int propertyWidth = 0)
-    {
-
-        ArgumentNullException.ThrowIfNull(_parent);
-        if (!formatted)
-            return string.Concat(GetPrototypeFormat(), " ", PropertyName);
-        var prototype = GetPrototypeFormat().PadRight(prototypeWidth);
-        var property = PropertyName?.PadRight(propertyWidth);
-        return string.Concat(prototype, " ", property);
-    }
-
-    internal string GetPrototypeFormat(bool formatted = false)
-    {
-        if (!formatted) // Default format 
-            return $"--{Prototype.TrimEnd('=').TrimEnd(':')}";
-        var flags = Prototype.TrimEnd('=').TrimEnd(':').Split('|');
-        var prototype = string.Empty;
-        // Single character flag is at the start with single dash (-) and a comma (,) separator 
-        var singleCharFlag = flags.FirstOrDefault(x => x.Length == 1);
-        prototype += singleCharFlag == null ? new string(' ', 4) : $"-{singleCharFlag}, ";
-        // Other flags are at the end with double dash (--) and a pipe (|) separator 
-        var otherFlags = flags.Where(x => x != singleCharFlag).ToList();
-        prototype += $"--{string.Join('|', otherFlags)}";
-        return prototype;
-    }
-
-    internal string GetHelpDescription()
-    {
-        ArgumentNullException.ThrowIfNull(_parent);
-        var flags = IsRequired switch
-        {
-            null when _parent.FlagRequired || _parent.FlagOptional => "(Sometimes Required) ",
-            true when _parent.FlagRequired => "(Required) ",
-            false when _parent.FlagOptional => "(Optional) ",
-            _ => string.Empty
-        };
-        return string.Concat(flags, Description);
-    }
-
-    #endregion
 
     #endregion
 
@@ -174,10 +116,9 @@ public class Argument : Option
 
     private void OnActionTriggered(string value)
     {
-        ArgumentNullException.ThrowIfNull(_parent);
         IsUsed = !string.IsNullOrEmpty(value);
-        if (_parent.LogParsedOptions)
-            ConsoleOutputHandler.WriteLine($"{GetPrototypeFormat()}: {value}");
+        if (_parent?.LogParsedOptions ?? false)
+            ConsoleOutputHandler.WriteLine($"{this.GetPrototypeHelpString()}: {value}");
     }
 
     /// <summary>

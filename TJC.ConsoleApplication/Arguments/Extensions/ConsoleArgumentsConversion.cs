@@ -25,4 +25,7 @@ internal static class ConsoleArgumentsConversion
         argument.AddTo(optionSet);
         return optionSet;
     }
+
+    private static void AddTo(this Argument argument, OptionSet optionSet) =>
+        optionSet.Add(argument.Prototype, argument.Description, argument.Action);
 }
