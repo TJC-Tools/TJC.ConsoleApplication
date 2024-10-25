@@ -1,21 +1,11 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
-/// <summary>
-/// Extension methods used to parse console arguments.
-/// </summary>
-public static class ConsoleArgumentsParsing
+internal static class ConsoleArgumentsParsing
 {
-    /// <summary>
-    /// Parses Options, and Validates that there are no Invalid or Missing Arguments
-    /// </summary>
-    /// <param name="arguments">Valid Argument Options</param>
-    /// <param name="args">Arguments from console application call</param>
-    /// <param name="programName">Name of Program</param>
-    /// <param name="exitOnFailureToParse">Exit Program on Failure to Parse</param>
-    public static void ParseAndValidate(this ConsoleArguments arguments,
-                                        string[] args,
-                                        string? programName = null,
-                                        bool exitOnFailureToParse = true)
+    internal static void DoParseAndValidate(ConsoleArguments arguments,
+                                            string[] args,
+                                            string? programName,
+                                            bool exitOnFailureToParse)
     {
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
@@ -34,6 +24,34 @@ public static class ConsoleArgumentsParsing
             exitCodes |= ExitCodes.MissingArguments;
         if (exitCodes > 0 && exitOnFailureToParse)
             EnvironmentEx.ExitCode(exitCodes);
+    }
+
+    /// <summary>
+    /// Uses <see cref="OptionSet"/> to attempt to parse the arguments.
+    /// <para>If it fails to parse, it will display the exception to the user.</para>
+    /// </summary>
+    /// <param name="arguments">Options</param>
+    /// <param name="args">Arguments</param>
+    /// <param name="invalidArguments">Return Invalid Arguments</param>
+    /// <exception cref="OptionException">E.g. If an no value was supplied to a non-boolean argument</exception>
+    /// <exception cref="Exception">Unknown Exception Types</exception>
+    /// <returns></returns>
+    internal static void ParseArguments(this List<ConsoleArgument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
+    {
+        try
+        {
+            invalidArguments = arguments.ToOptionSet().Parse(args);
+        }
+        catch (OptionException e)
+        {
+            EnvironmentEx.ExitCode(ExitCodes.InvalidArguments, e.Message);
+            throw;
+        }
+        catch (Exception e)
+        {
+            EnvironmentEx.ExitCode(ExitCodes.UnknownException, e.Message);
+            throw;
+        }
     }
 
     /// <summary>

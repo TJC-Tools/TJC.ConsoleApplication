@@ -3,7 +3,7 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <summary>
 /// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
 /// </summary>
-public class ConsoleArguments : List<ConsoleArgument>
+public class ConsoleArguments : List<ConsoleArgument>, IConsoleArguments
 {
     #region Constructor
 
@@ -166,6 +166,27 @@ public class ConsoleArguments : List<ConsoleArgument>
     {
         foreach (var argument in this.Where(x => !x.HasParent))
             argument.SetParent(this);
+    }
+
+    #endregion
+
+    #region Parse
+
+    /// <summary>
+    /// Parses Options, and Validates that there are no Invalid or Missing Arguments
+    /// </summary>
+    /// <param name="args">Arguments from console application call</param>
+    /// <param name="programName">Name of Program</param>
+    /// <param name="exitOnFailureToParse">Exit Program on Failure to Parse</param>
+    public virtual void ParseAndValidate(string[] args,
+                                        string? programName = null,
+                                        bool exitOnFailureToParse = true) =>
+        ConsoleArgumentsParsing.DoParseAndValidate(this, args, programName, exitOnFailureToParse);
+
+    IEnumerator<ConsoleArgument> IEnumerable<ConsoleArgument>.GetEnumerator()
+    {
+        foreach (var argument in this)
+            yield return argument;
     }
 
     #endregion
