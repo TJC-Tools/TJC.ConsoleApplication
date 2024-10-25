@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
+namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 internal static class ConsoleArgumentsParsing
 {
@@ -78,7 +78,7 @@ internal static class ConsoleArgumentsParsing
         var missingArguments = arguments.Where(x => (x.IsRequired ?? false) && !x.IsUsed).ToList();
         if (missingArguments.Count == 0)
             return false;
-        var argStr = string.Join(", ", missingArguments.Select(x => x.GetPrototypeFormat()));
+        var argStr = string.Join(", ", missingArguments.Select(x => x.GetPrototypeHelpString()));
         ConsoleOutputHandler.WriteLine($"Missing {missingArguments.Pluralize("argument")}: [{argStr}]");
         return true;
     }

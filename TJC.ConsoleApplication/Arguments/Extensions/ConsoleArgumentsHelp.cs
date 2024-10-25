@@ -7,7 +7,7 @@ internal static class ConsoleArgumentsHelp
     /// </summary>
     /// <param name="arguments"></param>
     /// <param name="programName"></param>
-    internal static void WriteHelp(this IEnumerable<Argument> arguments, string? programName = null)
+    internal static void WriteHelp(this IConsoleArguments arguments, string? programName = null)
     {
         ConsoleOutputHandler.Silent = false;
         arguments.WriteUsage(programName);
@@ -28,7 +28,7 @@ internal static class ConsoleArgumentsHelp
 
     #region Flags
 
-    private static void WriteFlags(this IEnumerable<Argument> arguments)
+    private static void WriteFlags(this IConsoleArguments arguments)
     {
         var maxPrototypeWidth = arguments.Max(x => x.GetPrototypeHelpString().Length);
         var maxPropertyWidth = arguments.Max(x => x.PropertyName?.Length ?? 0);
@@ -36,7 +36,7 @@ internal static class ConsoleArgumentsHelp
         foreach (var argument in arguments)
             WriteLinesWithTitle(
                 $"  {argument.GetHelpString(true, maxPrototypeWidth, maxPropertyWidth)}",
-                argument.GetHelpDescription());
+                argument.GetHelpDescription(arguments));
     }
 
     #endregion

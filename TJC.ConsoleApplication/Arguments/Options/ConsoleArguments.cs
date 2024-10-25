@@ -106,7 +106,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
                                 bool exitIfUsed)
     {
         var argument = new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed);
-        VerifyAdd(argument.Argument);
+        VerifyAdd(argument);
         Add(argument);
         return this;
     }
@@ -137,7 +137,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
                                 bool exitIfUsed)
     {
         var argument = new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed);
-        VerifyAdd(argument.Argument);
+        VerifyAdd(argument);
         Add(argument);
         return this;
     }
@@ -169,7 +169,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
         return this;
     }
 
-    private void VerifyAdd(Argument argument)
+    private static void VerifyAdd(Argument argument)
     {
         ArgumentException.ThrowIfNullOrEmpty(argument.Prototype);
         ArgumentNullException.ThrowIfNull(argument.Action);
