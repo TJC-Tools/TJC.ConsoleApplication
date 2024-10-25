@@ -6,6 +6,11 @@
 public interface IConsoleArguments : IEnumerable<ConsoleArgument>
 {
     /// <summary>
+    /// Write parsed options to the console.
+    /// </summary>
+    bool LogParsedOptions { get; set; }
+
+    /// <summary>
     /// Parses Options, and Validates that there are no Invalid or Missing Arguments
     /// </summary>
     /// <param name="args">Arguments from console application call</param>
