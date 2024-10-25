@@ -32,7 +32,13 @@ public class Argument : Option
                     string? description = null,
                     string? propertyName = null,
                     bool exitIfUsed = true)
-        : this(parent, prototype, setOptionValue, () => isRequired, description, propertyName, exitIfUsed)
+        : this(parent,
+              prototype,
+              setOptionValue,
+              () => isRequired,
+              description,
+              propertyName,
+              exitIfUsed)
     {
     }
 
@@ -106,6 +112,19 @@ public class Argument : Option
 
     #endregion
 
+    #region Option Set
+
+    internal void Verify()
+    {
+        ArgumentException.ThrowIfNullOrEmpty(Prototype);
+        ArgumentNullException.ThrowIfNull(_setOptionValue);
+    }
+
+    internal void AddTo(OptionSet optionSet) =>
+        optionSet.Add(Prototype, Description, _setOptionValue);
+
+    #endregion
+
     #region Format Help String
 
     internal string GetHelpString(bool formatted = false, int prototypeWidth = 0, int propertyWidth = 0)
@@ -145,19 +164,6 @@ public class Argument : Option
             _ => string.Empty
         };
         return string.Concat(flags, Description);
-    }
-
-    /// <summary>
-    /// Add a <see cref="Argument"/> to <see cref="OptionSet"/>.
-    /// </summary>
-    /// <param name="optionSet"></param>
-    internal void AddTo(OptionSet optionSet) =>
-        optionSet.Add(Prototype, Description, _setOptionValue);
-
-    internal void Verify()
-    {
-        ArgumentException.ThrowIfNullOrEmpty(Prototype);
-        ArgumentNullException.ThrowIfNull(_setOptionValue);
     }
 
     #endregion
