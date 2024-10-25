@@ -5,7 +5,9 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// <summary>
 /// This argument is used to show the help menu.
 /// </summary>
-public class HelpArgument : SingletonBase<HelpArgument>, IConsoleArgument
+public class HelpArgument
+    : SingletonBase<HelpArgument>,
+    ICustomArgument
 {
     private const string Prototype = "h|?|help";
 

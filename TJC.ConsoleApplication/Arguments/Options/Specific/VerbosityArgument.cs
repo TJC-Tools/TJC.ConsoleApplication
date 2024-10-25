@@ -3,7 +3,8 @@
 /// <summary>
 /// This argument is intended for applications that requires the option to set the verbosity of the logs.
 /// </summary>
-public class VerbosityArgument : IConsoleArgument
+public class VerbosityArgument
+    : ICustomArgument
 {
     private const string _prototype = "v|verbose|verbosity";
 

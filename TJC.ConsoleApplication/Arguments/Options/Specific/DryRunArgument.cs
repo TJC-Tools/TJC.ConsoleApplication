@@ -5,7 +5,7 @@
 /// <para>But, writes logs based on what it would have done.</para>
 /// </summary>
 public class DryRunArgument(string description = "Run through the process, writing logs, but do not execute any changes")
-    : IConsoleArgument
+    : ICustomArgument
 {
     private const string Prototype = "dry-run|dryrun";
 

@@ -135,7 +135,7 @@ public class ConsoleArguments : List<ConsoleArgument>
     /// <param name="index"></param>
     /// <param name="argument"></param>
     /// <returns></returns>
-    public ConsoleArguments Insert(int index, IConsoleArgument argument)
+    public ConsoleArguments Insert(int index, ICustomArgument argument)
     {
         VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
         Insert(index, argument.Argument);
@@ -148,7 +148,7 @@ public class ConsoleArguments : List<ConsoleArgument>
     /// </summary>
     /// <param name="argument"></param>
     /// <returns></returns>
-    public ConsoleArguments Add(IConsoleArgument argument)
+    public ConsoleArguments Add(ICustomArgument argument)
     {
         VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
         Add(argument.Argument);

@@ -6,7 +6,8 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// Enum argument to be used in the <seealso cref="ConsoleArguments"/>.
 /// </summary>
 /// <typeparam name="TEnum"></typeparam>
-public class EnumArgument<TEnum> : IConsoleArgument
+public class EnumArgument<TEnum>
+    : ICustomArgument
     where TEnum : struct, Enum
 {
     private readonly Dictionary<string, TEnum> _commandConversion = [];

@@ -11,7 +11,7 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 public class CopyrightArgument(
     string description = "Print the copyright of the application",
     bool exitIfUsed = true)
-    : IConsoleArgument
+    : ICustomArgument
 {
     private const string Prototype = "copyright";
 

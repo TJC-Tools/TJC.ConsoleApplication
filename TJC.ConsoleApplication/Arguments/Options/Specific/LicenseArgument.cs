@@ -8,7 +8,8 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// </summary>
 /// <param name="description"></param>
 /// <param name="exitIfUsed"></param>
-public class LicenseArgument(string description = "Print the license of the application", bool exitIfUsed = true) : IConsoleArgument
+public class LicenseArgument(string description = "Print the license of the application", bool exitIfUsed = true)
+    : ICustomArgument
 {
     private const string Prototype = "license";
 

@@ -6,7 +6,8 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// <summary>
 /// This argument is intended to print the changelog of the application.
 /// </summary>
-public class ChangelogArgument : IConsoleArgument
+public class ChangelogArgument
+    : ICustomArgument
 {
     private const string Prototype = "changelog";
 

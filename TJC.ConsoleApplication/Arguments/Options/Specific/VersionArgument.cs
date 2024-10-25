@@ -8,7 +8,7 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 public class VersionArgument(
     string description = "Print the version number of the application",
     bool exitIfUsed = true)
-    : IConsoleArgument
+    : ICustomArgument
 {
     private const string Prototype = "version|ver";
 

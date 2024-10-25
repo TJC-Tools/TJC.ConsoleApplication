@@ -3,7 +3,8 @@
 /// <summary>
 /// This argument is intended for applications which require labels.
 /// </summary>
-public class LabelsArgument : IConsoleArgument
+public class LabelsArgument
+    : ICustomArgument
 {
     private static readonly string _prototype = "labels=";
 
