@@ -2,7 +2,7 @@
 
 internal static class ConsoleArgumentsParsing
 {
-    internal static void DoParseAndValidate(ConsoleArguments arguments,
+    internal static void DoParseAndValidate(IConsoleArguments arguments,
                                             string[] args,
                                             string? programName,
                                             bool exitOnFailureToParse)
@@ -12,7 +12,7 @@ internal static class ConsoleArgumentsParsing
         arguments.ParseArguments(args, out var invalidArguments);
 
         if (HelpArgument.Instance.Argument.IsUsed)
-            arguments.ShowHelp(programName);
+            arguments.WriteHelp(programName);
 
         if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
             EnvironmentEx.ExitCode(ExitCodes.Success);
@@ -36,7 +36,7 @@ internal static class ConsoleArgumentsParsing
     /// <exception cref="OptionException">E.g. If an no value was supplied to a non-boolean argument</exception>
     /// <exception cref="Exception">Unknown Exception Types</exception>
     /// <returns></returns>
-    internal static void ParseArguments(this List<ConsoleArgument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
+    internal static void ParseArguments(this IEnumerable<ConsoleArgument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
     {
         try
         {
@@ -73,7 +73,7 @@ internal static class ConsoleArgumentsParsing
     /// </summary>
     /// <param name="arguments"></param>
     /// <returns></returns>
-    private static bool IsMissingRequired(this ConsoleArguments arguments)
+    private static bool IsMissingRequired(this IEnumerable<ConsoleArgument> arguments)
     {
         var missingArguments = arguments.Where(x => (x.IsRequired ?? false) && !x.IsUsed).ToList();
         if (missingArguments.Count == 0)
