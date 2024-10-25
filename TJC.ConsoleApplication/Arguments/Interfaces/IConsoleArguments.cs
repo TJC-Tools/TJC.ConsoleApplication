@@ -6,6 +6,16 @@
 public interface IConsoleArguments : IEnumerable<Argument>
 {
     /// <summary>
+    /// Flag required options in help menu.
+    /// </summary>
+    bool FlagRequired { get; set; }
+
+    /// <summary>
+    /// Flag optional options in help menu.
+    /// </summary>
+    bool FlagOptional { get; set; }
+
+    /// <summary>
     /// Write parsed options to the console.
     /// </summary>
     bool LogParsedOptions { get; set; }

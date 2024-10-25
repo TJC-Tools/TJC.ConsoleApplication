@@ -1,13 +1,13 @@
 namespace TJC.ConsoleApplication.Arguments.Options;
 
 /// <summary>
-/// Console argument to be used in the <seealso cref="ConsoleArguments"/>.
+/// Argument to be used in <seealso cref="IConsoleArguments"/>.
 /// </summary>
 public class Argument : Option
 {
     #region Fields
 
-    private ConsoleArguments? _parent;
+    private IConsoleArguments? _parent;
     private readonly Func<bool?> _getIsRequired;
     private readonly Action<string> _setOptionValue;
 
@@ -25,13 +25,13 @@ public class Argument : Option
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
-    public Argument(ConsoleArguments? parent,
-                           string prototype,
-                           Action<string> setOptionValue,
-                           bool? isRequired = false,
-                           string? description = null,
-                           string? propertyName = null,
-                           bool exitIfUsed = true)
+    public Argument(IConsoleArguments? parent,
+                    string prototype,
+                    Action<string> setOptionValue,
+                    bool? isRequired = false,
+                    string? description = null,
+                    string? propertyName = null,
+                    bool exitIfUsed = true)
         : this(parent, prototype, setOptionValue, () => isRequired, description, propertyName, exitIfUsed)
     {
     }
@@ -46,13 +46,13 @@ public class Argument : Option
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
-    public Argument(ConsoleArguments? parent,
-                           string prototype,
-                           Action<string> setOptionValue,
-                           Func<bool?>? getIsRequired = null,
-                           string? description = null,
-                           string? propertyName = null,
-                           bool exitIfUsed = true)
+    public Argument(IConsoleArguments? parent,
+                    string prototype,
+                    Action<string> setOptionValue,
+                    Func<bool?>? getIsRequired = null,
+                    string? description = null,
+                    string? propertyName = null,
+                    bool exitIfUsed = true)
         : base(prototype, description)
     {
         _parent = parent;
@@ -158,8 +158,6 @@ public class Argument : Option
 
     internal string GetPropertyHelp() =>
         string.IsNullOrEmpty(PropertyName) ? string.Empty : $" {PropertyName}";
-
-
 
     /// <summary>
     /// Add a <see cref="Argument"/> to <see cref="OptionSet"/>.
