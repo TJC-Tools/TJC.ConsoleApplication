@@ -177,21 +177,11 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
 
     #endregion
 
-    #region Enumerator
-
-    IEnumerator<Argument> IEnumerable<Argument>.GetEnumerator()
-    {
-        foreach (var argument in this)
-            yield return argument;
-    }
-
-    #endregion
-
     #region Parse
 
-    void IConsoleArguments.ParseAndValidate(string[] args, string? programName, bool exitOnFailureToParse) =>
-        ConsoleArgumentsParsing.DoParseAndValidate(this, args, programName, exitOnFailureToParse);
-
+    /// <inheritdoc/>
+    public virtual void ParseAndValidate(string[] args, string? programName, bool exitOnFailureToParse) =>
+        ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
 
     #endregion
 

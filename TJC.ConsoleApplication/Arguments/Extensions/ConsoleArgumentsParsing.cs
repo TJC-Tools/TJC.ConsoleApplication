@@ -2,10 +2,10 @@
 
 internal static class ConsoleArgumentsParsing
 {
-    internal static void DoParseAndValidate(IConsoleArguments arguments,
-                                            string[] args,
-                                            string? programName,
-                                            bool exitOnFailureToParse)
+    internal static void ParseAndValidate(IConsoleArguments arguments,
+                                          string[] args,
+                                          string? programName,
+                                          bool exitOnFailureToParse)
     {
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
