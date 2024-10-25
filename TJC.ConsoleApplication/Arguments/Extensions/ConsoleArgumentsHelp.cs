@@ -3,27 +3,16 @@
 internal static class ConsoleArgumentsHelp
 {
     /// <summary>
-    /// Show the help menu
-    /// <para>This includes all options</para>
+    /// Writes a help menu for the options.
     /// </summary>
     /// <param name="arguments"></param>
     /// <param name="programName"></param>
-    internal static void ShowHelp(this ConsoleArguments arguments, string? programName)
+    internal static void WriteHelp(this IEnumerable<ConsoleArgument> arguments, string? programName = null)
     {
         ConsoleOutputHandler.Silent = false;
-        arguments.PrintHelp(programName);
-    }
-
-    /// <summary>
-    /// Prints Help Menu for Options within Program
-    /// </summary>
-    /// <param name="arguments"></param>
-    /// <param name="programName"></param>
-    public static void PrintHelp(this ConsoleArguments arguments, string? programName = null)
-    {
-        arguments.PrintUsage(programName);
+        arguments.WriteUsage(programName);
         ConsoleOutputHandler.Empty();
-        arguments.PrintOptions();
+        arguments.WriteFlags();
     }
 
     /// <summary>
@@ -31,7 +20,7 @@ internal static class ConsoleArgumentsHelp
     /// </summary>
     /// <param name="arguments"></param>
     /// <param name="programName"></param>
-    private static void PrintUsage(this ConsoleArguments arguments, string? programName)
+    private static void WriteUsage(this IEnumerable<ConsoleArgument> arguments, string? programName)
     {
         ConsoleOutputHandler.WriteLine("Usage:");
         PrintLinesWithTitle($"  {programName}", $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}");
@@ -41,7 +30,7 @@ internal static class ConsoleArgumentsHelp
     /// Prints Table of Options with Property, Description, Required/Optional
     /// </summary>
     /// <param name="arguments"></param>
-    private static void PrintOptions(this ConsoleArguments arguments)
+    private static void WriteFlags(this IEnumerable<ConsoleArgument> arguments)
     {
         ConsoleOutputHandler.WriteLine("Flags:");
         foreach (var argument in arguments)
