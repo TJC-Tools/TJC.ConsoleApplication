@@ -84,27 +84,9 @@ public class Argument : Option
     public bool IsUsed { get; private set; }
 
     /// <summary>
-    /// Exit the application (after all argument were parsed &amp; resolved) if this argument is used.
+    /// Exit the application (after all arguments were parsed &amp; resolved) if this argument was used.
     /// </summary>
     public bool ExitIfUsed { get; set; }
-
-    /// <summary>
-    /// Flags to display in the help menu.
-    /// </summary>
-    public string Flags
-    {
-        get
-        {
-            ArgumentNullException.ThrowIfNull(_parent);
-            return IsRequired switch
-            {
-                null when _parent.FlagRequired || _parent.FlagOptional => "(Sometimes Required) ",
-                true when _parent.FlagRequired => "(Required) ",
-                false when _parent.FlagOptional => "(Optional) ",
-                _ => string.Empty
-            };
-        }
-    }
 
     internal bool HasParent =>
         _parent != null;
@@ -126,19 +108,15 @@ public class Argument : Option
 
     #region Format Help String
 
-    private static int? _maxPrototypeWidth;
-    private static int? _maxPropertyWidth;
-
-    internal string GetHelpString(bool formatted = false)
+    internal string GetHelpString(bool formatted = false, int prototypeWidth = 0, int propertyWidth = 0)
     {
+
         ArgumentNullException.ThrowIfNull(_parent);
         if (!formatted)
-            return string.Concat(GetPrototypeFormat(), GetPropertyHelp());
-        _maxPrototypeWidth ??= _parent.Max(x => x.GetPrototypeFormat().Length);
-        _maxPropertyWidth ??= _parent.Max(x => x.GetPropertyHelp().Length);
-        var prototype = GetPrototypeFormat().PadRight((int)_maxPrototypeWidth);
-        var property = GetPropertyHelp().PadRight((int)_maxPropertyWidth);
-        return string.Concat(prototype, property);
+            return string.Concat(GetPrototypeFormat(), " ", PropertyName);
+        var prototype = GetPrototypeFormat().PadRight(prototypeWidth);
+        var property = PropertyName?.PadRight(propertyWidth);
+        return string.Concat(prototype, " ", property);
     }
 
     internal string GetPrototypeFormat(bool formatted = false)
@@ -156,8 +134,18 @@ public class Argument : Option
         return prototype;
     }
 
-    internal string GetPropertyHelp() =>
-        string.IsNullOrEmpty(PropertyName) ? string.Empty : $" {PropertyName}";
+    internal string GetHelpDescription()
+    {
+        ArgumentNullException.ThrowIfNull(_parent);
+        var flags = IsRequired switch
+        {
+            null when _parent.FlagRequired || _parent.FlagOptional => "(Sometimes Required) ",
+            true when _parent.FlagRequired => "(Required) ",
+            false when _parent.FlagOptional => "(Optional) ",
+            _ => string.Empty
+        };
+        return string.Concat(flags, Description);
+    }
 
     /// <summary>
     /// Add a <see cref="Argument"/> to <see cref="OptionSet"/>.

@@ -23,7 +23,9 @@ internal static class ConsoleArgumentsHelp
     private static void WriteUsage(this IEnumerable<Argument> arguments, string? programName)
     {
         ConsoleOutputHandler.WriteLine("Usage:");
-        PrintLinesWithTitle($"  {programName}", $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}");
+        PrintLinesWithTitle(
+            $"  {programName}",
+            $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}");
     }
 
     /// <summary>
@@ -32,9 +34,13 @@ internal static class ConsoleArgumentsHelp
     /// <param name="arguments"></param>
     private static void WriteFlags(this IEnumerable<Argument> arguments)
     {
+        var maxPrototypeWidth = arguments.Max(x => x.GetPrototypeFormat().Length);
+        var maxPropertyWidth = arguments.Max(x => x.PropertyName?.Length ?? 0);
         ConsoleOutputHandler.WriteLine("Flags:");
         foreach (var argument in arguments)
-            PrintLinesWithTitle($"  {argument.GetHelpString(true)}", string.Concat(argument.Flags, argument.Description));
+            PrintLinesWithTitle(
+                $"  {argument.GetHelpString(true, maxPrototypeWidth, maxPropertyWidth)}",
+                argument.GetHelpDescription());
     }
 
     private static void PrintLinesWithTitle(string title, string line) =>
