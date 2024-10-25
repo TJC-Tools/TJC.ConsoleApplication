@@ -76,6 +76,17 @@ namespace TJC.ConsoleApplication.Tests.Options
         }
 
         [TestMethod]
+        public void ConstructConsoleArguments_Enum_HasParent()
+        {
+            // Arrange
+            var argument = new EnumArgument<SampleEnumChoices>();
+            _ = new ConsoleArguments { argument };
+
+            // Assert
+            Assert.IsTrue(argument.Argument.HasParent);
+        }
+
+        [TestMethod]
         public void ConstructConsoleArguments_Help_HasParent()
         {
             // Arrange
