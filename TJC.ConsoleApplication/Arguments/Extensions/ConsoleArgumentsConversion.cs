@@ -15,7 +15,19 @@ internal static class ConsoleArgumentsConversion
     }
 
     /// <summary>
-    /// Convert and add a <see cref="ConsoleArgument"/> to <see cref="OptionSet"/>.
+    /// Convert a single <see cref="ConsoleArgument"/> to <see cref="OptionSet"/>.
+    /// </summary>
+    /// <param name="argument">Options</param>
+    /// <returns></returns>
+    internal static OptionSet ToOptionSet(this ConsoleArgument argument)
+    {
+        var optionSet = new OptionSet();
+        argument.AddTo(optionSet);
+        return optionSet;
+    }
+
+    /// <summary>
+    /// Add a <see cref="ConsoleArgument"/> to <see cref="OptionSet"/>.
     /// </summary>
     /// <param name="option"></param>
     /// <param name="optionSet"></param>
