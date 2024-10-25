@@ -1,4 +1,4 @@
-namespace TJC.ConsoleApplication.Arguments.Extensions;
+﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 internal static class ConsoleArgumentsParsing
 {
@@ -64,7 +64,7 @@ internal static class ConsoleArgumentsParsing
         if (invalidArguments.Count == 0)
             return false;
         var argStr = string.Join(", ", invalidArguments);
-        ConsoleOutputHandler.WriteLine($"Invalid {invalidArguments.Pluralize("argument")}: [{argStr}]");
+        ConsoleOutputHandler.WriteLine($"Invalid {"argument".Pluralize(invalidArguments)}: [{argStr}]");
         return true;
     }
 
@@ -79,7 +79,7 @@ internal static class ConsoleArgumentsParsing
         if (missingArguments.Count == 0)
             return false;
         var argStr = string.Join(", ", missingArguments.Select(x => x.GetPrototypeHelpString()));
-        ConsoleOutputHandler.WriteLine($"Missing {missingArguments.Pluralize("argument")}: [{argStr}]");
+        ConsoleOutputHandler.WriteLine($"Missing {"argument".Pluralize(missingArguments)}: [{argStr}]");
         return true;
     }
 }
