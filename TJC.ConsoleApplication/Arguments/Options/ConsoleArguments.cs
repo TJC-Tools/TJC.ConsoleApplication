@@ -94,8 +94,9 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
                                 bool? required,
                                 bool exitIfUsed)
     {
-        VerifyAdd(prototype, setOptionValue);
-        Add(new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed));
+        var argument = new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed);
+        argument.Verify();
+        Add(argument);
         return this;
     }
 
@@ -124,8 +125,9 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
                                 Func<bool?>? getIsRequired,
                                 bool exitIfUsed)
     {
-        VerifyAdd(prototype, setOptionValue);
-        Add(new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed));
+        var argument = new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed);
+        argument.Verify();
+        Add(argument);
         return this;
     }
 
@@ -137,7 +139,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <returns></returns>
     public ConsoleArguments Insert(int index, ICustomArgument argument)
     {
-        VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
+        argument.Argument.Verify();
         Insert(index, argument.Argument);
         SetParents();
         return this;
@@ -150,16 +152,10 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <returns></returns>
     public ConsoleArguments Add(ICustomArgument argument)
     {
-        VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
+        argument.Argument.Verify();
         Add(argument.Argument);
         SetParents();
         return this;
-    }
-
-    private static void VerifyAdd(string prototype, Action<string> setOptionValue)
-    {
-        ArgumentException.ThrowIfNullOrEmpty(prototype);
-        ArgumentNullException.ThrowIfNull(setOptionValue);
     }
 
     private void SetParents()

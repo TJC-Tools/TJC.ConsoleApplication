@@ -3,12 +3,13 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <summary>
 /// Console argument to be used in the <seealso cref="ConsoleArguments"/>.
 /// </summary>
-public class Argument
+public class Argument : Option
 {
     #region Fields
 
     private ConsoleArguments? _parent;
     private readonly Func<bool?> _getIsRequired;
+    private readonly Action<string> _setOptionValue;
 
     #endregion
 
@@ -52,13 +53,12 @@ public class Argument
                            string? description = null,
                            string? propertyName = null,
                            bool exitIfUsed = true)
+        : base(prototype, description)
     {
         _parent = parent;
-        Prototype = prototype;
-        SetOptionValue = setOptionValue;
-        Description = description;
+        _setOptionValue = setOptionValue;
         PropertyName = propertyName;
-        SetOptionValue += SetOptionValueTriggers;
+        _setOptionValue += SetOptionValueTriggers;
         _getIsRequired = getIsRequired ?? (() => false);
         ExitIfUsed = exitIfUsed;
     }
@@ -66,21 +66,6 @@ public class Argument
     #endregion
 
     #region Properties
-
-    /// <summary>
-    /// Text for the argument to trigger this option.
-    /// </summary>
-    public string Prototype { get; }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public Action<string> SetOptionValue { get; }
-
-    /// <summary>
-    /// Description for use in the help menu.
-    /// </summary>
-    public string? Description { get; }
 
     /// <summary>
     /// Name of the input property for use in the help menu.
@@ -174,6 +159,21 @@ public class Argument
     internal string GetPropertyHelp() =>
         string.IsNullOrEmpty(PropertyName) ? string.Empty : $" {PropertyName}";
 
+
+
+    /// <summary>
+    /// Add a <see cref="Argument"/> to <see cref="OptionSet"/>.
+    /// </summary>
+    /// <param name="optionSet"></param>
+    internal void AddTo(OptionSet optionSet) =>
+        optionSet.Add(Prototype, Description, _setOptionValue);
+
+    internal void Verify()
+    {
+        ArgumentException.ThrowIfNullOrEmpty(Prototype);
+        ArgumentNullException.ThrowIfNull(_setOptionValue);
+    }
+
     #endregion
 
     #endregion
@@ -186,6 +186,14 @@ public class Argument
         IsUsed = !string.IsNullOrEmpty(value);
         if (_parent.LogParsedOptions)
             ConsoleOutputHandler.WriteLine($"{GetPrototypeFormat()}: {value}");
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="c"></param>
+    protected override void OnParseComplete(OptionContext c)
+    {
     }
 
     #endregion

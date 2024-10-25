@@ -25,12 +25,4 @@ internal static class ConsoleArgumentsConversion
         argument.AddTo(optionSet);
         return optionSet;
     }
-
-    /// <summary>
-    /// Add a <see cref="Argument"/> to <see cref="OptionSet"/>.
-    /// </summary>
-    /// <param name="argument"></param>
-    /// <param name="optionSet"></param>
-    internal static void AddTo(this Argument argument, OptionSet optionSet) =>
-        optionSet.Add(argument.Prototype, argument.Description, argument.SetOptionValue);
 }
