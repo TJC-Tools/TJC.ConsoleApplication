@@ -1,5 +1,8 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Interfaces;
 
+/// <summary>
+/// Interface for Console Arguments.
+/// </summary>
 public interface IConsoleArguments : IEnumerable<ConsoleArgument>
 {
     /// <summary>
