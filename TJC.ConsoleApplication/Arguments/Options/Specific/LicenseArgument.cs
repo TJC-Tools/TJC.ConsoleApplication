@@ -21,7 +21,7 @@ public class LicenseArgument(string description = "Print the license of the appl
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; } = new ConsoleArgument(null, Prototype, v => Execute(),
+    public Argument Argument { get; } = new Argument(null, Prototype, v => Execute(),
         isRequired: false,
         description: description,
         exitIfUsed: exitIfUsed);

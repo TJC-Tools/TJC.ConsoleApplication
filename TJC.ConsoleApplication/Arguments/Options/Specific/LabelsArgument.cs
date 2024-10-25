@@ -18,7 +18,7 @@ public class LabelsArgument
     /// </summary>
     /// <param name="description"></param>
     public LabelsArgument(string description = "Labels") =>
-        Argument = new ConsoleArgument(null, _prototype, SetLabels, isRequired: false, description);
+        Argument = new Argument(null, _prototype, SetLabels, isRequired: false, description);
 
     /// <summary>
     /// List of labels set by the argument.
@@ -28,7 +28,7 @@ public class LabelsArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; }
+    public Argument Argument { get; }
 
     private void SetLabels(string input) =>
         Labels = input.Split(',').Select(x => x.Trim()).ToList();

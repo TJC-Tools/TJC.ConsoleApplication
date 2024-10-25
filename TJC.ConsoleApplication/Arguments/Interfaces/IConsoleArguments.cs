@@ -3,7 +3,7 @@
 /// <summary>
 /// Interface for Console Arguments.
 /// </summary>
-public interface IConsoleArguments : IEnumerable<ConsoleArgument>
+public interface IConsoleArguments : IEnumerable<Argument>
 {
     /// <summary>
     /// Write parsed options to the console.

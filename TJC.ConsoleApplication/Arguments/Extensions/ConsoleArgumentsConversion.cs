@@ -7,7 +7,7 @@ internal static class ConsoleArgumentsConversion
     /// </summary>
     /// <param name="arguments">Options</param>
     /// <returns></returns>
-    internal static OptionSet ToOptionSet(this IEnumerable<ConsoleArgument> arguments)
+    internal static OptionSet ToOptionSet(this IEnumerable<Argument> arguments)
     {
         var optionSet = new OptionSet();
         arguments.ToList().ForEach(x => x.AddTo(optionSet));
@@ -15,11 +15,11 @@ internal static class ConsoleArgumentsConversion
     }
 
     /// <summary>
-    /// Convert a single <see cref="ConsoleArgument"/> to <see cref="OptionSet"/>.
+    /// Convert a single <see cref="Argument"/> to <see cref="OptionSet"/>.
     /// </summary>
     /// <param name="argument">Options</param>
     /// <returns></returns>
-    internal static OptionSet ToOptionSet(this ConsoleArgument argument)
+    internal static OptionSet ToOptionSet(this Argument argument)
     {
         var optionSet = new OptionSet();
         argument.AddTo(optionSet);
@@ -27,10 +27,10 @@ internal static class ConsoleArgumentsConversion
     }
 
     /// <summary>
-    /// Add a <see cref="ConsoleArgument"/> to <see cref="OptionSet"/>.
+    /// Add a <see cref="Argument"/> to <see cref="OptionSet"/>.
     /// </summary>
     /// <param name="argument"></param>
     /// <param name="optionSet"></param>
-    internal static void AddTo(this ConsoleArgument argument, OptionSet optionSet) =>
+    internal static void AddTo(this Argument argument, OptionSet optionSet) =>
         optionSet.Add(argument.Prototype, argument.Description, argument.SetOptionValue);
 }

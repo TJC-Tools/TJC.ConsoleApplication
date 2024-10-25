@@ -34,7 +34,7 @@ public class ChangelogArgument
                              bool includeUnreleasedSection = false,
                              bool includePaths = false)
     {
-        Argument = new ConsoleArgument(null, Prototype, v => Execute(),
+        Argument = new Argument(null, Prototype, v => Execute(),
         isRequired: false,
         description: description,
         exitIfUsed: exitIfUsed);
@@ -47,7 +47,7 @@ public class ChangelogArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; }
+    public Argument Argument { get; }
 
     private void Execute()
     {

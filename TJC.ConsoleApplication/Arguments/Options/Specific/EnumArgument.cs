@@ -34,7 +34,7 @@ public class EnumArgument<TEnum>
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; }
+    public Argument Argument { get; }
 
     /// <summary>
     /// Selected enum value.

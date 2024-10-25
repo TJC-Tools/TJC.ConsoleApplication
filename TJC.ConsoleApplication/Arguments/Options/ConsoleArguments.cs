@@ -3,7 +3,7 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <summary>
 /// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
 /// </summary>
-public class ConsoleArguments : List<ConsoleArgument>, IConsoleArguments
+public class ConsoleArguments : List<Argument>, IConsoleArguments
 {
     #region Constructor
 
@@ -95,7 +95,7 @@ public class ConsoleArguments : List<ConsoleArgument>, IConsoleArguments
                                 bool exitIfUsed)
     {
         VerifyAdd(prototype, setOptionValue);
-        Add(new ConsoleArgument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed));
+        Add(new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed));
         return this;
     }
 
@@ -125,7 +125,7 @@ public class ConsoleArguments : List<ConsoleArgument>, IConsoleArguments
                                 bool exitIfUsed)
     {
         VerifyAdd(prototype, setOptionValue);
-        Add(new ConsoleArgument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed));
+        Add(new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed));
         return this;
     }
 
@@ -183,7 +183,7 @@ public class ConsoleArguments : List<ConsoleArgument>, IConsoleArguments
                                         bool exitOnFailureToParse = true) =>
         ConsoleArgumentsParsing.DoParseAndValidate(this, args, programName, exitOnFailureToParse);
 
-    IEnumerator<ConsoleArgument> IEnumerable<ConsoleArgument>.GetEnumerator()
+    IEnumerator<Argument> IEnumerable<Argument>.GetEnumerator()
     {
         foreach (var argument in this)
             yield return argument;

@@ -17,5 +17,5 @@ public class DryRunArgument(string description = "Run through the process, writi
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; } = new(null, Prototype, v => { }, isRequired: false, description);
+    public Argument Argument { get; } = new(null, Prototype, v => { }, isRequired: false, description);
 }

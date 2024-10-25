@@ -36,7 +36,7 @@ internal static class ConsoleArgumentsParsing
     /// <exception cref="OptionException">E.g. If an no value was supplied to a non-boolean argument</exception>
     /// <exception cref="Exception">Unknown Exception Types</exception>
     /// <returns></returns>
-    internal static void ParseArguments(this IEnumerable<ConsoleArgument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
+    internal static void ParseArguments(this IEnumerable<Argument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
     {
         try
         {
@@ -73,7 +73,7 @@ internal static class ConsoleArgumentsParsing
     /// </summary>
     /// <param name="arguments"></param>
     /// <returns></returns>
-    private static bool IsMissingRequired(this IEnumerable<ConsoleArgument> arguments)
+    private static bool IsMissingRequired(this IEnumerable<Argument> arguments)
     {
         var missingArguments = arguments.Where(x => (x.IsRequired ?? false) && !x.IsUsed).ToList();
         if (missingArguments.Count == 0)

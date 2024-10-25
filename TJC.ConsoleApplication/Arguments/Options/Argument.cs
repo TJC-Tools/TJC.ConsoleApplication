@@ -3,7 +3,7 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <summary>
 /// Console argument to be used in the <seealso cref="ConsoleArguments"/>.
 /// </summary>
-public class ConsoleArgument
+public class Argument
 {
     #region Fields
 
@@ -24,7 +24,7 @@ public class ConsoleArgument
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
-    public ConsoleArgument(ConsoleArguments? parent,
+    public Argument(ConsoleArguments? parent,
                            string prototype,
                            Action<string> setOptionValue,
                            bool? isRequired = false,
@@ -45,7 +45,7 @@ public class ConsoleArgument
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
-    public ConsoleArgument(ConsoleArguments? parent,
+    public Argument(ConsoleArguments? parent,
                            string prototype,
                            Action<string> setOptionValue,
                            Func<bool?>? getIsRequired = null,
@@ -133,7 +133,7 @@ public class ConsoleArgument
     internal void SetParent(ConsoleArguments parent)
     {
         if (_parent != null)
-            throw new Exception($"{nameof(ConsoleArgument)}.{nameof(_parent)} can only be set once");
+            throw new Exception($"{nameof(Argument)}.{nameof(_parent)} can only be set once");
         _parent = parent;
     }
 

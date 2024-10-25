@@ -8,5 +8,5 @@ public interface ICustomArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    ConsoleArgument Argument { get; }
+    Argument Argument { get; }
 }
