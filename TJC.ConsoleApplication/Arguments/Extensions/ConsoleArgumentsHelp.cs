@@ -1,13 +1,13 @@
-namespace TJC.ConsoleApplication.Arguments.Extensions;
+﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 internal static class ConsoleArgumentsHelp
 {
     #region Usage
 
-    internal static void WriteUsage(this IEnumerable<Argument> arguments, string? programName)
+    internal static void WriteUsage(this IEnumerable<Argument> arguments, string? programName, string? command = null)
     {
         ConsoleOutputHandler.WriteLine("Usage:");
-        var options = $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}";
+        var options = command ?? $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}";
         WriteLinesWithTitle($"  {programName}", options);
     }
 
