@@ -1,4 +1,6 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
+﻿using TJC.StringExtensions.Cases;
+
+namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 internal static class ConsoleArgumentsHelp
 {
@@ -20,7 +22,7 @@ internal static class ConsoleArgumentsHelp
     {
         ConsoleOutputHandler.WriteLine(title);
         foreach (var enumItem in Enum.GetValues<TEnum>())
-            WriteLinesWithTitle($"  {enumItem.}", option.GetHelpDescription(arguments));
+            WriteLinesWithTitle($"  {enumItem.ToString().ToKebabCase()}", "");
     }
 
     #endregion

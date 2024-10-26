@@ -20,11 +20,7 @@ public class EnumArgument<TEnum>
     public EnumArgument(string description = "Select enum value", bool exitIfUsed = false)
     {
         foreach (var value in Enum.GetValues<TEnum>())
-        {
-            // Convert the enum value to a kebab-case string for use within arguments.
-            var kebab = value.ToString().SplitCamelCase().ToLower().Replace('_', '-');
-            _commandConversion.Add(kebab, value);
-        }
+            _commandConversion.Add(value.ToString().ToKebabCase(), value);
         Argument = new(null, Prototype, SetSelectedValue, isRequired: true, description, exitIfUsed: exitIfUsed);
     }
 
