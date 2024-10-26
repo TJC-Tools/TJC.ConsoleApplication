@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Console argument with enum command class
+
 ## [0.11.0] - 2024-10-26
+
+### Changed
+
+- Refactored the `Argument` class
+- Decoupled several classes
 
 ## [0.10.0] - 2024-10-25
 
