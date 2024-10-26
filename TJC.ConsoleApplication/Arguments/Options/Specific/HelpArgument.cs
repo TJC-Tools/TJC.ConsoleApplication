@@ -9,7 +9,7 @@ public class HelpArgument
     : SingletonBase<HelpArgument>,
     ICustomArgument
 {
-    private const string Prototype = "h|?|help";
+    private const string _prototypes = "h|?|help";
 
     /// <summary>
     /// Singleton Constructor.
@@ -26,7 +26,7 @@ public class HelpArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public Argument Argument { get; } = new(null, Prototype, v => { }, isRequired: false, "Show Help Menu", exitIfUsed: true);
+    public Argument Argument { get; } = new(null, _prototypes, v => { }, isRequired: false, "Show Help Menu", exitIfUsed: true);
 
     /// <summary>
     /// If true, write the general help menu.
