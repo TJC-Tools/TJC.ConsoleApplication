@@ -1,6 +1,4 @@
-﻿using TJC.StringExtensions.Cases;
-
-namespace TJC.ConsoleApplication.Arguments.Options.Specific;
+﻿namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 
 /// <summary>
 /// Enum argument to be used in the <seealso cref="ConsoleArguments"/>.
@@ -35,12 +33,12 @@ public class EnumArgument<TEnum>
     /// <summary>
     /// Selected enum value.
     /// </summary>
-    public TEnum SelectedEnumValue { get; private set; }
+    public TEnum? Selection { get; private set; }
 
     private void SetSelectedValue(string argument)
     {
         if (!_commandConversion.TryGetValue(argument, out TEnum command))
             throw new Exception($"Failed to find [{typeof(TEnum).Name}] of type [{argument}]");
-        SelectedEnumValue = command;
+        Selection = command;
     }
 }
