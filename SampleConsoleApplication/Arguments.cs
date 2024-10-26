@@ -4,12 +4,11 @@ namespace SampleConsoleApplication;
 
 internal class Arguments
 {
-    /// <summary>
-    /// Parse the arguments provided to the executable.
-    /// </summary>
-    /// <param name="args"></param>
     internal static void Parse(string[] args) =>
         ConsoleArguments.ParseAndValidate(args, Assembly.GetCallingAssembly().GetName().Name);
+
+    internal static void ParseWithCommand(string[] args) =>
+        ConsoleArgumentsWithCommand.ParseAndValidate(args, Assembly.GetCallingAssembly().GetName().Name);
 
     // Predefined arguments that are used in multiple applications
     internal static DryRunArgument DryRun => DryRunArgument.Default;
@@ -23,7 +22,16 @@ internal class Arguments
     internal static string? Item2 { get; private set; }
 
     // Create the arguments options for this application
-    internal static readonly ConsoleArgumentsWithCommand<CommandTypes> ConsoleArguments =
+    internal static ConsoleArguments ConsoleArguments =>
+        new(flagRequired: true, logParsedOptions: false)
+    {
+        DryRun, Version, Copyright, License, Changelog,
+        { "item1", v => Item1 = !string.IsNullOrEmpty(v), "Example Item 1" },
+        { "item2", v => Item2 = v, "Example Item 2" }
+    };
+
+    // Create the arguments options for this application
+    internal static ConsoleArgumentsWithCommand<CommandTypes> ConsoleArgumentsWithCommand =>
         new(getCommandHelp: CommandExtensions.GetCommandHelp, flagRequired: true, logParsedOptions: false)
     {
         DryRun, Version, Copyright, License, Changelog,

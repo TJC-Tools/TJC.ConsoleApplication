@@ -13,7 +13,7 @@ internal static class ConsoleArgumentsHelp
 
     #endregion
 
-    #region Flags
+    #region Enums
 
     internal static void WriteEnums<TEnum>(this EnumArgument<TEnum> enumArgument, string title, string argumentPrefix = "--")
         where TEnum : struct, Enum
@@ -50,13 +50,13 @@ internal static class ConsoleArgumentsHelp
         int propertyWidth = 0)
     {
         var prototype = argument.GetPrototypeHelpString();
-        var property = argument.PropertyName ?? string.Empty;
+        var property = string.IsNullOrWhiteSpace(argument.PropertyName) ? string.Empty : $" {argument.PropertyName}";
         if (formatted)
         {
             prototype = prototype.PadRight(prototypeWidth);
             property = property.PadRight(propertyWidth);
         }
-        return string.Concat(prototype, " ", property);
+        return string.Concat(prototype, property);
     }
 
     internal static string GetPrototypeHelpString(this Argument argument) =>
