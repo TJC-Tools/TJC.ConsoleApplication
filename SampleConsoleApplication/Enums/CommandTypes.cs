@@ -4,10 +4,15 @@ namespace SampleConsoleApplication.Enums
 {
     internal enum CommandTypes
     {
-        [Description("This is the first command")]
-        Command1,
-        [Description("This is the second command")]
-        Command_2,
-        Command3
+        [Description("Test something")]
+        Test,
+        [Description("Run some code")]
+        Run,
+        [Description("Validate some information")]
+        Validate,
+        [Description("Generate a value")]
+        GenerateValue,
+        [Description("List some items")]
+        ListItems
     }
 }

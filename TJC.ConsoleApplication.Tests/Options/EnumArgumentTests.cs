@@ -18,7 +18,7 @@ public class EnumArgumentTests
         arguments.ParseAndValidate(["--option2"], exitOnFailureToParse: false);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option2, argument.SelectedEnumValue);
+        Assert.AreEqual(SampleEnumChoices.Option2, argument.Selection);
     }
 
     [TestMethod]
@@ -32,6 +32,6 @@ public class EnumArgumentTests
         arguments.ParseAndValidate(["--option3"], exitOnFailureToParse: false);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option3, argument.SelectedEnumValue);
+        Assert.AreEqual(SampleEnumChoices.Option3, argument.Selection);
     }
 }

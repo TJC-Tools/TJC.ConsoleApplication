@@ -1,28 +1,18 @@
 ﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
 
-/// <summary>
-/// Extension methods used to parse console arguments.
-/// </summary>
-public static class ConsoleArgumentsParsing
+internal static class ConsoleArgumentsParsing
 {
-    /// <summary>
-    /// Parses Options, and Validates that there are no Invalid or Missing Arguments
-    /// </summary>
-    /// <param name="arguments">Valid Argument Options</param>
-    /// <param name="args">Arguments from console application call</param>
-    /// <param name="programName">Name of Program</param>
-    /// <param name="exitOnFailureToParse">Exit Program on Failure to Parse</param>
-    public static void ParseAndValidate(this ConsoleArguments arguments,
-                                        string[] args,
-                                        string? programName = null,
-                                        bool exitOnFailureToParse = true)
+    internal static void ParseAndValidate(IConsoleArguments arguments,
+                                          string[] args,
+                                          string? programName,
+                                          bool exitOnFailureToParse)
     {
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
         arguments.ParseArguments(args, out var invalidArguments);
 
-        if (HelpArgument.Instance.Argument.IsUsed)
-            arguments.ShowHelp(programName);
+        if (HelpArgument.Instance.GetWriteGeneralHelp())
+            arguments.WriteGeneralHelp(programName);
 
         if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
             EnvironmentEx.ExitCode(ExitCodes.Success);
@@ -37,6 +27,34 @@ public static class ConsoleArgumentsParsing
     }
 
     /// <summary>
+    /// Uses <see cref="OptionSet"/> to attempt to parse the arguments.
+    /// <para>If it fails to parse, it will display the exception to the user.</para>
+    /// </summary>
+    /// <param name="arguments">Options</param>
+    /// <param name="args">Arguments</param>
+    /// <param name="invalidArguments">Return Invalid Arguments</param>
+    /// <exception cref="OptionException">E.g. If an no value was supplied to a non-boolean argument</exception>
+    /// <exception cref="Exception">Unknown Exception Types</exception>
+    /// <returns></returns>
+    internal static void ParseArguments(this IEnumerable<Argument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
+    {
+        try
+        {
+            invalidArguments = arguments.ToOptionSet().Parse(args);
+        }
+        catch (OptionException e)
+        {
+            EnvironmentEx.ExitCode(ExitCodes.InvalidArguments, e.Message);
+            throw;
+        }
+        catch (Exception e)
+        {
+            EnvironmentEx.ExitCode(ExitCodes.UnknownException, e.Message);
+            throw;
+        }
+    }
+
+    /// <summary>
     /// Checks if any arguments are invalid (i.e. attempting to use an argument that does not actually exist)
     /// </summary>
     /// <param name="invalidArguments"></param>
@@ -46,7 +64,7 @@ public static class ConsoleArgumentsParsing
         if (invalidArguments.Count == 0)
             return false;
         var argStr = string.Join(", ", invalidArguments);
-        ConsoleOutputHandler.WriteLine($"Invalid {invalidArguments.Pluralize("argument")}: [{argStr}]");
+        ConsoleOutputHandler.WriteLine($"Invalid {"argument".Pluralize(invalidArguments)}: [{argStr}]");
         return true;
     }
 
@@ -55,13 +73,13 @@ public static class ConsoleArgumentsParsing
     /// </summary>
     /// <param name="arguments"></param>
     /// <returns></returns>
-    private static bool IsMissingRequired(this ConsoleArguments arguments)
+    private static bool IsMissingRequired(this IEnumerable<Argument> arguments)
     {
         var missingArguments = arguments.Where(x => (x.IsRequired ?? false) && !x.IsUsed).ToList();
         if (missingArguments.Count == 0)
             return false;
-        var argStr = string.Join(", ", missingArguments.Select(x => x.GetPrototypeFormat()));
-        ConsoleOutputHandler.WriteLine($"Missing {missingArguments.Pluralize("argument")}: [{argStr}]");
+        var argStr = string.Join(", ", missingArguments.Select(x => x.GetPrototypeHelpString()));
+        ConsoleOutputHandler.WriteLine($"Missing {"argument".Pluralize(missingArguments)}: [{argStr}]");
         return true;
     }
 }

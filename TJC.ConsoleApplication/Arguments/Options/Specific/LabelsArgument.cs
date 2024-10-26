@@ -3,7 +3,8 @@
 /// <summary>
 /// This argument is intended for applications which require labels.
 /// </summary>
-public class LabelsArgument : IConsoleArgument
+public class LabelsArgument
+    : ICustomArgument
 {
     private static readonly string _prototype = "labels=";
 
@@ -17,7 +18,7 @@ public class LabelsArgument : IConsoleArgument
     /// </summary>
     /// <param name="description"></param>
     public LabelsArgument(string description = "Labels") =>
-        Argument = new ConsoleArgument(null, _prototype, SetLabels, isRequired: false, description);
+        Argument = new Argument(null, _prototype, SetLabels, isRequired: false, description);
 
     /// <summary>
     /// List of labels set by the argument.
@@ -27,7 +28,7 @@ public class LabelsArgument : IConsoleArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; }
+    public Argument Argument { get; }
 
     private void SetLabels(string input) =>
         Labels = input.Split(',').Select(x => x.Trim()).ToList();

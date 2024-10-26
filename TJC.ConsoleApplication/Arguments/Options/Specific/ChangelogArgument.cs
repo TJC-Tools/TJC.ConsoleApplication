@@ -6,7 +6,8 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// <summary>
 /// This argument is intended to print the changelog of the application.
 /// </summary>
-public class ChangelogArgument : IConsoleArgument
+public class ChangelogArgument
+    : ICustomArgument
 {
     private const string Prototype = "changelog";
 
@@ -33,7 +34,7 @@ public class ChangelogArgument : IConsoleArgument
                              bool includeUnreleasedSection = false,
                              bool includePaths = false)
     {
-        Argument = new ConsoleArgument(null, Prototype, v => Execute(),
+        Argument = new Argument(null, Prototype, v => Execute(),
         isRequired: false,
         description: description,
         exitIfUsed: exitIfUsed);
@@ -46,7 +47,7 @@ public class ChangelogArgument : IConsoleArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; }
+    public Argument Argument { get; }
 
     private void Execute()
     {

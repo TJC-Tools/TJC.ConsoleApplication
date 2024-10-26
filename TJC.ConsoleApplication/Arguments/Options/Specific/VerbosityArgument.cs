@@ -3,7 +3,8 @@
 /// <summary>
 /// This argument is intended for applications that requires the option to set the verbosity of the logs.
 /// </summary>
-public class VerbosityArgument : IConsoleArgument
+public class VerbosityArgument
+    : ICustomArgument
 {
     private const string _prototype = "v|verbose|verbosity";
 
@@ -29,7 +30,7 @@ public class VerbosityArgument : IConsoleArgument
     /// <param name="prototype"></param>
     /// <param name="description"></param>
     public VerbosityArgument(string prototype, string description = "Logging Verbosity") =>
-        Argument = new ConsoleArgument(null, prototype, SetVerbosity, isRequired: false, description);
+        Argument = new Argument(null, prototype, SetVerbosity, isRequired: false, description);
 
     /// <summary>
     /// Verbosity level set by the argument.
@@ -39,7 +40,7 @@ public class VerbosityArgument : IConsoleArgument
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public ConsoleArgument Argument { get; }
+    public Argument Argument { get; }
 
     private void SetVerbosity(string input)
     {

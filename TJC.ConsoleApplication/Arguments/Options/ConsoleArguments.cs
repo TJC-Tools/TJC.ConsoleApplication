@@ -1,10 +1,18 @@
 namespace TJC.ConsoleApplication.Arguments.Options;
 
 /// <summary>
-/// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
+/// Console arguments to be parsed at program startup.
 /// </summary>
-public class ConsoleArguments : List<ConsoleArgument>
+public class ConsoleArguments : List<Argument>, IConsoleArguments
 {
+    #region Fields
+
+    private bool _flagRequired;
+    private bool _flagOptional;
+    private bool _logParsedOptions;
+
+    #endregion
+
     #region Constructor
 
     /// <summary>
@@ -18,9 +26,9 @@ public class ConsoleArguments : List<ConsoleArgument>
         bool flagOptional = false,
         bool logParsedOptions = false)
     {
-        FlagRequired = flagRequired;
-        FlagOptional = flagOptional;
-        LogParsedOptions = logParsedOptions;
+        _flagRequired = flagRequired;
+        _flagOptional = flagOptional;
+        _logParsedOptions = logParsedOptions;
         Add(HelpArgument.Instance);
     }
 
@@ -28,20 +36,23 @@ public class ConsoleArguments : List<ConsoleArgument>
 
     #region Properties
 
-    /// <summary>
-    /// Flag required options in help menu.
-    /// </summary>
-    public bool FlagRequired { get; set; }
+    bool IConsoleArguments.FlagRequired
+    {
+        get => _flagRequired;
+        set => _flagRequired = value;
+    }
 
-    /// <summary>
-    /// Flag optional options in help menu.
-    /// </summary>
-    public bool FlagOptional { get; set; }
+    bool IConsoleArguments.FlagOptional
+    {
+        get => _flagOptional;
+        set => _flagOptional = value;
+    }
 
-    /// <summary>
-    /// Write parsed options to the console.
-    /// </summary>
-    public bool LogParsedOptions { get; set; }
+    bool IConsoleArguments.LogParsedOptions
+    {
+        get => _logParsedOptions;
+        set => _logParsedOptions = value;
+    }
 
     #endregion
 
@@ -94,8 +105,9 @@ public class ConsoleArguments : List<ConsoleArgument>
                                 bool? required,
                                 bool exitIfUsed)
     {
-        VerifyAdd(prototype, setOptionValue);
-        Add(new ConsoleArgument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed));
+        var argument = new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed);
+        VerifyAdd(argument);
+        Add(argument);
         return this;
     }
 
@@ -124,8 +136,9 @@ public class ConsoleArguments : List<ConsoleArgument>
                                 Func<bool?>? getIsRequired,
                                 bool exitIfUsed)
     {
-        VerifyAdd(prototype, setOptionValue);
-        Add(new ConsoleArgument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed));
+        var argument = new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed);
+        VerifyAdd(argument);
+        Add(argument);
         return this;
     }
 
@@ -135,9 +148,9 @@ public class ConsoleArguments : List<ConsoleArgument>
     /// <param name="index"></param>
     /// <param name="argument"></param>
     /// <returns></returns>
-    public ConsoleArguments Insert(int index, IConsoleArgument argument)
+    public ConsoleArguments Insert(int index, ICustomArgument argument)
     {
-        VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
+        VerifyAdd(argument.Argument);
         Insert(index, argument.Argument);
         SetParents();
         return this;
@@ -148,18 +161,18 @@ public class ConsoleArguments : List<ConsoleArgument>
     /// </summary>
     /// <param name="argument"></param>
     /// <returns></returns>
-    public ConsoleArguments Add(IConsoleArgument argument)
+    public ConsoleArguments Add(ICustomArgument argument)
     {
-        VerifyAdd(argument.Argument.Prototype, argument.Argument.SetOptionValue);
+        VerifyAdd(argument.Argument);
         Add(argument.Argument);
         SetParents();
         return this;
     }
 
-    private static void VerifyAdd(string prototype, Action<string> setOptionValue)
+    private static void VerifyAdd(Argument argument)
     {
-        ArgumentException.ThrowIfNullOrEmpty(prototype);
-        ArgumentNullException.ThrowIfNull(setOptionValue);
+        ArgumentException.ThrowIfNullOrEmpty(argument.Prototype);
+        ArgumentNullException.ThrowIfNull(argument.Action);
     }
 
     private void SetParents()
@@ -169,6 +182,19 @@ public class ConsoleArguments : List<ConsoleArgument>
     }
 
     #endregion
+
+    /// <inheritdoc/>
+    public virtual void ParseAndValidate(string[] args, string? programName = null, bool exitOnFailureToParse = true) =>
+        ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
+
+    /// <inheritdoc/>
+    public virtual void WriteGeneralHelp(string? programName = null)
+    {
+        ConsoleOutputHandler.Silent = false;
+        this.WriteUsage(programName);
+        ConsoleOutputHandler.Empty();
+        this.WriteFlags();
+    }
 
     #endregion
 }

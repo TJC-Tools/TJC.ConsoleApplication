@@ -28,7 +28,7 @@ public static class ProcessExitExtensions
         var startTime = DateTime.Now; // This must be here, otherwise it does not get called until the event occurs
         assembly ??= Assembly.GetCallingAssembly();
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
-            OnProcessExit(startTime, assembly.GetName().Name, "--help");
+            OnProcessExit(startTime, assembly.GetName().Name, HelpArgument.StandardPrototype);
     }
 
     private static void OnProcessExit(DateTime startTime,

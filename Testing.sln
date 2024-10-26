@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TJC.ConsoleApplication", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TJC.ConsoleApplication.Tests", "TJC.ConsoleApplication.Tests\TJC.ConsoleApplication.Tests.csproj", "{4B1054AE-71AE-4518-AA8F-685DB72A2ADD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApplication", "SampleConsoleApplication\SampleConsoleApplication.csproj", "{64C708D9-F39C-414C-8516-359A279A83A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApplication", "SampleConsoleApplication\SampleConsoleApplication.csproj", "{64C708D9-F39C-414C-8516-359A279A83A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE800927-FA9E-4856-B6B6-3A149E084C6D}"
+	ProjectSection(SolutionItems) = preProject
+		THIRD-PARTY-LICENSES = THIRD-PARTY-LICENSES
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

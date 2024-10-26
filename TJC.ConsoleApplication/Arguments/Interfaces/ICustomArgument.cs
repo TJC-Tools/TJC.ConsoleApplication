@@ -3,10 +3,10 @@
 /// <summary>
 /// Interface used by pre-defined console arguments to allow it to be added to the list of <seealso cref="ConsoleArguments"/>.
 /// </summary>
-public interface IConsoleArgument
+public interface ICustomArgument
 {
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    ConsoleArgument Argument { get; }
+    Argument Argument { get; }
 }

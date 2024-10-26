@@ -2,56 +2,103 @@
 
 internal static class ConsoleArgumentsHelp
 {
-    /// <summary>
-    /// Show the help menu
-    /// <para>This includes all options</para>
-    /// </summary>
-    /// <param name="arguments"></param>
-    /// <param name="programName"></param>
-    internal static void ShowHelp(this ConsoleArguments arguments, string? programName)
-    {
-        ConsoleOutputHandler.Silent = false;
-        arguments.PrintHelp(programName);
-    }
+    #region Usage
 
-    /// <summary>
-    /// Prints Help Menu for Options within Program
-    /// </summary>
-    /// <param name="arguments"></param>
-    /// <param name="programName"></param>
-    public static void PrintHelp(this ConsoleArguments arguments, string? programName = null)
-    {
-        arguments.PrintUsage(programName);
-        ConsoleOutputHandler.Empty();
-        arguments.PrintOptions();
-    }
-
-    /// <summary>
-    /// Print Single Line Usage Statement
-    /// </summary>
-    /// <param name="arguments"></param>
-    /// <param name="programName"></param>
-    private static void PrintUsage(this ConsoleArguments arguments, string? programName)
+    internal static void WriteUsage(this IEnumerable<Argument> arguments, string? programName, string? command = null)
     {
         ConsoleOutputHandler.WriteLine("Usage:");
-        PrintLinesWithTitle($"  {programName}", $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}");
+        var options = command ?? $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}";
+        WriteLinesWithTitle($"  {programName}", options);
     }
 
-    /// <summary>
-    /// Prints Table of Options with Property, Description, Required/Optional
-    /// </summary>
-    /// <param name="arguments"></param>
-    private static void PrintOptions(this ConsoleArguments arguments)
+    #endregion
+
+    #region Flags
+
+    internal static void WriteEnums<TEnum>(this EnumArgument<TEnum> enumArgument, string title, string argumentPrefix = "--")
+        where TEnum : struct, Enum
     {
+        ConsoleOutputHandler.WriteLine($"{title} {enumArgument.Argument.Description}");
+        var maxKebabWidth = Enum.GetValues<TEnum>().Max(x => x.ToString().ToKebabCase().Length);
+        foreach (var enumItem in Enum.GetValues<TEnum>())
+            WriteLinesWithTitle($"  {argumentPrefix}{enumItem.ToString().ToKebabCase().PadRight(maxKebabWidth)}", enumItem.Humanize());
+    }
+
+    #endregion
+
+    #region Flags
+
+    internal static void WriteFlags(this IConsoleArguments arguments)
+    {
+        var maxPrototypeWidth = arguments.Max(x => x.GetPrototypeHelpString().Length);
+        var maxPropertyWidth = arguments.Max(x => x.PropertyName?.Length ?? 0);
         ConsoleOutputHandler.WriteLine("Flags:");
         foreach (var argument in arguments)
-            PrintLinesWithTitle($"  {argument.GetHelpString(true)}", string.Concat(argument.Flags, argument.Description));
+            WriteLinesWithTitle(
+                $"  {argument.GetHelpString(true, maxPrototypeWidth, maxPropertyWidth)}",
+                argument.GetHelpDescription(arguments));
     }
 
-    private static void PrintLinesWithTitle(string title, string line) =>
-        PrintLinesWithTitle(title, line.SplitLines());
+    #endregion
 
-    private static void PrintLinesWithTitle(string title, List<string> lines)
+    #region Argument Help
+
+    internal static string GetHelpString(
+        this Argument argument,
+        bool formatted = false,
+        int prototypeWidth = 0,
+        int propertyWidth = 0)
+    {
+        var prototype = argument.GetPrototypeHelpString();
+        var property = argument.PropertyName ?? string.Empty;
+        if (formatted)
+        {
+            prototype = prototype.PadRight(prototypeWidth);
+            property = property.PadRight(propertyWidth);
+        }
+        return string.Concat(prototype, " ", property);
+    }
+
+    internal static string GetPrototypeHelpString(this Argument argument) =>
+        $"--{argument.Prototype.TrimEnd('=').TrimEnd(':')}";
+
+    internal static string GetPrototypeHelpStringFormatted(this Argument argument)
+    {
+        var prototype = string.Empty;
+        var flags = argument.Prototype.TrimEnd('=').TrimEnd(':').Split('|');
+
+        // Single character flag is at the start with single dash (-) and a comma (,) separator 
+        var singleCharFlag = flags.FirstOrDefault(x => x.Length == 1);
+        var part1 = singleCharFlag == null ? new string(' ', 3) : $"-{singleCharFlag},";
+
+        // Other flags are at the end with double dash (--) and a pipe (|) separator 
+        var otherFlags = flags.Where(x => x != singleCharFlag).ToList();
+        var part2 = string.Join('|', otherFlags);
+
+        // Return formatted prototype
+        return $"--{part1} {part2}";
+    }
+
+    internal static string GetHelpDescription(this Argument argument, IConsoleArguments parent)
+    {
+        var flags = argument.IsRequired switch
+        {
+            null when parent.FlagRequired || parent.FlagOptional => "(Sometimes Required) ",
+            true when parent.FlagRequired => "(Required) ",
+            false when parent.FlagOptional => "(Optional) ",
+            _ => string.Empty
+        };
+        return string.Concat(flags, argument.Description);
+    }
+
+    #endregion
+
+    #region Formatters
+
+    private static void WriteLinesWithTitle(string title, string line) =>
+        WriteLinesWithTitle(title, line.SplitLines());
+
+    private static void WriteLinesWithTitle(string title, List<string> lines)
     {
         var width = title.Length;
         foreach (var line in lines)
@@ -60,4 +107,6 @@ internal static class ConsoleArgumentsHelp
             title = string.Empty;
         }
     }
+
+    #endregion
 }
