@@ -1,3 +1,4 @@
+﻿global using Humanizer;
 global using NDesk.Options;
 global using TJC.ConsoleApplication.Arguments.Extensions;
 global using TJC.ConsoleApplication.Arguments.Interfaces;
