@@ -11,7 +11,7 @@ internal static class ConsoleArgumentsParsing
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
         arguments.ParseArguments(args, out var invalidArguments);
 
-        if (HelpArgument.Instance.Argument.IsUsed)
+        if (HelpArgument.Instance.GetWriteGeneralHelp())
             arguments.WriteHelp(programName);
 
         if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))

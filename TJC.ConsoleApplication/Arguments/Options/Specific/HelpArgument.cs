@@ -27,4 +27,17 @@ public class HelpArgument
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
     public Argument Argument { get; } = new(null, Prototype, v => { }, isRequired: false, "Show Help Menu", exitIfUsed: true);
+
+    /// <summary>
+    /// If true, write the general help menu.
+    /// <para></para>
+    /// Otherwise, allow this to be used as a flag to show specific help menu(s).
+    /// </summary>
+    public bool OptionWriteGeneralHelp { get; set; } = true;
+
+    /// <summary>
+    /// Get whether the general help menu should be written.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetWriteGeneralHelp() => OptionWriteGeneralHelp && Argument.IsUsed;
 }
