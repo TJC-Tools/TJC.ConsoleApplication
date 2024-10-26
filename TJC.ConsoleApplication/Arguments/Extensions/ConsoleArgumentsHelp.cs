@@ -30,12 +30,12 @@ internal static class ConsoleArgumentsHelp
 
     internal static void WriteFlags(this IConsoleArguments arguments)
     {
-        var maxPrototypeWidth = arguments.Max(x => x.GetPrototypeHelpString().Length);
+        var maxPrototypeWidth = arguments.Max(x => x.GetPrototypeHelpStringFormatted().Length);
         var maxPropertyWidth = arguments.Max(x => x.PropertyName?.Length ?? 0);
         ConsoleOutputHandler.WriteLine("Flags:");
         foreach (var argument in arguments)
             WriteLinesWithTitle(
-                $"  {argument.GetHelpString(true, maxPrototypeWidth, maxPropertyWidth)}",
+                $"  {argument.GetHelpString(formatted: true, maxPrototypeWidth, maxPropertyWidth)}",
                 argument.GetHelpDescription(arguments));
     }
 
@@ -49,7 +49,7 @@ internal static class ConsoleArgumentsHelp
         int prototypeWidth = 0,
         int propertyWidth = 0)
     {
-        var prototype = argument.GetPrototypeHelpString();
+        var prototype = formatted ? argument.GetPrototypeHelpStringFormatted() : argument.GetPrototypeHelpString();
         var property = string.IsNullOrWhiteSpace(argument.PropertyName) ? string.Empty : $" {argument.PropertyName}";
         if (formatted)
         {
@@ -76,7 +76,7 @@ internal static class ConsoleArgumentsHelp
         var part2 = string.Join('|', otherFlags);
 
         // Return formatted prototype
-        return $"--{part1} {part2}";
+        return $"{part1} --{part2}";
     }
 
     internal static string GetHelpDescription(this Argument argument, IConsoleArguments parent)
