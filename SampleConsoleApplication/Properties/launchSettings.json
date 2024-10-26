@@ -7,13 +7,21 @@
     "Empty": {
       "commandName": "Project"
     },
-    "Details": {
+    "Run": {
       "commandName": "Project",
-      "commandLineArgs": "--version\r\n--copyright\r\n--license\r\n--changelog"
+      "commandLineArgs": "run"
+    },
+    "Run (Help)": {
+      "commandName": "Project",
+      "commandLineArgs": "run -h"
     },
     "Help": {
       "commandName": "Project",
       "commandLineArgs": "-h"
+    },
+    "Program Details": {
+      "commandName": "Project",
+      "commandLineArgs": "--version\r\n--copyright\r\n--license\r\n--changelog"
     }
   }
 }
