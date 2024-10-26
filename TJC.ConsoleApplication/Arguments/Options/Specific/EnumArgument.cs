@@ -14,12 +14,13 @@ public class EnumArgument<TEnum>
     /// Constructor for the enum argument.
     /// </summary>
     /// <param name="description"></param>
+    /// <param name="isRequired"></param>
     /// <param name="exitIfUsed"></param>
-    public EnumArgument(string description = "Select enum value", bool exitIfUsed = false)
+    public EnumArgument(string description = "Select enum value", bool isRequired = false, bool exitIfUsed = false)
     {
         foreach (var value in Enum.GetValues<TEnum>())
             _commandConversion.Add(value.ToString().ToKebabCase(), value);
-        Argument = new(null, Prototype, SetSelectedValue, isRequired: true, description, exitIfUsed: exitIfUsed);
+        Argument = new(null, Prototype, SetSelectedValue, isRequired: isRequired, description: description, exitIfUsed: exitIfUsed);
     }
 
     private string Prototype =>
