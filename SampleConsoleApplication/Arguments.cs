@@ -1,4 +1,6 @@
-﻿namespace SampleConsoleApplication;
+﻿using SampleConsoleApplication.Commands;
+
+namespace SampleConsoleApplication;
 
 internal class Arguments
 {
@@ -9,15 +11,20 @@ internal class Arguments
     internal static void Parse(string[] args) =>
         ConsoleArguments.ParseAndValidate(args, Assembly.GetCallingAssembly().GetName().Name);
 
-    internal static DryRunArgument DryRun => DryRunArgument.Default; // Predefined argument that is used in multiple applications
-    internal static VersionArgument Version => VersionArgument.Default; // Predefined argument that is used in multiple applications
-    internal static CopyrightArgument Copyright => CopyrightArgument.Default; // Predefined argument that is used in multiple applications
-    internal static LicenseArgument License => LicenseArgument.Default; // Predefined argument that is used in multiple applications
-    internal static ChangelogArgument Changelog => ChangelogArgument.Default; // Predefined argument that is used in multiple applications
+    // Predefined arguments that are used in multiple applications
+    internal static DryRunArgument DryRun => DryRunArgument.Default;
+    internal static VersionArgument Version => VersionArgument.Default;
+    internal static CopyrightArgument Copyright => CopyrightArgument.Default;
+    internal static LicenseArgument License => LicenseArgument.Default;
+    internal static ChangelogArgument Changelog => ChangelogArgument.Default;
+
+    // Custom argument properties that are specific to this application
     internal static bool Item1 { get; private set; }
     internal static string? Item2 { get; private set; }
 
-    internal static readonly ConsoleArguments ConsoleArguments = new(flagRequired: true, logParsedOptions: false)
+    // Create the arguments options for this application
+    internal static readonly ConsoleArgumentsWithCommand<CommandTypes> ConsoleArguments =
+        new(getCommandHelp: CommandExtensions.GetCommandHelp, flagRequired: true, logParsedOptions: false)
     {
         DryRun, Version, Copyright, License, Changelog,
         { "item1", v => Item1 = !string.IsNullOrEmpty(v), "Example Item 1" },

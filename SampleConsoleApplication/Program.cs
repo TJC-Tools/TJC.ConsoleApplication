@@ -1,6 +1,5 @@
 ﻿// Setup Console Settings
 ProcessExitSettings.Instance.ExitCountdownSeconds = 0;
-ProcessExitSettings.Instance.AutoExit = args.Length > 0;
 ConsoleSetup.Setup();
 
 //ConsoleSetup.Setup(); // ConsoleSetup.SetupSilent(); // For when no output is desired (unless an error occurs)
