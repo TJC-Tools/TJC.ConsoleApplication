@@ -24,6 +24,11 @@ public class HelpArgument
     public static HelpArgument Default => new();
 
     /// <summary>
+    /// Standard prototype for the help argument.
+    /// </summary>
+    public static string StandardPrototype => "--help";
+
+    /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
     public Argument Argument { get; } = new(null, _prototypes, v => { }, isRequired: false, "Show Help Menu", exitIfUsed: true);
