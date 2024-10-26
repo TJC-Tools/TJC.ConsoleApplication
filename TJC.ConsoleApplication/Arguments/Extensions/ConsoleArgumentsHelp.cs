@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
+namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 internal static class ConsoleArgumentsHelp
 {
@@ -15,12 +15,13 @@ internal static class ConsoleArgumentsHelp
 
     #region Flags
 
-    internal static void WriteEnums<TEnum>(this IConsoleArguments arguments, EnumArgument<TEnum> enumArgument, string title)
+    internal static void WriteEnums<TEnum>(this EnumArgument<TEnum> enumArgument, string title, string argumentPrefix = "--")
         where TEnum : struct, Enum
     {
-        ConsoleOutputHandler.WriteLine(title);
+        ConsoleOutputHandler.WriteLine($"{title} {enumArgument.Argument.Description}");
+        var maxKebabWidth = Enum.GetValues<TEnum>().Max(x => x.ToString().ToKebabCase().Length);
         foreach (var enumItem in Enum.GetValues<TEnum>())
-            WriteLinesWithTitle($"  {enumItem.ToString().ToKebabCase()}", enumItem.Humanize());
+            WriteLinesWithTitle($"  {argumentPrefix}{enumItem.ToString().ToKebabCase().PadRight(maxKebabWidth)}", enumItem.Humanize());
     }
 
     #endregion
