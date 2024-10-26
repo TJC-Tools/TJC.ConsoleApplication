@@ -32,5 +32,5 @@ public interface IConsoleArguments : IEnumerable<Argument>
     /// Writes a help menu for the options.
     /// </summary>
     /// <param name="programName"></param>
-    void WriteHelp(string? programName = null);
+    void WriteGeneralHelp(string? programName = null);
 }

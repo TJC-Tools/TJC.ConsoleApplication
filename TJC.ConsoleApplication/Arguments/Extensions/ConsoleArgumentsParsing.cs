@@ -12,7 +12,7 @@ internal static class ConsoleArgumentsParsing
         arguments.ParseArguments(args, out var invalidArguments);
 
         if (HelpArgument.Instance.GetWriteGeneralHelp())
-            arguments.WriteHelp(programName);
+            arguments.WriteGeneralHelp(programName);
 
         if (arguments.Any(x => x is { IsUsed: true, ExitIfUsed: true }))
             EnvironmentEx.ExitCode(ExitCodes.Success);

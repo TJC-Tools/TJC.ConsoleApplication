@@ -188,7 +188,7 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
         ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
 
     /// <inheritdoc/>
-    public virtual void WriteHelp(string? programName = null)
+    public virtual void WriteGeneralHelp(string? programName = null)
     {
         ConsoleOutputHandler.Silent = false;
         this.WriteUsage(programName);
