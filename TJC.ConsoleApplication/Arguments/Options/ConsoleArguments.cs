@@ -1,7 +1,7 @@
 namespace TJC.ConsoleApplication.Arguments.Options;
 
 /// <summary>
-/// Console arguments to be parsed in <seealso cref="ConsoleArgumentsParsing"/> at program startup.
+/// Console arguments to be parsed at program startup.
 /// </summary>
 public class ConsoleArguments : List<Argument>, IConsoleArguments
 {
