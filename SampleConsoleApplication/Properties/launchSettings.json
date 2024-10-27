@@ -22,6 +22,10 @@
     "Program Details": {
       "commandName": "Project",
       "commandLineArgs": "--version\r\n--copyright\r\n--license\r\n--changelog"
+    },
+    "License": {
+      "commandName": "Project",
+      "commandLineArgs": "--license"
     }
   }
 }
