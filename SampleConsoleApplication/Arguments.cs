@@ -30,12 +30,12 @@ internal class Arguments
         { "item2", v => Item2 = v, "Example Item 2" }
     };
 
-    // Create the arguments options for this application
+    // Create the arguments options for this application (with command type enum)
     internal static ConsoleArgumentsWithCommand<CommandTypes> ConsoleArgumentsWithCommand =>
         new(getCommandHelp: CommandExtensions.GetCommandHelp, flagRequired: true, logParsedOptions: false)
     {
         DryRun, Version, Copyright, License, Changelog,
-        { "item1", v => Item1 = !string.IsNullOrEmpty(v), "Example Item 1" },
-        { "item2", v => Item2 = v, "Example Item 2" }
+        { "item1", v => Item1 = !string.IsNullOrEmpty(v), "Example Flag 1" },
+        { "item2", v => Item2 = v, "Example Flag 2" }
     };
 }
