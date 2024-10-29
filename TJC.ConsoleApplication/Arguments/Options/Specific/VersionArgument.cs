@@ -21,14 +21,11 @@ public class VersionArgument(
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
     public Argument Argument { get; } = new Argument(null, Prototype, v => Execute(),
-        isRequired: false,
-        description: description,
-        exitIfUsed: exitIfUsed);
+        isRequired: false, description: description, exitIfUsed: exitIfUsed);
 
     private static void Execute()
     {
-        var assembly = Assembly.GetEntryAssembly();
-        var assemblyName = assembly?.GetName();
+        var assemblyName = Assembly.GetEntryAssembly()?.GetName();
         ConsoleOutputHandler.WriteLine($"v{assemblyName?.Version}");
     }
 }
