@@ -24,13 +24,13 @@ public class VersionArgument(
         new Argument(
             null,
             Prototype,
-            v => Execute(),
+            v => WriteVersionNumber(),
             isRequired: false,
             description: description,
             exitIfUsed: exitIfUsed
         );
 
-    private static void Execute()
+    private static void WriteVersionNumber()
     {
         var assemblyName = Assembly.GetEntryAssembly()?.GetName();
         ConsoleOutputHandler.WriteLine($"v{assemblyName?.Version}");

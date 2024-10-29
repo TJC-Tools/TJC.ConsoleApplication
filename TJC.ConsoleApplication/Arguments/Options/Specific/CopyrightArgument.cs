@@ -27,13 +27,13 @@ public class CopyrightArgument(
         new Argument(
             null,
             Prototype,
-            v => Execute(),
+            v => WriteCopyright(),
             isRequired: false,
             description: description,
             exitIfUsed: exitIfUsed
         );
 
-    private static void Execute()
+    private static void WriteCopyright()
     {
         var copyright = Assembly
             .GetEntryAssembly()
