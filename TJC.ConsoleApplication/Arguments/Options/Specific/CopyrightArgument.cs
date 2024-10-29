@@ -10,8 +10,8 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// <param name="exitIfUsed"></param>
 public class CopyrightArgument(
     string description = "Print the copyright of the application",
-    bool exitIfUsed = true)
-    : ICustomArgument
+    bool exitIfUsed = true
+) : ICustomArgument
 {
     private const string Prototype = "copyright";
 
@@ -23,15 +23,21 @@ public class CopyrightArgument(
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public Argument Argument { get; } = new Argument(null, Prototype, v => Execute(),
-        isRequired: false,
-        description: description,
-        exitIfUsed: exitIfUsed);
+    public Argument Argument { get; } =
+        new Argument(
+            null,
+            Prototype,
+            v => WriteCopyright(),
+            isRequired: false,
+            description: description,
+            exitIfUsed: exitIfUsed
+        );
 
-    private static void Execute()
+    private static void WriteCopyright()
     {
-        var assembly = Assembly.GetEntryAssembly();
-        var copyright = assembly?.GetCopyright(replaceCopyrightSymbolWithC: true);
+        var copyright = Assembly
+            .GetEntryAssembly()
+            ?.GetCopyright(replaceCopyrightSymbolWithC: true);
         ConsoleOutputHandler.WriteLine($"{copyright}");
     }
 }

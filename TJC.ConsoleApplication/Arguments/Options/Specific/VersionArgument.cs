@@ -7,8 +7,8 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// </summary>
 public class VersionArgument(
     string description = "Print the version number of the application",
-    bool exitIfUsed = true)
-    : ICustomArgument
+    bool exitIfUsed = true
+) : ICustomArgument
 {
     private const string Prototype = "version|ver";
 
@@ -20,15 +20,19 @@ public class VersionArgument(
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public Argument Argument { get; } = new Argument(null, Prototype, v => Execute(),
-        isRequired: false,
-        description: description,
-        exitIfUsed: exitIfUsed);
+    public Argument Argument { get; } =
+        new Argument(
+            null,
+            Prototype,
+            v => WriteVersionNumber(),
+            isRequired: false,
+            description: description,
+            exitIfUsed: exitIfUsed
+        );
 
-    private static void Execute()
+    private static void WriteVersionNumber()
     {
-        var assembly = Assembly.GetEntryAssembly();
-        var assemblyName = assembly?.GetName();
+        var assemblyName = Assembly.GetEntryAssembly()?.GetName();
         ConsoleOutputHandler.WriteLine($"v{assemblyName?.Version}");
     }
 }
