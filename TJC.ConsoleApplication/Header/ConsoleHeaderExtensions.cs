@@ -12,8 +12,7 @@ public static class ConsoleHeaderExtensions
     /// <summary>
     /// Write the header for the calling assembly.
     /// </summary>
-    public static void WriteHeader() =>
-        Assembly.GetCallingAssembly().WriteHeader();
+    public static void WriteHeader() => Assembly.GetCallingAssembly().WriteHeader();
 
     /// <summary>
     /// Write the header for the assembly.

@@ -4,10 +4,16 @@ internal static class ConsoleArgumentsHelp
 {
     #region Usage
 
-    internal static void WriteUsage(this IEnumerable<Argument> arguments, string? programName, string? command = null)
+    internal static void WriteUsage(
+        this IEnumerable<Argument> arguments,
+        string? programName,
+        string? command = null
+    )
     {
         ConsoleOutputHandler.WriteLine("Usage:");
-        var options = command ?? $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}";
+        var options =
+            command
+            ?? $"{arguments.Aggregate(string.Empty, (c, opt) => c + $"[{opt.GetHelpString()}] ").Trim()}";
         WriteLinesWithTitle($"  {programName}", options);
     }
 
@@ -15,13 +21,20 @@ internal static class ConsoleArgumentsHelp
 
     #region Enums
 
-    internal static void WriteEnums<TEnum>(this EnumArgument<TEnum> enumArgument, string title, string argumentPrefix = "--")
+    internal static void WriteEnums<TEnum>(
+        this EnumArgument<TEnum> enumArgument,
+        string title,
+        string argumentPrefix = "--"
+    )
         where TEnum : struct, Enum
     {
         ConsoleOutputHandler.WriteLine($"{title} {enumArgument.Argument.Description}");
         var maxKebabWidth = Enum.GetValues<TEnum>().Max(x => x.ToString().ToKebabCase().Length);
         foreach (var enumItem in Enum.GetValues<TEnum>())
-            WriteLinesWithTitle($"  {argumentPrefix}{enumItem.ToString().ToKebabCase().PadRight(maxKebabWidth)}", enumItem.Humanize());
+            WriteLinesWithTitle(
+                $"  {argumentPrefix}{enumItem.ToString().ToKebabCase().PadRight(maxKebabWidth)}",
+                enumItem.Humanize()
+            );
     }
 
     #endregion
@@ -36,7 +49,8 @@ internal static class ConsoleArgumentsHelp
         foreach (var argument in arguments)
             WriteLinesWithTitle(
                 $"  {argument.GetHelpString(formatted: true, maxPrototypeWidth, maxPropertyWidth)}",
-                argument.GetHelpDescription(arguments));
+                argument.GetHelpDescription(arguments)
+            );
     }
 
     #endregion
@@ -47,10 +61,15 @@ internal static class ConsoleArgumentsHelp
         this Argument argument,
         bool formatted = false,
         int prototypeWidth = 0,
-        int propertyWidth = 0)
+        int propertyWidth = 0
+    )
     {
-        var prototype = formatted ? argument.GetPrototypeHelpStringFormatted() : argument.GetPrototypeHelpString();
-        var property = string.IsNullOrWhiteSpace(argument.PropertyName) ? string.Empty : $" {argument.PropertyName}";
+        var prototype = formatted
+            ? argument.GetPrototypeHelpStringFormatted()
+            : argument.GetPrototypeHelpString();
+        var property = string.IsNullOrWhiteSpace(argument.PropertyName)
+            ? string.Empty
+            : $" {argument.PropertyName}";
         if (formatted)
         {
             prototype = prototype.PadRight(prototypeWidth);
@@ -67,11 +86,11 @@ internal static class ConsoleArgumentsHelp
         var prototype = string.Empty;
         var flags = argument.Prototype.TrimEnd('=').TrimEnd(':').Split('|');
 
-        // Single character flag is at the start with single dash (-) and a comma (,) separator 
+        // Single character flag is at the start with single dash (-) and a comma (,) separator
         var singleCharFlag = flags.FirstOrDefault(x => x.Length == 1);
         var part1 = singleCharFlag == null ? new string(' ', 3) : $"-{singleCharFlag},";
 
-        // Other flags are at the end with double dash (--) and a pipe (|) separator 
+        // Other flags are at the end with double dash (--) and a pipe (|) separator
         var otherFlags = flags.Where(x => x != singleCharFlag).ToList();
         var part2 = string.Join('|', otherFlags);
 
@@ -86,7 +105,7 @@ internal static class ConsoleArgumentsHelp
             null when parent.FlagRequired || parent.FlagOptional => "(Sometimes Required) ",
             true when parent.FlagRequired => "(Required) ",
             false when parent.FlagOptional => "(Optional) ",
-            _ => string.Empty
+            _ => string.Empty,
         };
         return string.Concat(flags, argument.Description);
     }

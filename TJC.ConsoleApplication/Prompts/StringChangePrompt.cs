@@ -18,8 +18,10 @@ public partial class ConsolePrompt
     /// <returns></returns>
     public static string GetStringChange(string message, string value)
     {
-        if (string.IsNullOrEmpty(value)
-         || GetYesNo($"Do you want to change {message} from [{value}]?"))
+        if (
+            string.IsNullOrEmpty(value)
+            || GetYesNo($"Do you want to change {message} from [{value}]?")
+        )
             return GetString(message);
         return value;
     }

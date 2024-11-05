@@ -7,5 +7,5 @@ internal enum DemoItems
     Numbers,
     Strings,
     Collection,
-    Choices
+    Choices,
 }

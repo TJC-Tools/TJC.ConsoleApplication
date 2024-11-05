@@ -37,7 +37,7 @@ ConsoleSetup.SetupSilent();
 
 ## Header
 
-### [ConsoleHeaderExtensions.WriteConsoleHeader](./TJC.ConsoleApplication/Header/ConsoleHeaderExtensions.cs)();
+### [ConsoleHeaderExtensions.WriteConsoleHeader](./TJC.ConsoleApplication/Header/ConsoleHeaderExtensions.cs)()
 - Will write a header to the console with the application title, version, copyright, & description.
 - Note: This is built into [ConsoleSetup.Setup()](./TJC.ConsoleApplication/ConsoleSetup.cs) by default.
 

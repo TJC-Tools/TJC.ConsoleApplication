@@ -10,7 +10,12 @@ public partial class ConsolePrompt
     /// <param name="current"></param>
     /// <param name="defaultChoice"></param>
     /// <param name="offset"></param>
-    public static void GetChoiceChange<T>(string message, ref T current, T? defaultChoice = null, int offset = 1)
+    public static void GetChoiceChange<T>(
+        string message,
+        ref T current,
+        T? defaultChoice = null,
+        int offset = 1
+    )
         where T : struct, Enum =>
         current = GetChoiceChange(message, current: current, defaultChoice: defaultChoice, offset);
 
@@ -23,7 +28,12 @@ public partial class ConsolePrompt
     /// <param name="defaultChoice"></param>
     /// <param name="offset"></param>
     /// <returns></returns>
-    public static T GetChoiceChange<T>(string message, T current, T? defaultChoice = null, int offset = 1)
+    public static T GetChoiceChange<T>(
+        string message,
+        T current,
+        T? defaultChoice = null,
+        int offset = 1
+    )
         where T : struct, Enum
     {
         if (!current.Equals(defaultChoice) && !GetYesNo($"Change {message} from [{current}]?"))

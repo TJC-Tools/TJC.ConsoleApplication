@@ -24,22 +24,17 @@ public class Argument : Option
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
-    public Argument(IConsoleArguments? parent,
-                    string prototype,
-                    Action<string> action,
-                    bool? isRequired = false,
-                    string? description = null,
-                    string? propertyName = null,
-                    bool exitIfUsed = true)
-        : this(parent,
-              prototype,
-              action,
-              () => isRequired,
-              description,
-              propertyName,
-              exitIfUsed)
-    {
-    }
+    public Argument(
+        IConsoleArguments? parent,
+        string prototype,
+        Action<string> action,
+        bool? isRequired = false,
+        string? description = null,
+        string? propertyName = null,
+        bool exitIfUsed = true
+    )
+        : this(parent, prototype, action, () => isRequired, description, propertyName, exitIfUsed)
+    { }
 
     /// <summary>
     /// Base constructor an argument.
@@ -51,13 +46,15 @@ public class Argument : Option
     /// <param name="description"></param>
     /// <param name="propertyName"></param>
     /// <param name="exitIfUsed"></param>
-    public Argument(IConsoleArguments? parent,
-                    string prototype,
-                    Action<string> action,
-                    Func<bool?>? getIsRequired = null,
-                    string? description = null,
-                    string? propertyName = null,
-                    bool exitIfUsed = true)
+    public Argument(
+        IConsoleArguments? parent,
+        string prototype,
+        Action<string> action,
+        Func<bool?>? getIsRequired = null,
+        string? description = null,
+        string? propertyName = null,
+        bool exitIfUsed = true
+    )
         : base(prototype, description)
     {
         _parent = parent;
@@ -80,8 +77,7 @@ public class Argument : Option
     /// <summary>
     /// This argument is required.
     /// </summary>
-    public bool? IsRequired =>
-        _getIsRequired?.Invoke();
+    public bool? IsRequired => _getIsRequired?.Invoke();
 
     /// <summary>
     /// This argument was selected.
@@ -93,11 +89,9 @@ public class Argument : Option
     /// </summary>
     public bool ExitIfUsed { get; set; }
 
-
     internal readonly Action<string> Action;
 
-    internal bool HasParent =>
-        _parent != null;
+    internal bool HasParent => _parent != null;
 
     #endregion
 
@@ -125,9 +119,7 @@ public class Argument : Option
     /// Event on parse complete.
     /// </summary>
     /// <param name="c"></param>
-    protected override void OnParseComplete(OptionContext c)
-    {
-    }
+    protected override void OnParseComplete(OptionContext c) { }
 
     #endregion
 }

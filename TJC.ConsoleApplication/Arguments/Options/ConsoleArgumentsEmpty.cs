@@ -14,5 +14,6 @@ public static class ConsoleArgumentsEmpty
     public static void Parse(string[] args) =>
         _consoleArguments.ParseAndValidate(args, Assembly.GetCallingAssembly().GetName().Name);
 
-    private static readonly ConsoleArguments _consoleArguments = new(flagOptional: true, logParsedOptions: true);
+    private static readonly ConsoleArguments _consoleArguments =
+        new(flagOptional: true, logParsedOptions: true);
 }
