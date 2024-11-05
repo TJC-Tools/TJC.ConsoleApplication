@@ -5,7 +5,10 @@
 /// </summary>
 public partial class ConsolePrompt
 {
-    private static void WriteInvalidInput(bool inputIsReadKey = false, string? additionalDetails = null)
+    private static void WriteInvalidInput(
+        bool inputIsReadKey = false,
+        string? additionalDetails = null
+    )
     {
         if (inputIsReadKey)
             ConsoleOutputHandler.Empty();

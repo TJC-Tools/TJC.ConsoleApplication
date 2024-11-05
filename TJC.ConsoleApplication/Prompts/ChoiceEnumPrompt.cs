@@ -11,9 +11,14 @@ public partial class ConsolePrompt
     /// <param name="offset"></param>
     /// <returns></returns>
     public static T? GetChoiceDone<T>(string message, string defaultOption = "Done", int offset = 0)
-       where T : struct, Enum
+        where T : struct, Enum
     {
-        var choice = GetChoice<T>(message: message, defaultOption: defaultOption, offset: offset, out var defaultOptionSelected);
+        var choice = GetChoice<T>(
+            message: message,
+            defaultOption: defaultOption,
+            offset: offset,
+            out var defaultOptionSelected
+        );
         // If the default option was selected, return null, else return the selected option
         return defaultOptionSelected ? null : choice;
     }
@@ -26,7 +31,7 @@ public partial class ConsolePrompt
     /// <param name="offset"></param>
     /// <returns></returns>
     public static T GetChoice<T>(string message, int offset = 1)
-       where T : Enum
+        where T : Enum
     {
         while (true)
         {
@@ -45,7 +50,12 @@ public partial class ConsolePrompt
     /// <param name="offset"></param>
     /// <param name="defaultOptionSelected"></param>
     /// <returns></returns>
-    public static T? GetChoice<T>(string message, string? defaultOption, int offset, out bool defaultOptionSelected)
+    public static T? GetChoice<T>(
+        string message,
+        string? defaultOption,
+        int offset,
+        out bool defaultOptionSelected
+    )
         where T : Enum
     {
         var options = new List<string>();
@@ -66,7 +76,8 @@ public partial class ConsolePrompt
         while (true)
         {
             // Prompt the user to select an option, and get the index of the selected option
-            var index = GetChoiceIndex(message, options, offset: offset) - (hasDefaultOption ? 1 : 0);
+            var index =
+                GetChoiceIndex(message, options, offset: offset) - (hasDefaultOption ? 1 : 0);
 
             // Try to parse the selected index to an enum value
             Enum.TryParse(typeof(T), index.ToString(), out var result);

@@ -6,8 +6,7 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// <summary>
 /// This argument is intended to print the changelog of the application.
 /// </summary>
-public class ChangelogArgument
-    : ICustomArgument
+public class ChangelogArgument : ICustomArgument
 {
     private const string Prototype = "changelog";
 
@@ -28,16 +27,22 @@ public class ChangelogArgument
     /// <param name="includeHeader"></param>
     /// <param name="includeUnreleasedSection"></param>
     /// <param name="includePaths"></param>
-    public ChangelogArgument(string description = "Print the changelog of the application",
-                             bool exitIfUsed = true,
-                             bool includeHeader = false,
-                             bool includeUnreleasedSection = false,
-                             bool includePaths = false)
+    public ChangelogArgument(
+        string description = "Print the changelog of the application",
+        bool exitIfUsed = true,
+        bool includeHeader = false,
+        bool includeUnreleasedSection = false,
+        bool includePaths = false
+    )
     {
-        Argument = new Argument(null, Prototype, v => Execute(),
-        isRequired: false,
-        description: description,
-        exitIfUsed: exitIfUsed);
+        Argument = new Argument(
+            null,
+            Prototype,
+            v => Execute(),
+            isRequired: false,
+            description: description,
+            exitIfUsed: exitIfUsed
+        );
 
         _includeHeader = includeHeader;
         _includeUnreleasedSection = includeUnreleasedSection;
@@ -55,7 +60,8 @@ public class ChangelogArgument
         var changelog = assembly?.GetChangelog(
             includeHeader: _includeHeader,
             includeUnreleasedSection: _includeUnreleasedSection,
-            includePaths: _includePaths);
+            includePaths: _includePaths
+        );
         ConsoleOutputHandler.WriteLine($"{changelog}");
     }
 }

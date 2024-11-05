@@ -1,7 +1,7 @@
-﻿global using SampleConsoleApplication;
-global using SampleConsoleApplication.Enums;
-global using System.Diagnostics;
+﻿global using System.Diagnostics;
 global using System.Reflection;
+global using SampleConsoleApplication;
+global using SampleConsoleApplication.Enums;
 global using TJC.ConsoleApplication;
 global using TJC.ConsoleApplication.Arguments.Extensions;
 global using TJC.ConsoleApplication.Arguments.Options;
