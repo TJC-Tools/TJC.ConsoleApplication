@@ -9,7 +9,10 @@ public partial class ConsolePrompt
     /// <param name="message"></param>
     /// <param name="messageIndividual"></param>
     /// <returns></returns>
-    public static ICollection<T> GetCollectionEnum<T>(string message, string? messageIndividual = null)
+    public static ICollection<T> GetCollectionEnum<T>(
+        string message,
+        string? messageIndividual = null
+    )
         where T : struct, Enum
     {
         var list = new List<T>();

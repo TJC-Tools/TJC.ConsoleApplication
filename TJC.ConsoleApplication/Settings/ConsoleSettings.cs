@@ -65,8 +65,7 @@ public class ConsoleSettings : SingletonBase<ConsoleSettings>
     /// Set the instance of the console settings.
     /// </summary>
     /// <param name="settings"></param>
-    public static void SetInstance(ConsoleSettings settings) =>
-        SetBaseInstance(settings);
+    public static void SetInstance(ConsoleSettings settings) => SetBaseInstance(settings);
 
     #endregion
 }

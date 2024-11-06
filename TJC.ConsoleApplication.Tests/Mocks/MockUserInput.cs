@@ -10,7 +10,7 @@ internal static class MockUserInput
 
     private static readonly Queue<string> _lines = new();
 
-    private static readonly Queue<int> _nums = new();
+    private static readonly Queue<int> _numbers = new();
 
     #endregion
 
@@ -33,7 +33,7 @@ internal static class MockUserInput
     {
         _keys.Clear();
         _lines.Clear();
-        _nums.Clear();
+        _numbers.Clear();
     }
 
     #endregion
@@ -52,7 +52,7 @@ internal static class MockUserInput
 
     public static void QueueNum(int num)
     {
-        _nums.Enqueue(num);
+        _numbers.Enqueue(num);
     }
 
     #endregion
@@ -75,7 +75,7 @@ internal static class MockUserInput
 
     private static int MockUserEntersInt()
     {
-        var num = _nums.Dequeue();
+        var num = _numbers.Dequeue();
         ConsoleOutputHandler.WriteLine($"{num}");
         return num;
     }

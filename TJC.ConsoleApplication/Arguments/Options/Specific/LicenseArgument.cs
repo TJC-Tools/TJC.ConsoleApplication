@@ -9,8 +9,11 @@ namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 /// <param name="description"></param>
 /// <param name="exitIfUsed"></param>
 /// <param name="includeThirdPartyLicenses"></param>
-public class LicenseArgument(string description = "Print the license of the application", bool exitIfUsed = true, bool includeThirdPartyLicenses = true)
-    : ICustomArgument
+public class LicenseArgument(
+    string description = "Print the license of the application",
+    bool exitIfUsed = true,
+    bool includeThirdPartyLicenses = true
+) : ICustomArgument
 {
     private const string Prototype = "license";
 
@@ -22,10 +25,15 @@ public class LicenseArgument(string description = "Print the license of the appl
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.
     /// </summary>
-    public Argument Argument { get; } = new Argument(null, Prototype, v => Execute(includeThirdPartyLicenses),
-        isRequired: false,
-        description: description,
-        exitIfUsed: exitIfUsed);
+    public Argument Argument { get; } =
+        new Argument(
+            null,
+            Prototype,
+            v => Execute(includeThirdPartyLicenses),
+            isRequired: false,
+            description: description,
+            exitIfUsed: exitIfUsed
+        );
 
     private static void Execute(bool includeThirdPartyLicenses)
     {

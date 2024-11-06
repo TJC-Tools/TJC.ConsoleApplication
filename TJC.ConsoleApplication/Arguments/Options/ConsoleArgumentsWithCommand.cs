@@ -5,8 +5,7 @@ namespace TJC.ConsoleApplication.Arguments.Options;
 /// <para></para>
 /// This requires a command enum to be the first argument.
 /// </summary>
-public class ConsoleArgumentsWithCommand<TCommandEnum>
-    : ConsoleArguments
+public class ConsoleArgumentsWithCommand<TCommandEnum> : ConsoleArguments
     where TCommandEnum : struct, Enum
 {
     #region Fields
@@ -31,11 +30,15 @@ public class ConsoleArgumentsWithCommand<TCommandEnum>
         Func<TCommandEnum, string>? getCommandHelp = null,
         bool flagRequired = false,
         bool flagOptional = false,
-        bool logParsedOptions = false)
+        bool logParsedOptions = false
+    )
         : base(flagRequired, flagOptional, logParsedOptions)
     {
         _getCommandHelp = getCommandHelp;
-        _commandArgument = new EnumArgument<TCommandEnum>(description: string.Empty, isRequired: commandRequired);
+        _commandArgument = new EnumArgument<TCommandEnum>(
+            description: string.Empty,
+            isRequired: commandRequired
+        );
 
         // Disable general help, so that the command specific help can be displayed instead
         HelpArgument.Instance.OptionWriteGeneralHelp = false;
@@ -56,7 +59,11 @@ public class ConsoleArgumentsWithCommand<TCommandEnum>
     #region Methods
 
     /// <inheritdoc/>
-    public override void ParseAndValidate(string[] args, string? programName = null, bool exitOnFailureToParse = true)
+    public override void ParseAndValidate(
+        string[] args,
+        string? programName = null,
+        bool exitOnFailureToParse = true
+    )
     {
         // Parse the command
         if (ParseCommand(args))
@@ -81,7 +88,11 @@ public class ConsoleArgumentsWithCommand<TCommandEnum>
             return false; // First argument is not a command
 
         // Try to parse the command
-        ConsoleArgumentsParsing.ParseArguments([_commandArgument.Argument], [$"--{args[0]}"], out _);
+        ConsoleArgumentsParsing.ParseArguments(
+            [_commandArgument.Argument],
+            [$"--{args[0]}"],
+            out _
+        );
         return Command != null;
     }
 
@@ -123,7 +134,9 @@ public class ConsoleArgumentsWithCommand<TCommandEnum>
         if (_getCommandHelp != null)
         {
             ConsoleOutputHandler.Empty();
-            ConsoleOutputHandler.WriteLine($"Use \"{programName} [command] {HelpArgument.StandardPrototype}\" for more information about a command.");
+            ConsoleOutputHandler.WriteLine(
+                $"Use \"{programName} [command] {HelpArgument.StandardPrototype}\" for more information about a command."
+            );
         }
     }
 

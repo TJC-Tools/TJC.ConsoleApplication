@@ -12,10 +12,16 @@ public partial class ConsolePrompt
     /// <param name="func">Used to convert from user input (string) to the desired type</param>
     /// <param name="messageIndividual">Prompt before each item in the collection</param>
     /// <returns></returns>
-    public static ICollection<T> GetCollection<T>(string message, Func<string?, T> func, string messageIndividual = "")
+    public static ICollection<T> GetCollection<T>(
+        string message,
+        Func<string?, T> func,
+        string messageIndividual = ""
+    )
     {
         var collection = new Collection<T>();
-        ConsoleOutputHandler.WriteLine($"{message} (press enter after each item | press enter on an empty line to complete the list): ");
+        ConsoleOutputHandler.WriteLine(
+            $"{message} (press enter after each item | press enter on an empty line to complete the list): "
+        );
         while (true)
         {
             if (!string.IsNullOrEmpty(messageIndividual))
@@ -41,8 +47,10 @@ public partial class ConsolePrompt
     /// <param name="message"></param>
     /// <param name="messageIndividual"></param>
     /// <returns></returns>
-    public static ICollection<string> GetCollection(string message, string messageIndividual = "") =>
-        GetCollection(message, x => $"{x}", messageIndividual);
+    public static ICollection<string> GetCollection(
+        string message,
+        string messageIndividual = ""
+    ) => GetCollection(message, x => $"{x}", messageIndividual);
 
     /// <summary>
     /// Prompt for collection of integers.
@@ -50,8 +58,10 @@ public partial class ConsolePrompt
     /// <param name="message"></param>
     /// <param name="messageIndividual"></param>
     /// <returns></returns>
-    public static ICollection<int> GetCollectionInt(string message, string messageIndividual = "") =>
-        GetCollection(message, Convert.ToInt32, messageIndividual);
+    public static ICollection<int> GetCollectionInt(
+        string message,
+        string messageIndividual = ""
+    ) => GetCollection(message, Convert.ToInt32, messageIndividual);
 
     /// <summary>
     /// Prompt for collection of doubles.
@@ -59,6 +69,8 @@ public partial class ConsolePrompt
     /// <param name="message"></param>
     /// <param name="messageIndividual"></param>
     /// <returns></returns>
-    public static ICollection<double> GetCollectionDouble(string message, string messageIndividual = "") =>
-        GetCollection(message, Convert.ToDouble, messageIndividual);
+    public static ICollection<double> GetCollectionDouble(
+        string message,
+        string messageIndividual = ""
+    ) => GetCollection(message, Convert.ToDouble, messageIndividual);
 }

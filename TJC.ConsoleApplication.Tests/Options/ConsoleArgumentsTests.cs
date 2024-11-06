@@ -14,14 +14,18 @@ namespace TJC.ConsoleApplication.Tests.Options
             {
                 DryRunArgument.Default,
                 ChangelogArgument.Default,
-                LicenseArgument.Default
+                LicenseArgument.Default,
             };
 
             // Act
             var result = arguments.Count;
 
             // Assert
-            Assert.AreEqual(4, result, $"4 Arguments are expected, because 3 were added, and {nameof(HelpArgument)} is always present.");
+            Assert.AreEqual(
+                4,
+                result,
+                $"4 Arguments are expected, because 3 were added, and {nameof(HelpArgument)} is always present."
+            );
         }
 
         [TestMethod]
@@ -32,7 +36,7 @@ namespace TJC.ConsoleApplication.Tests.Options
             {
                 DryRunArgument.Default,
                 ChangelogArgument.Default,
-                LicenseArgument.Default
+                LicenseArgument.Default,
             };
 
             // Act

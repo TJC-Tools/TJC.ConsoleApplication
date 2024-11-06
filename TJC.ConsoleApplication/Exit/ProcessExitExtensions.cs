@@ -31,17 +31,21 @@ public static class ProcessExitExtensions
             OnProcessExit(startTime, assembly.GetName().Name, HelpArgument.StandardPrototype);
     }
 
-    private static void OnProcessExit(DateTime startTime,
-                                      string? programName = null,
-                                      string? helpOption = null)
+    private static void OnProcessExit(
+        DateTime startTime,
+        string? programName = null,
+        string? helpOption = null
+    )
     {
         OnProcessExit<ExitCodes>(startTime, programName, helpOption);
         FinalExit();
     }
 
-    private static void OnProcessExit<T>(DateTime startTime,
-                                         string? programName = null,
-                                         string? helpOption = null)
+    private static void OnProcessExit<T>(
+        DateTime startTime,
+        string? programName = null,
+        string? helpOption = null
+    )
         where T : Enum
     {
         var runtime = (DateTime.Now - startTime).GetElapsedTime();
@@ -63,8 +67,10 @@ public static class ProcessExitExtensions
             ConsoleOutputHandler.Empty();
             ConsoleOutputHandler.WriteLine($"Failed [Run Time: {runtime}]");
             ConsoleOutputHandler.Empty();
-            var processName = $"Process{(string.IsNullOrEmpty(programName) ? string.Empty : $" [{programName}]")}";
-            var exitCode = $"[{Environment.ExitCode}] [{Enum.ToObject(typeof(T), Environment.ExitCode)}]";
+            var processName =
+                $"Process{(string.IsNullOrEmpty(programName) ? string.Empty : $" [{programName}]")}";
+            var exitCode =
+                $"[{Environment.ExitCode}] [{Enum.ToObject(typeof(T), Environment.ExitCode)}]";
             ConsoleOutputHandler.WriteLine($"{processName} exited with code {exitCode}");
         }
 

@@ -11,7 +11,7 @@ internal static class CommandExtensions
             CommandTypes.Validate => "This is the help for Validate.",
             CommandTypes.GenerateValue => "This is the help for Generate Value.",
             CommandTypes.ListItems => "This is the help for List Items.",
-            _ => string.Empty
+            _ => string.Empty,
         };
     }
 }

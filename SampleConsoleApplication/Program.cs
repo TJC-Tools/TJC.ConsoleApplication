@@ -7,6 +7,7 @@ ConsoleSetup.Setup();
 // Parse Arguments
 //Arguments.Parse(args);
 Arguments.ParseWithCommand(args);
+
 // ConsoleArgumentsEmpty.Parse(args); // For parsing when no arguments are expected
 
 while (true)

@@ -22,9 +22,13 @@ public partial class ConsolePrompt
     public static int GetChoiceIndex(string message, List<string> choices, int offset = 1)
     {
         var numPadding = choices.Count.ToString().Length;
-        var optionsWithNumbers = choices.Select(x => $"{(choices.IndexOf(x) + offset).ToString().PadLeft(numPadding)}. {x}");
+        var optionsWithNumbers = choices.Select(x =>
+            $"{(choices.IndexOf(x) + offset).ToString().PadLeft(numPadding)}. {x}"
+        );
         ConsoleOutputHandler.WriteLine(message);
-        ConsoleOutputHandler.WriteLine($"\t{string.Join($"{Environment.NewLine}\t", optionsWithNumbers)}{Environment.NewLine}");
+        ConsoleOutputHandler.WriteLine(
+            $"\t{string.Join($"{Environment.NewLine}\t", optionsWithNumbers)}{Environment.NewLine}"
+        );
         while (true)
         {
             ConsoleOutputHandler.Write("Choice: ");

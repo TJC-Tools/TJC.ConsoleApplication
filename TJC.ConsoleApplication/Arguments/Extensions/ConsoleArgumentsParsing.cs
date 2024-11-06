@@ -2,10 +2,12 @@
 
 internal static class ConsoleArgumentsParsing
 {
-    internal static void ParseAndValidate(IConsoleArguments arguments,
-                                          string[] args,
-                                          string? programName,
-                                          bool exitOnFailureToParse)
+    internal static void ParseAndValidate(
+        IConsoleArguments arguments,
+        string[] args,
+        string? programName,
+        bool exitOnFailureToParse
+    )
     {
         if (arguments.LogParsedOptions && args.Length > 0)
             ConsoleOutputHandler.WriteLine("Parse Arguments:");
@@ -36,7 +38,11 @@ internal static class ConsoleArgumentsParsing
     /// <exception cref="OptionException">E.g. If an no value was supplied to a non-boolean argument</exception>
     /// <exception cref="Exception">Unknown Exception Types</exception>
     /// <returns></returns>
-    internal static void ParseArguments(this IEnumerable<Argument> arguments, IEnumerable<string> args, out List<string> invalidArguments)
+    internal static void ParseArguments(
+        this IEnumerable<Argument> arguments,
+        IEnumerable<string> args,
+        out List<string> invalidArguments
+    )
     {
         try
         {
@@ -64,7 +70,9 @@ internal static class ConsoleArgumentsParsing
         if (invalidArguments.Count == 0)
             return false;
         var argStr = string.Join(", ", invalidArguments);
-        ConsoleOutputHandler.WriteLine($"Invalid {"argument".Pluralize(invalidArguments)}: [{argStr}]");
+        ConsoleOutputHandler.WriteLine(
+            $"Invalid {"argument".Pluralize(invalidArguments)}: [{argStr}]"
+        );
         return true;
     }
 
@@ -79,7 +87,9 @@ internal static class ConsoleArgumentsParsing
         if (missingArguments.Count == 0)
             return false;
         var argStr = string.Join(", ", missingArguments.Select(x => x.GetPrototypeHelpString()));
-        ConsoleOutputHandler.WriteLine($"Missing {"argument".Pluralize(missingArguments)}: [{argStr}]");
+        ConsoleOutputHandler.WriteLine(
+            $"Missing {"argument".Pluralize(missingArguments)}: [{argStr}]"
+        );
         return true;
     }
 }
