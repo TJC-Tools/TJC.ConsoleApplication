@@ -30,7 +30,7 @@ public class YesNoPromptTests : InputTestsBaseClass
     }
 
     [TestMethod]
-    public void GetYesNo_ResponseQWERTYN_ReturnsTrue()
+    public void GetYesNo_ResponseCharacters_ReturnsTrue()
     {
         // Arrange
         MockUserInput.QueueKey(ConsoleKey.Q);
