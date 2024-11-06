@@ -39,7 +39,8 @@ internal class Arguments
 
     // Create the arguments options for this application (with command type enum)
     internal static ConsoleArgumentsWithCommand<CommandTypes> ConsoleArgumentsWithCommand =>
-        new(getCommandHelp: CommandExtensions.GetCommandHelp,
+        new(
+            getCommandHelp: CommandExtensions.GetCommandHelp,
             flagRequired: true,
             logParsedOptions: false
         )

@@ -4,8 +4,7 @@
 /// Enum argument to be used in the <seealso cref="ConsoleArguments"/>.
 /// </summary>
 /// <typeparam name="TEnum"></typeparam>
-public class EnumArgument<TEnum>
-    : ICustomArgument
+public class EnumArgument<TEnum> : ICustomArgument
     where TEnum : struct, Enum
 {
     private readonly Dictionary<string, TEnum> _commandConversion = [];
@@ -16,15 +15,25 @@ public class EnumArgument<TEnum>
     /// <param name="description"></param>
     /// <param name="isRequired"></param>
     /// <param name="exitIfUsed"></param>
-    public EnumArgument(string description = "Select enum value", bool isRequired = false, bool exitIfUsed = false)
+    public EnumArgument(
+        string description = "Select enum value",
+        bool isRequired = false,
+        bool exitIfUsed = false
+    )
     {
         foreach (var value in Enum.GetValues<TEnum>())
             _commandConversion.Add(value.ToString().ToKebabCase(), value);
-        Argument = new(null, Prototype, SetSelectedValue, isRequired: isRequired, description: description, exitIfUsed: exitIfUsed);
+        Argument = new(
+            null,
+            Prototype,
+            SetSelectedValue,
+            isRequired: isRequired,
+            description: description,
+            exitIfUsed: exitIfUsed
+        );
     }
 
-    private string Prototype =>
-        string.Join('|', _commandConversion.Select(x => x.Key));
+    private string Prototype => string.Join('|', _commandConversion.Select(x => x.Key));
 
     /// <summary>
     /// Argument to be added to the list of <seealso cref="ConsoleArguments"/>.

@@ -6,5 +6,5 @@ internal enum SampleEnumChoices
     Option2,
     Option3,
     Option4,
-    Option5
+    Option5,
 }

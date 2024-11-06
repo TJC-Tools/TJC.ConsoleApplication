@@ -13,7 +13,11 @@ public class ChoiceIndexPromptTests : ChoicePromptTestsBase
         var result = ConsolePrompt.GetChoiceIndex("Choose", Choices);
 
         // Assert
-        Assert.AreEqual(2, result, "Since 'Option 3' was selected, the index for that option (2) should be returned");
+        Assert.AreEqual(
+            2,
+            result,
+            "Since 'Option 3' was selected, the index for that option (2) should be returned"
+        );
         Assert.AreEqual("Option 3", Choices[result]);
     }
 }

@@ -10,7 +10,12 @@ public partial class ConsolePrompt
     /// <param name="min"></param>
     /// <param name="inclusive"></param>
     /// <returns></returns>
-    public static int GetIntRange(string message, int max = int.MaxValue, int min = int.MinValue, bool inclusive = true)
+    public static int GetIntRange(
+        string message,
+        int max = int.MaxValue,
+        int min = int.MinValue,
+        bool inclusive = true
+    )
     {
         var type = inclusive ? "inclusive" : "exclusive";
         var range = $"{min} to {max}, {type}";
@@ -37,6 +42,5 @@ public partial class ConsolePrompt
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
-    public static int GetInt(string message) =>
-        GetType(message, Convert.ToInt32);
+    public static int GetInt(string message) => GetType(message, Convert.ToInt32);
 }

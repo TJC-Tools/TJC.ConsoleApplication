@@ -24,7 +24,12 @@ public class ProcessExitSettings : SingletonBase<ProcessExitSettings>
     /// Settings for a silent exit on success.
     /// </summary>
     public static ProcessExitSettings SilentExitOnSuccess =>
-        new() { ShowSuccessMessage = false, AutoExit = true, ExitCountdownSeconds = 0 };
+        new()
+        {
+            ShowSuccessMessage = false,
+            AutoExit = true,
+            ExitCountdownSeconds = 0,
+        };
 
     /// <summary>
     /// Settings to require user input to exit.
@@ -92,8 +97,7 @@ public class ProcessExitSettings : SingletonBase<ProcessExitSettings>
     /// Sets the instance of the process exit settings.
     /// </summary>
     /// <param name="settings"></param>
-    public static void SetInstance(ProcessExitSettings settings) =>
-        SetBaseInstance(settings);
+    public static void SetInstance(ProcessExitSettings settings) => SetBaseInstance(settings);
 
     #endregion
 }

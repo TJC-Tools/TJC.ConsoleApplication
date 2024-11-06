@@ -24,7 +24,8 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     public ConsoleArguments(
         bool flagRequired = false,
         bool flagOptional = false,
-        bool logParsedOptions = false)
+        bool logParsedOptions = false
+    )
     {
         _flagRequired = flagRequired;
         _flagOptional = flagOptional;
@@ -75,11 +76,20 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <param name="description">Description for help menu</param>
     /// <param name="propertyName">Property name for help menu</param>
     /// <returns></returns>
-    public ConsoleArguments Add(string prototype,
-                                Action<string> setOptionValue,
-                                string? description = null,
-                                string? propertyName = null) =>
-        Add(prototype, setOptionValue, description, propertyName, required: false, exitIfUsed: false);
+    public ConsoleArguments Add(
+        string prototype,
+        Action<string> setOptionValue,
+        string? description = null,
+        string? propertyName = null
+    ) =>
+        Add(
+            prototype,
+            setOptionValue,
+            description,
+            propertyName,
+            required: false,
+            exitIfUsed: false
+        );
 
     /// <summary>
     /// Add an argument to the list of known arguments
@@ -98,14 +108,24 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <param name="required">Whether the argument is always required</param>
     /// <param name="exitIfUsed">Exit if argument is used</param>
     /// <returns></returns>
-    public ConsoleArguments Add(string prototype,
-                                Action<string> setOptionValue,
-                                string? description,
-                                string? propertyName,
-                                bool? required,
-                                bool exitIfUsed)
+    public ConsoleArguments Add(
+        string prototype,
+        Action<string> setOptionValue,
+        string? description,
+        string? propertyName,
+        bool? required,
+        bool exitIfUsed
+    )
     {
-        var argument = new Argument(this, prototype, setOptionValue, required, description, propertyName, exitIfUsed);
+        var argument = new Argument(
+            this,
+            prototype,
+            setOptionValue,
+            required,
+            description,
+            propertyName,
+            exitIfUsed
+        );
         VerifyAdd(argument);
         Add(argument);
         return this;
@@ -129,14 +149,24 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     /// <param name="getIsRequired">Function to determine if this argument is required is these circumstances</param>
     /// <param name="exitIfUsed">Exit if argument is used</param>
     /// <returns></returns>
-    public ConsoleArguments Add(string prototype,
-                                Action<string> setOptionValue,
-                                string? description,
-                                string? propertyName,
-                                Func<bool?>? getIsRequired,
-                                bool exitIfUsed)
+    public ConsoleArguments Add(
+        string prototype,
+        Action<string> setOptionValue,
+        string? description,
+        string? propertyName,
+        Func<bool?>? getIsRequired,
+        bool exitIfUsed
+    )
     {
-        var argument = new Argument(this, prototype, setOptionValue, getIsRequired, description, propertyName, exitIfUsed);
+        var argument = new Argument(
+            this,
+            prototype,
+            setOptionValue,
+            getIsRequired,
+            description,
+            propertyName,
+            exitIfUsed
+        );
         VerifyAdd(argument);
         Add(argument);
         return this;
@@ -184,8 +214,11 @@ public class ConsoleArguments : List<Argument>, IConsoleArguments
     #endregion
 
     /// <inheritdoc/>
-    public virtual void ParseAndValidate(string[] args, string? programName = null, bool exitOnFailureToParse = true) =>
-        ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
+    public virtual void ParseAndValidate(
+        string[] args,
+        string? programName = null,
+        bool exitOnFailureToParse = true
+    ) => ConsoleArgumentsParsing.ParseAndValidate(this, args, programName, exitOnFailureToParse);
 
     /// <inheritdoc/>
     public virtual void WriteGeneralHelp(string? programName = null)
