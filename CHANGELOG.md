@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.3] - 2024-11-15
+
 ### Added
 
 - Changelog changed check workflow for pr's
@@ -102,7 +104,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create a setting for the number of digits in the version display
 
-[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.2...HEAD
+[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.3...HEAD
+
+[0.14.3]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.2...v0.14.3
 
 [0.14.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.1...v0.14.2
 
