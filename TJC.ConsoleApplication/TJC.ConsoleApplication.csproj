@@ -38,7 +38,7 @@
     <PackageReference Include="Humanizer" Version="2.14.1" />
     <PackageReference Include="NDesk.Options.Core" Version="1.2.8" />
     <PackageReference Include="TJC.AssemblyExtensions" Version="0.7.0" />
-    <PackageReference Include="TJC.Singleton" Version="0.4.0" />
+    <PackageReference Include="TJC.Singleton" Version="0.5.3" />
     <PackageReference Include="TJC.StringExtensions" Version="0.5.1" />
     <PackageReference Include="TJC.TimeExtensions" Version="0.4.3" />
   </ItemGroup>
