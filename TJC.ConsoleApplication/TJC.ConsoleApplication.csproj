@@ -40,7 +40,7 @@
     <PackageReference Include="TJC.AssemblyExtensions" Version="0.7.0" />
     <PackageReference Include="TJC.Singleton" Version="0.5.5" />
     <PackageReference Include="TJC.StringExtensions" Version="0.6.5" />
-    <PackageReference Include="TJC.TimeExtensions" Version="0.4.3" />
+    <PackageReference Include="TJC.TimeExtensions" Version="0.4.7" />
   </ItemGroup>
   <!-- TESTS -->
   <ItemGroup>
