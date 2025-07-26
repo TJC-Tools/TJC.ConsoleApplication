@@ -1,44 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<!-- DETAILS -->
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<AssemblyTitle>Example Title</AssemblyTitle>
-		<Copyright>Example Copyright © 2024</Copyright>
-		<Description>Console Application Testing Project</Description>
-		<AssemblyVersion>1.2.3.4</AssemblyVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
-	</PropertyGroup>
-	<!-- NUGET PACKAGES -->
-	<ItemGroup>
-		<PackageReference Include="coverlet.collector" Version="6.0.2" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-		<PackageReference Include="Moq" Version="4.20.72" />
-		<PackageReference Include="MSTest.TestAdapter" Version="3.6.3" />
-		<PackageReference Include="MSTest.TestFramework" Version="3.6.3" />
-		<PackageReference Include="NDesk.Options.Core" Version="1.2.8" />
-	</ItemGroup>
-	<!-- INCLUDED FILES -->
-	<ItemGroup>
-		<None Include="..\LICENSE">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<EmbeddedResource Include="..\LICENSE" />
-		<None Include="..\CHANGELOG.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<EmbeddedResource Include="..\CHANGELOG.md" />
-	</ItemGroup>
-	<!-- DEPENDENCIES -->
-	<ItemGroup>
-		<ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
-	</ItemGroup>
-	<!-- TESTING -->
-	<ItemGroup>
-		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
-	</ItemGroup>
+  <!-- DETAILS -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyTitle>Example Title</AssemblyTitle>
+    <Copyright>Example Copyright © 2024</Copyright>
+    <Description>Console Application Testing Project</Description>
+    <AssemblyVersion>1.2.3.4</AssemblyVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <!-- NUGET PACKAGES -->
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.3" />
+    <PackageReference Include="NDesk.Options.Core" Version="1.2.8" />
+  </ItemGroup>
+  <!-- INCLUDED FILES -->
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <EmbeddedResource Include="..\LICENSE" />
+    <None Include="..\CHANGELOG.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <EmbeddedResource Include="..\CHANGELOG.md" />
+  </ItemGroup>
+  <!-- DEPENDENCIES -->
+  <ItemGroup>
+    <ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
+  </ItemGroup>
+  <!-- TESTING -->
+  <ItemGroup>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+  </ItemGroup>
 </Project>

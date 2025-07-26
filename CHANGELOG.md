@@ -86,21 +86,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [0.14.7]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.6...v0.14.7
 
-[0.14.6]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.5...v0.14.6
 
-[0.14.5]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.4...v0.14.5
 
-[0.14.4]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.3...v0.14.4
 
 [0.14.3]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.2...v0.14.3
 
 [0.14.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.1...v0.14.2
 
-[0.14.1]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.0...v0.14.1
 
-[0.14.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.13.1...v0.14.0
 
-[0.13.1]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.13.0...v0.13.1
 
 [0.13.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.12.1...v0.13.0
 
@@ -112,27 +106,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [0.10.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.9.1...v0.10.0
 
-[0.9.1]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.9.0...v0.9.1
 
 [0.9.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.8.0...v0.9.0
 
 [0.8.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.5...v0.8.0
 
-[0.7.5]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.4...v0.7.5
 
-[0.7.4]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.3...v0.7.4
 
-[0.7.3]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.2...v0.7.3
 
-[0.7.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.1...v0.7.2
 
-[0.7.1]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.0...v0.7.1
 
-[0.7.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.6.0...v0.7.0
 
-[0.6.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.5.0...v0.6.0
 
-[0.5.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.4.0...v0.5.0
 
 [0.4.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.3.0...v0.4.0
 
