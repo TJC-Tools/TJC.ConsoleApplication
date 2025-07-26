@@ -9,12 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.14.7] - 2025-04-15
 
-## [0.14.6] - 2025-01-03
-
-## [0.14.5] - 2025-01-03
-
-## [0.14.4] - 2024-12-03
-
 ## [0.14.3] - 2024-11-15
 
 ### Added
@@ -26,12 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Add all dependency `.dll's` to the release
-
-## [0.14.1] - 2024-11-05
-
-## [0.14.0] - 2024-11-05
-
-## [0.13.1] - 2024-10-27
 
 ## [0.13.0] - 2024-10-26
 
@@ -64,8 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Enum argument
 
-## [0.9.1] - 2024-10-24
-
 ## [0.9.0] - 2024-10-24
 
 ### Added
@@ -77,22 +63,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Codecov reporting
-
-## [0.7.5] - 2024-10-20
-
-## [0.7.4] - 2024-10-20
-
-## [0.7.3] - 2024-10-20
-
-## [0.7.2] - 2024-10-16
-
-## [0.7.1] - 2024-10-13
-
-## [0.7.0] - 2024-10-11
-
-## [0.6.0] - 2024-10-11
-
-## [0.5.0] - 2024-10-11
 
 ## [0.4.0] - 2024-10-10
 
