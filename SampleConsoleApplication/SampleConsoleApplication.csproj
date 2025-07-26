@@ -1,42 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<!-- DETAILS -->
-	<PropertyGroup>
-		<OutputType>Exe</OutputType>
-		<TargetFramework>net8.0</TargetFramework>
-		<AssemblyTitle>Sample Console Application</AssemblyTitle>
-		<Description>Sample Console Application</Description>
-		<Copyright>
+  <!-- DETAILS -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyTitle>Sample Console Application</AssemblyTitle>
+    <Description>Sample Console Application</Description>
+    <Copyright>
 			Copyright © 2024 Tyler Carrol - All rights reserved.
 			This software is proprietary and confidential. Unauthorized use, reproduction, or distribution is prohibited.
 		</Copyright>
-		<AssemblyVersion>1.2.3</AssemblyVersion>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-	<!-- INCLUDED FILES -->
-	<ItemGroup>
-		<None Include="..\README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Include="..\LICENSE">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<EmbeddedResource Include="..\LICENSE" />
-		<None Include="..\THIRD-PARTY-LICENSES">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<EmbeddedResource Include="..\THIRD-PARTY-LICENSES" />
-		<None Include="..\CHANGELOG.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<EmbeddedResource Include="..\CHANGELOG.md" />
-	</ItemGroup>
-	<!-- DEPENDENCIES -->
-	<ItemGroup>
-		<ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
-	</ItemGroup>
+    <AssemblyVersion>1.2.3</AssemblyVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <!-- INCLUDED FILES -->
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <EmbeddedResource Include="..\LICENSE" />
+    <None Include="..\THIRD-PARTY-LICENSES">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <EmbeddedResource Include="..\THIRD-PARTY-LICENSES" />
+    <None Include="..\CHANGELOG.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <EmbeddedResource Include="..\CHANGELOG.md" />
+  </ItemGroup>
+  <!-- DEPENDENCIES -->
+  <ItemGroup>
+    <ProjectReference Include="..\TJC.ConsoleApplication\TJC.ConsoleApplication.csproj" />
+  </ItemGroup>
 </Project>
