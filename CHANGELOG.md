@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.8] - 2026-08-29
+
 ## [0.14.7] - 2025-04-15
 
 ## [0.14.3] - 2024-11-15
@@ -82,19 +84,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create a setting for the number of digits in the version display
 
-[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.7...HEAD
+[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.8...HEAD
 
-[0.14.7]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.6...v0.14.7
+[0.14.8]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.7...v0.14.8
 
-
-
+[0.14.7]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.3...v0.14.7
 
 [0.14.3]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.2...v0.14.3
 
-[0.14.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.14.1...v0.14.2
-
-
-
+[0.14.2]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.13.0...v0.14.2
 
 [0.13.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.12.1...v0.13.0
 
@@ -104,20 +102,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [0.11.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.10.0...v0.11.0
 
-[0.10.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.9.1...v0.10.0
-
+[0.10.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.9.0...v0.10.0
 
 [0.9.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.8.0...v0.9.0
 
-[0.8.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.7.5...v0.8.0
-
-
-
-
-
-
-
-
+[0.8.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.4.0...v0.8.0
 
 [0.4.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.3.0...v0.4.0
 
