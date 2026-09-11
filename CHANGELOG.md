@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix grype lint errors
+
 ## [0.14.9] - 2026-09-11
 
 ## [0.14.8] - 2026-08-29
