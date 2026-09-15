@@ -40,7 +40,10 @@ public class SpecificArgumentTests
     [InlineData("-vvvvvv", 6)]
     [InlineData("-vvvvvvv", 7)]
     [InlineData("-vvvvvvvv", 8)]
-    public void VerbosityArgument_AccumulatesClusteredShortOptions(string input, int expectedVerbosity)
+    public void VerbosityArgument_AccumulatesClusteredShortOptions(
+        string input,
+        int expectedVerbosity
+    )
     {
         var argument = VerbosityArgument.Both;
         argument.Argument.ExitIfUsed = false;
