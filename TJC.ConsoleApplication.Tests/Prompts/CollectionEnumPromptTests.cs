@@ -49,10 +49,11 @@ public class CollectionEnumPromptTests : ChoicePromptTestsBase
         MockUserInput.QueueLine("1");
         MockUserInput.QueueLine("0");
 
-        var result = ConsolePrompt
-            .GetCollectionEnum<SampleEnumChoices>("Choose", "Item")
-            .ToList();
+        var result = ConsolePrompt.GetCollectionEnum<SampleEnumChoices>("Choose", "Item").ToList();
 
-        CollectionAssert.AreEqual(new List<SampleEnumChoices> { SampleEnumChoices.Option1 }, result);
+        CollectionAssert.AreEqual(
+            new List<SampleEnumChoices> { SampleEnumChoices.Option1 },
+            result
+        );
     }
 }
