@@ -1,6 +1,5 @@
 namespace TJC.ConsoleApplication.Tests.Prompts;
 
-
 public class ChoiceEnumChangePromptTests : ChoicePromptTestsBase
 {
     [Fact]

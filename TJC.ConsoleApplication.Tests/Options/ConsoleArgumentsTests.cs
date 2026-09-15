@@ -3,7 +3,6 @@ using TJC.ConsoleApplication.Arguments.Options.Specific;
 
 namespace TJC.ConsoleApplication.Tests.Options
 {
-    
     public class ConsoleArgumentsTests
     {
         [Fact]
