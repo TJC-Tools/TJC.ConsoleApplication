@@ -18,6 +18,17 @@ public class StringPromptTests : InputTestsBaseClass
     }
 
     [TestMethod]
+    public void GetString_EmptyResponseThenText_ReturnsFirstNonEmptyResponse()
+    {
+        MockUserInput.QueueLine(string.Empty);
+        MockUserInput.QueueLine("valid input");
+
+        var result = ConsolePrompt.GetString("Enter Input");
+
+        Assert.AreEqual("valid input", result);
+    }
+
+    [TestMethod]
     public void GetStringChange_ChangeResponseNo_ReturnsOriginalValue()
     {
         // Arrange

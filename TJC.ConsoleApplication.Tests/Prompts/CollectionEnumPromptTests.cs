@@ -42,4 +42,17 @@ public class CollectionEnumPromptTests : ChoicePromptTestsBase
         Assert.AreEqual(SampleEnumChoices.Option4, result[1]);
         Assert.AreEqual(SampleEnumChoices.Option1, result[2]);
     }
+
+    [TestMethod]
+    public void GetCollectionEnum_WithIndividualPrompt_ReturnsSelectedItems()
+    {
+        MockUserInput.QueueLine("1");
+        MockUserInput.QueueLine("0");
+
+        var result = ConsolePrompt
+            .GetCollectionEnum<SampleEnumChoices>("Choose", "Item")
+            .ToList();
+
+        CollectionAssert.AreEqual(new List<SampleEnumChoices> { SampleEnumChoices.Option1 }, result);
+    }
 }
