@@ -46,8 +46,12 @@ public class VerbosityArgument : ICustomArgument
 
     private void SetVerbosity(string input)
     {
+        input ??= string.Empty;
+
         if (int.TryParse(input, out var result))
             Verbosity += result;
+        else if (input.Length > 0 && input.All(x => x == 'v'))
+            Verbosity += input.Length + 1;
         else
             Verbosity++;
     }
