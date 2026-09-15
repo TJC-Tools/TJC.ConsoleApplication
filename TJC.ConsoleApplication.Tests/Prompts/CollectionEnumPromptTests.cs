@@ -1,6 +1,5 @@
 namespace TJC.ConsoleApplication.Tests.Prompts;
 
-
 public class CollectionEnumPromptTests : ChoicePromptTestsBase
 {
     [Fact]
@@ -49,9 +48,7 @@ public class CollectionEnumPromptTests : ChoicePromptTestsBase
         MockUserInput.QueueLine("1");
         MockUserInput.QueueLine("0");
 
-        var result = ConsolePrompt
-            .GetCollectionEnum<SampleEnumChoices>("Choose", "Item")
-            .ToList();
+        var result = ConsolePrompt.GetCollectionEnum<SampleEnumChoices>("Choose", "Item").ToList();
 
         Assert.Equal(new List<SampleEnumChoices> { SampleEnumChoices.Option1 }, result);
     }

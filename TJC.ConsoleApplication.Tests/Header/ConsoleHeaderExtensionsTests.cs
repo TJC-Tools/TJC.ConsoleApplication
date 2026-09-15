@@ -3,7 +3,6 @@ using TJC.ConsoleApplication.Settings;
 
 namespace TJC.ConsoleApplication.Tests.Header;
 
-
 public class ConsoleHeaderExtensionsTests
 {
     [Fact]
