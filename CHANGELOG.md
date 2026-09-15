@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Updated to .NET 10
 - The verbosity argument now allows multiple v's to set verbosity level, e.g. `-vvvvv` is the same as `-v=5`
 
 ### Fixed
