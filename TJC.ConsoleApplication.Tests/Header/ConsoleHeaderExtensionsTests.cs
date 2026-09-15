@@ -1,12 +1,12 @@
-﻿using TJC.ConsoleApplication.Header;
+using TJC.ConsoleApplication.Header;
 using TJC.ConsoleApplication.Settings;
 
 namespace TJC.ConsoleApplication.Tests.Header;
 
-[TestClass]
+
 public class ConsoleHeaderExtensionsTests
 {
-    [TestMethod]
+    [Fact]
     public void ConsoleHeader()
     {
         // Arrange
@@ -16,12 +16,12 @@ public class ConsoleHeaderExtensionsTests
         var result = ConsoleHeaderExtensions.CreateHeader().ToList();
 
         // Assert
-        Assert.AreEqual(6, result.Count);
-        Assert.AreEqual("###############################################", result[0]);
-        Assert.AreEqual("###        Example Title - v1.2.3.4         ###", result[1]);
-        Assert.AreEqual("###       Example Copyright (C) 2024        ###", result[2]);
-        Assert.AreEqual("###                   ---                   ###", result[3]);
-        Assert.AreEqual("###   Console Application Testing Project   ###", result[4]);
-        Assert.AreEqual("###############################################", result[5]);
+        Assert.Equal(6, result.Count);
+        Assert.Equal("###############################################", result[0]);
+        Assert.Equal("###        Example Title - v1.2.3.4         ###", result[1]);
+        Assert.Equal("###       Example Copyright (C) 2024        ###", result[2]);
+        Assert.Equal("###                   ---                   ###", result[3]);
+        Assert.Equal("###   Console Application Testing Project   ###", result[4]);
+        Assert.Equal("###############################################", result[5]);
     }
 }

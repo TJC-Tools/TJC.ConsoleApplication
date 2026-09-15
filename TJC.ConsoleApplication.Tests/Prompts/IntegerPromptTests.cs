@@ -1,11 +1,11 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class IntegerPromptTests : InputTestsBaseClass
 {
     #region GetInt
 
-    [TestMethod]
+    [Fact]
     public void GetInt_Response1_Returns1()
     {
         // Arrange
@@ -15,10 +15,10 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetInt("Enter Input");
 
         // Assert
-        Assert.AreEqual(1, result);
+        Assert.Equal(1, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetInt_ResponseSeveralInvalidThenValid5_Returns5()
     {
         // Arrange
@@ -33,14 +33,14 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetInt("Enter Input");
 
         // Assert
-        Assert.AreEqual(5, result, "The result should be 5, since it is the first valid input");
+        Assert.Equal(5, result);
     }
 
     #endregion
 
     #region GetIntRange
 
-    [TestMethod]
+    [Fact]
     public void GetIntRange_ResponseOutOfRangeThenResponse5_Returns5()
     {
         // Arrange
@@ -52,10 +52,10 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1);
 
         // Assert
-        Assert.AreEqual(5, result);
+        Assert.Equal(5, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetIntRangeInclusive_ResponseSeveralInvalidThenValid5_Returns5()
     {
         // Arrange
@@ -69,14 +69,14 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1);
 
         // Assert
-        Assert.AreEqual(5, result, "The result should be 5, since it is the first valid input");
+        Assert.Equal(5, result);
     }
 
     #endregion
 
     #region GetIntRange (Inclusive)
 
-    [TestMethod]
+    [Fact]
     public void GetIntRangeInclusive_Response1Then5_Returns1()
     {
         // Arrange
@@ -87,10 +87,10 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: true);
 
         // Assert
-        Assert.AreEqual(1, result);
+        Assert.Equal(1, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetIntRangeInclusive_Response10Then5_Returns10()
     {
         // Arrange
@@ -101,14 +101,14 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: true);
 
         // Assert
-        Assert.AreEqual(10, result);
+        Assert.Equal(10, result);
     }
 
     #endregion
 
     #region GetIntRange (Exclusive)
 
-    [TestMethod]
+    [Fact]
     public void GetIntRangeExclusive_Response1Then5_Returns5()
     {
         // Arrange
@@ -119,10 +119,10 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: false);
 
         // Assert
-        Assert.AreEqual(5, result);
+        Assert.Equal(5, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetIntRangeExclusive_Response10Then5_Returns5()
     {
         // Arrange
@@ -133,7 +133,7 @@ public class IntegerPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetIntRange("Enter Input", 10, 1, inclusive: false);
 
         // Assert
-        Assert.AreEqual(5, result);
+        Assert.Equal(5, result);
     }
 
     #endregion

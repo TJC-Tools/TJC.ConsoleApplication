@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Interfaces;
+namespace TJC.ConsoleApplication.Interfaces;
 
 /// <summary>
 /// Interface for reading input from the console.

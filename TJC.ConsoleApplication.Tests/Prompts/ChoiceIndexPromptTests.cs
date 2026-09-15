@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class ChoiceIndexPromptTests : ChoicePromptTestsBase
 {
-    [TestMethod]
+    [Fact]
     public void GetChoiceIndex_ResponseOption3_ReturnsIndex2()
     {
         // Arrange
@@ -13,11 +13,10 @@ public class ChoiceIndexPromptTests : ChoicePromptTestsBase
         var result = ConsolePrompt.GetChoiceIndex("Choose", Choices);
 
         // Assert
-        Assert.AreEqual(
-            2,
-            result,
+        Assert.True(
+            2 == result,
             "Since 'Option 3' was selected, the index for that option (2) should be returned"
         );
-        Assert.AreEqual("Option 3", Choices[result]);
+        Assert.Equal("Option 3", Choices[result]);
     }
 }

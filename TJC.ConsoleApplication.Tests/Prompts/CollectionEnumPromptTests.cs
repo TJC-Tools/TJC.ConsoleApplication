@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class CollectionEnumPromptTests : ChoicePromptTestsBase
 {
-    [TestMethod]
+    [Fact]
     public void GetCollectionEnum_Response241_ReturnsCollectionOfSize3()
     {
         // Arrange
@@ -16,13 +16,13 @@ public class CollectionEnumPromptTests : ChoicePromptTestsBase
         var result = ConsolePrompt.GetCollectionEnum<SampleEnumChoices>("Choose").ToList();
 
         // Assert
-        Assert.AreEqual(3, result.Count);
-        Assert.AreEqual(SampleEnumChoices.Option2, result[0]);
-        Assert.AreEqual(SampleEnumChoices.Option4, result[1]);
-        Assert.AreEqual(SampleEnumChoices.Option1, result[2]);
+        Assert.Equal(3, result.Count);
+        Assert.Equal(SampleEnumChoices.Option2, result[0]);
+        Assert.Equal(SampleEnumChoices.Option4, result[1]);
+        Assert.Equal(SampleEnumChoices.Option1, result[2]);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetCollectionEnum_InvalidResponsesAndResponse241_ReturnsCollectionOfSize3()
     {
         // Arrange
@@ -37,13 +37,13 @@ public class CollectionEnumPromptTests : ChoicePromptTestsBase
         var result = ConsolePrompt.GetCollectionEnum<SampleEnumChoices>("Choose").ToList();
 
         // Assert
-        Assert.AreEqual(3, result.Count);
-        Assert.AreEqual(SampleEnumChoices.Option2, result[0]);
-        Assert.AreEqual(SampleEnumChoices.Option4, result[1]);
-        Assert.AreEqual(SampleEnumChoices.Option1, result[2]);
+        Assert.Equal(3, result.Count);
+        Assert.Equal(SampleEnumChoices.Option2, result[0]);
+        Assert.Equal(SampleEnumChoices.Option4, result[1]);
+        Assert.Equal(SampleEnumChoices.Option1, result[2]);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetCollectionEnum_WithIndividualPrompt_ReturnsSelectedItems()
     {
         MockUserInput.QueueLine("1");
@@ -53,6 +53,6 @@ public class CollectionEnumPromptTests : ChoicePromptTestsBase
             .GetCollectionEnum<SampleEnumChoices>("Choose", "Item")
             .ToList();
 
-        CollectionAssert.AreEqual(new List<SampleEnumChoices> { SampleEnumChoices.Option1 }, result);
+        Assert.Equal(new List<SampleEnumChoices> { SampleEnumChoices.Option1 }, result);
     }
 }

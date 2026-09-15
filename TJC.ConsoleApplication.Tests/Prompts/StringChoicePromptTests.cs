@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class StringChoicePromptTests : InputTestsBaseClass
 {
-    [TestMethod]
+    [Fact]
     public void GetStringChange_ChangeResponseNo_ReturnsOriginalValue()
     {
         // Arrange
@@ -16,10 +16,10 @@ public class StringChoicePromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetStringChange("Enter Input", current);
 
         // Assert
-        Assert.AreEqual(current, result);
+        Assert.Equal(current, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChange_ChangeResponseYes_ReturnsNewValue()
     {
         // Arrange
@@ -32,10 +32,10 @@ public class StringChoicePromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetStringChange("Enter Input", current);
 
         // Assert
-        Assert.AreEqual(input, result);
+        Assert.Equal(input, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChangeRef_ChangeResponseNo_ReturnsOriginalValue()
     {
         // Arrange
@@ -49,10 +49,10 @@ public class StringChoicePromptTests : InputTestsBaseClass
         ConsolePrompt.GetStringChange("Enter Input", ref result);
 
         // Assert
-        Assert.AreEqual(original, result);
+        Assert.Equal(original, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChangeRef_ChangeResponseYes_ReturnsNewValue()
     {
         // Arrange
@@ -66,6 +66,6 @@ public class StringChoicePromptTests : InputTestsBaseClass
         ConsolePrompt.GetStringChange("Enter Input", ref result);
 
         // Assert
-        Assert.AreEqual(input, result);
+        Assert.Equal(input, result);
     }
 }

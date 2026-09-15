@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Inputs;
+namespace TJC.ConsoleApplication.Inputs;
 
 public partial class ConsolePrompt
 {

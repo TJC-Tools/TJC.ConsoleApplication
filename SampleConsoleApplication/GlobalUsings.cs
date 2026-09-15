@@ -1,4 +1,4 @@
-﻿global using System.Diagnostics;
+global using System.Diagnostics;
 global using System.Reflection;
 global using SampleConsoleApplication;
 global using SampleConsoleApplication.Enums;

@@ -1,9 +1,9 @@
 namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class YesNoPromptTests : InputTestsBaseClass
 {
-    [TestMethod]
+    [Fact]
     public void GetYesNo_ResponseY_ReturnsTrue()
     {
         // Arrange
@@ -13,10 +13,10 @@ public class YesNoPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 
         // Assert
-        Assert.IsTrue(result);
+        Assert.True(result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetYesNo_ResponseN_ReturnsFalse()
     {
         // Arrange
@@ -26,10 +26,10 @@ public class YesNoPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 
         // Assert
-        Assert.IsFalse(result);
+        Assert.False(result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetYesNo_ResponseCharacters_ReturnsTrue()
     {
         // Arrange
@@ -45,6 +45,6 @@ public class YesNoPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetYesNo("Do you want to continue?");
 
         // Assert
-        Assert.IsTrue(result, "The result should be true, since the first valid input is 'Y'");
+        Assert.True(result, "The result should be true, since the first valid input is 'Y'");
     }
 }

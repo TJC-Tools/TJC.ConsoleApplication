@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Options.Specific;
+namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 
 /// <summary>
 /// Enum argument to be used in the <seealso cref="ConsoleArguments"/>.

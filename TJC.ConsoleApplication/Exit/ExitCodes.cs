@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Exit;
+namespace TJC.ConsoleApplication.Exit;
 
 /// <summary>
 /// Exit codes for the application.

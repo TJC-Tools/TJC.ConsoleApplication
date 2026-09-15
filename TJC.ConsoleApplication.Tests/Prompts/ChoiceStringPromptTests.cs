@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class ChoiceStringPromptTests : ChoicePromptTestsBase
 {
-    [TestMethod]
+    [Fact]
     public void GetChoice_ResponseOption2_ReturnsOption2()
     {
         // Arrange
@@ -13,6 +13,6 @@ public class ChoiceStringPromptTests : ChoicePromptTestsBase
         var result = ConsolePrompt.GetChoice("Choose", Choices);
 
         // Assert
-        Assert.AreEqual("Option 3", result);
+        Assert.Equal("Option 3", result);
     }
 }

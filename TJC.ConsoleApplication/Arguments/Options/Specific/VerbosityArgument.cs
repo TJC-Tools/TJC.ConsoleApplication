@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Options.Specific;
+namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 
 /// <summary>
 /// This argument is intended for applications that requires the option to set the verbosity of the logs.

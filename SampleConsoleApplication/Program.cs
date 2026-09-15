@@ -1,4 +1,4 @@
-﻿// Setup Console Settings
+// Setup Console Settings
 ProcessExitSettings.Instance.ExitCountdownSeconds = 0;
 ConsoleSetup.Setup();
 

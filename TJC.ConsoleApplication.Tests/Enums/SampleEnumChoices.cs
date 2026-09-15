@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Tests.Enums;
+namespace TJC.ConsoleApplication.Tests.Enums;
 
 internal enum SampleEnumChoices
 {

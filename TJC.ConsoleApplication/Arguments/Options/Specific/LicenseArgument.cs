@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using TJC.AssemblyExtensions.Attributes;
 
 namespace TJC.ConsoleApplication.Arguments.Options.Specific;

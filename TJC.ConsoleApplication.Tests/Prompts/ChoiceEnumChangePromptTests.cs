@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class ChoiceEnumChangePromptTests : ChoicePromptTestsBase
 {
-    [TestMethod]
+    [Fact]
     public void GetChoiceChange_InitialOption3_ResponseYOption5_ReturnsOption5()
     {
         // Arrange
@@ -15,10 +15,10 @@ public class ChoiceEnumChangePromptTests : ChoicePromptTestsBase
         result = ConsolePrompt.GetChoiceChange("sample", result);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option5, result);
+        Assert.Equal(SampleEnumChoices.Option5, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetChoiceChange_InitialOption3_ResponseNOption5_ReturnsOption3()
     {
         // Arrange
@@ -30,10 +30,10 @@ public class ChoiceEnumChangePromptTests : ChoicePromptTestsBase
         result = ConsolePrompt.GetChoiceChange("sample", result);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option3, result);
+        Assert.Equal(SampleEnumChoices.Option3, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetChoiceChangeRef_InitialOption3_ResponseYOption5_ReturnsOption5()
     {
         // Arrange
@@ -45,10 +45,10 @@ public class ChoiceEnumChangePromptTests : ChoicePromptTestsBase
         ConsolePrompt.GetChoiceChange("sample", ref result);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option5, result);
+        Assert.Equal(SampleEnumChoices.Option5, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetChoiceChangeRef_InitialOption3_ResponseNOption5_ReturnsOption3()
     {
         // Arrange
@@ -60,6 +60,6 @@ public class ChoiceEnumChangePromptTests : ChoicePromptTestsBase
         ConsolePrompt.GetChoiceChange("sample", ref result);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option3, result);
+        Assert.Equal(SampleEnumChoices.Option3, result);
     }
 }

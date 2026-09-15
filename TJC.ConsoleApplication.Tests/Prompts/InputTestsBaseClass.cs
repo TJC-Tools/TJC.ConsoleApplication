@@ -1,17 +1,15 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
-public class InputTestsBaseClass
+
+public class InputTestsBaseClass : IDisposable
 {
-    [TestInitialize]
-    public void Initialize()
+    public InputTestsBaseClass()
     {
         ConsoleInputHandler.SetConsoleReader(MockUserInput.MockConsoleReader.Object);
         MockUserInput.Setup();
     }
 
-    [TestCleanup]
-    public void TestCleanup()
+    public void Dispose()
     {
         MockUserInput.Cleanup();
     }

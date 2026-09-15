@@ -1,12 +1,12 @@
-﻿using TJC.ConsoleApplication.Arguments.Options;
+using TJC.ConsoleApplication.Arguments.Options;
 using TJC.ConsoleApplication.Arguments.Options.Specific;
 
 namespace TJC.ConsoleApplication.Tests.Options
 {
-    [TestClass]
+    
     public class ConsoleArgumentsTests
     {
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_ArgumentCountIs3()
         {
             // Arrange
@@ -21,14 +21,13 @@ namespace TJC.ConsoleApplication.Tests.Options
             var result = arguments.Count;
 
             // Assert
-            Assert.AreEqual(
-                4,
-                result,
+            Assert.True(
+                4 == result,
                 $"4 Arguments are expected, because 3 were added, and {nameof(HelpArgument)} is always present."
             );
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_AllHaveParent()
         {
             // Arrange
@@ -43,10 +42,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             var result = arguments.All(x => x.HasParent);
 
             // Assert
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Changelog_HasParent()
         {
             // Arrange
@@ -54,10 +53,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Copyright_HasParent()
         {
             // Arrange
@@ -65,10 +64,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_DryRun_HasParent()
         {
             // Arrange
@@ -76,10 +75,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Enum_HasParent()
         {
             // Arrange
@@ -87,10 +86,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Help_HasParent()
         {
             // Arrange
@@ -98,10 +97,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Labels_HasParent()
         {
             // Arrange
@@ -109,10 +108,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_License_HasParent()
         {
             // Arrange
@@ -120,10 +119,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Verbosity_HasParent()
         {
             // Arrange
@@ -131,10 +130,10 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
 
-        [TestMethod]
+        [Fact]
         public void ConstructConsoleArguments_Version_HasParent()
         {
             // Arrange
@@ -142,7 +141,7 @@ namespace TJC.ConsoleApplication.Tests.Options
             _ = new ConsoleArguments { argument };
 
             // Assert
-            Assert.IsTrue(argument.Argument.HasParent);
+            Assert.True(argument.Argument.HasParent);
         }
     }
 }

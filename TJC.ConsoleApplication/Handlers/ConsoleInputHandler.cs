@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Handlers;
+namespace TJC.ConsoleApplication.Handlers;
 
 internal static class ConsoleInputHandler
 {

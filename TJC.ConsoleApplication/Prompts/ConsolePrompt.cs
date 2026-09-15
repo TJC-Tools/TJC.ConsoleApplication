@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Inputs;
+namespace TJC.ConsoleApplication.Inputs;
 
 /// <summary>
 /// Allows prompting the user for input of various types.

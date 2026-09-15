@@ -1,4 +1,4 @@
-﻿namespace SampleConsoleApplication.Commands;
+namespace SampleConsoleApplication.Commands;
 
 internal static class CommandExtensions
 {

@@ -1,13 +1,13 @@
-﻿using TJC.ConsoleApplication.Arguments.Extensions;
+using TJC.ConsoleApplication.Arguments.Extensions;
 using TJC.ConsoleApplication.Arguments.Options;
 using TJC.ConsoleApplication.Arguments.Options.Specific;
 
 namespace TJC.ConsoleApplication.Tests.Options;
 
-[TestClass]
+
 public class EnumArgumentTests
 {
-    [TestMethod]
+    [Fact]
     public void ParseEnumArgument_ReturnsOption2()
     {
         // Arrange
@@ -18,10 +18,10 @@ public class EnumArgumentTests
         arguments.ParseAndValidate(["--option2"], exitOnFailureToParse: false);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option2, argument.Selection);
+        Assert.Equal(SampleEnumChoices.Option2, argument.Selection);
     }
 
-    [TestMethod]
+    [Fact]
     public void ParseEnumArgument_ReturnsOption3()
     {
         // Arrange
@@ -32,6 +32,6 @@ public class EnumArgumentTests
         arguments.ParseAndValidate(["--option3"], exitOnFailureToParse: false);
 
         // Assert
-        Assert.AreEqual(SampleEnumChoices.Option3, argument.Selection);
+        Assert.Equal(SampleEnumChoices.Option3, argument.Selection);
     }
 }

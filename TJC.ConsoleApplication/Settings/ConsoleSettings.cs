@@ -1,4 +1,4 @@
-﻿using TJC.Singleton;
+using TJC.Singleton;
 
 namespace TJC.ConsoleApplication.Settings;
 

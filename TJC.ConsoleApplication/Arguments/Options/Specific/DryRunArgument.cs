@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Options.Specific;
+namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 
 /// <summary>
 /// This argument is intended for applications that require the option to run a test process that doesn't make any changes.

@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class CollectionPromptTests : InputTestsBaseClass
 {
-    [TestMethod]
+    [Fact]
     public void GetCollection_ThreeResponses_ReturnsListOfThree()
     {
         // Arrange
@@ -16,13 +16,13 @@ public class CollectionPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetCollection("Enter Collection", "item").ToList();
 
         // Assert
-        Assert.AreEqual(3, result.Count);
-        Assert.AreEqual("Item1", result[0]);
-        Assert.AreEqual("Item2", result[1]);
-        Assert.AreEqual("Item3", result[2]);
+        Assert.Equal(3, result.Count);
+        Assert.Equal("Item1", result[0]);
+        Assert.Equal("Item2", result[1]);
+        Assert.Equal("Item3", result[2]);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetCollectionInt_ThreeValidResponses_ReturnsListOfThree()
     {
         // Arrange
@@ -38,13 +38,13 @@ public class CollectionPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetCollectionInt("Enter Collection").ToList();
 
         // Assert
-        Assert.AreEqual(3, result.Count);
-        Assert.AreEqual(1, result[0]);
-        Assert.AreEqual(2, result[1]);
-        Assert.AreEqual(3, result[2]);
+        Assert.Equal(3, result.Count);
+        Assert.Equal(1, result[0]);
+        Assert.Equal(2, result[1]);
+        Assert.Equal(3, result[2]);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetCollectionDouble_ThreeValidResponses_ReturnsListOfThree()
     {
         // Arrange
@@ -59,9 +59,9 @@ public class CollectionPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetCollectionDouble("Enter Collection").ToList();
 
         // Assert
-        Assert.AreEqual(3, result.Count);
-        Assert.AreEqual(1, result[0]);
-        Assert.AreEqual(2, result[1]);
-        Assert.AreEqual(3.5, result[2]);
+        Assert.Equal(3, result.Count);
+        Assert.Equal(1, result[0]);
+        Assert.Equal(2, result[1]);
+        Assert.Equal(3.5, result[2]);
     }
 }

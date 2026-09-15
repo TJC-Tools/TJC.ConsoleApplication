@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Arguments.Extensions;
+namespace TJC.ConsoleApplication.Arguments.Extensions;
 
 internal static class ConsoleArgumentsHelp
 {

@@ -1,6 +1,6 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class ChoicePromptTestsBase : InputTestsBaseClass
 {
     internal readonly List<string> Choices =

@@ -1,4 +1,4 @@
-﻿namespace SampleConsoleApplication.Enums;
+namespace SampleConsoleApplication.Enums;
 
 internal enum DemoItems
 {

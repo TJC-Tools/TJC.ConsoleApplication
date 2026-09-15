@@ -1,4 +1,4 @@
-﻿global using Moq;
+global using Moq;
 global using TJC.ConsoleApplication.Handlers;
 global using TJC.ConsoleApplication.Inputs;
 global using TJC.ConsoleApplication.Interfaces;

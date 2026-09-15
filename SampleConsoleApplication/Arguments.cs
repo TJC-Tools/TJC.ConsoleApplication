@@ -1,4 +1,4 @@
-﻿using SampleConsoleApplication.Commands;
+using SampleConsoleApplication.Commands;
 
 namespace SampleConsoleApplication;
 

@@ -1,9 +1,9 @@
-﻿namespace TJC.ConsoleApplication.Tests.Prompts;
+namespace TJC.ConsoleApplication.Tests.Prompts;
 
-[TestClass]
+
 public class StringPromptTests : InputTestsBaseClass
 {
-    [TestMethod]
+    [Fact]
     public void GetString_ResponseMatchesInput()
     {
         // Arrange
@@ -14,10 +14,10 @@ public class StringPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetString("Enter Input");
 
         // Assert
-        Assert.AreEqual(input, result);
+        Assert.Equal(input, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetString_EmptyResponseThenText_ReturnsFirstNonEmptyResponse()
     {
         MockUserInput.QueueLine(string.Empty);
@@ -25,10 +25,10 @@ public class StringPromptTests : InputTestsBaseClass
 
         var result = ConsolePrompt.GetString("Enter Input");
 
-        Assert.AreEqual("valid input", result);
+        Assert.Equal("valid input", result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChange_ChangeResponseNo_ReturnsOriginalValue()
     {
         // Arrange
@@ -41,10 +41,10 @@ public class StringPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetStringChange("Enter Input", current);
 
         // Assert
-        Assert.AreEqual(current, result);
+        Assert.Equal(current, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChange_ChangeResponseYes_ReturnsNewValue()
     {
         // Arrange
@@ -57,10 +57,10 @@ public class StringPromptTests : InputTestsBaseClass
         var result = ConsolePrompt.GetStringChange("Enter Input", current);
 
         // Assert
-        Assert.AreEqual(input, result);
+        Assert.Equal(input, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChangeRef_ChangeResponseNo_ReturnsOriginalValue()
     {
         // Arrange
@@ -74,10 +74,10 @@ public class StringPromptTests : InputTestsBaseClass
         ConsolePrompt.GetStringChange("Enter Input", ref result);
 
         // Assert
-        Assert.AreEqual(original, result);
+        Assert.Equal(original, result);
     }
 
-    [TestMethod]
+    [Fact]
     public void GetStringChangeRef_ChangeResponseYes_ReturnsNewValue()
     {
         // Arrange
@@ -91,6 +91,6 @@ public class StringPromptTests : InputTestsBaseClass
         ConsolePrompt.GetStringChange("Enter Input", ref result);
 
         // Assert
-        Assert.AreEqual(input, result);
+        Assert.Equal(input, result);
     }
 }

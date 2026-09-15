@@ -1,4 +1,4 @@
-﻿namespace TJC.ConsoleApplication.Tests.Mocks;
+namespace TJC.ConsoleApplication.Tests.Mocks;
 
 internal static class MockUserInput
 {
