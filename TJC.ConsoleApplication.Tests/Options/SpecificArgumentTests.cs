@@ -4,7 +4,6 @@ using TJC.ConsoleApplication.Arguments.Options.Specific;
 
 namespace TJC.ConsoleApplication.Tests.Options;
 
-
 public class SpecificArgumentTests
 {
     [Fact]
