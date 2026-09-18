@@ -57,6 +57,11 @@ public class ConsoleSettings : SingletonBase<ConsoleSettings>
     /// </summary>
     public int VersionDigits { get; set; } = 3;
 
+    /// <summary>
+    /// The version source to display.
+    /// </summary>
+    public VersionType VersionType { get; set; } = VersionType.Version;
+
     #endregion
 
     #region Methods

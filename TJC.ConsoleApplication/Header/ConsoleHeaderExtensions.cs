@@ -1,5 +1,6 @@
 using System.Reflection;
 using TJC.AssemblyExtensions.Attributes;
+using TJC.ConsoleApplication.Helpers;
 using TJC.StringExtensions.Header;
 
 namespace TJC.ConsoleApplication.Header;
@@ -39,9 +40,8 @@ public static class ConsoleHeaderExtensions
     public static IEnumerable<string> CreateHeader(this Assembly assembly)
     {
         // Get assembly information
-        var assemblyName = assembly.GetName();
         var title = assembly.GetTitle();
-        var version = assemblyName.Version;
+        var version = assembly.GetVersion();
         var copyright = assembly.GetCopyright(replaceCopyrightSymbolWithC: true);
         var description = assembly.GetDescription();
 
@@ -49,7 +49,7 @@ public static class ConsoleHeaderExtensions
         var lines = new List<string>();
 
         if (version != null)
-            title += $" - v{version.ToString(ConsoleSettings.Instance.VersionDigits)}";
+            title += $" - v{version.FormatVersion(ConsoleSettings.Instance.VersionDigits)}";
 
         lines.Add(title);
 
