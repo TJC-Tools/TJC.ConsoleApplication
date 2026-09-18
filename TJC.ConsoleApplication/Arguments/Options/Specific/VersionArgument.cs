@@ -34,6 +34,8 @@ public class VersionArgument(
     private static void WriteVersionNumber()
     {
         var version = Assembly.GetEntryAssembly()?.GetVersion();
-        ConsoleOutputHandler.WriteLine($"v{version.FormatVersion(ConsoleSettings.Instance.VersionDigits)}");
+        ConsoleOutputHandler.WriteLine(
+            $"v{version.FormatVersion(ConsoleSettings.Instance.VersionDigits)}"
+        );
     }
 }

@@ -16,10 +16,12 @@ internal static class VersionHelper
         return ConsoleSettings.Instance.VersionType switch
         {
             VersionType.Version => assembly.GetName().Version?.ToString(),
-            VersionType.InformationalVersion => assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
-                .InformationalVersion,
-            VersionType.FileVersion => assembly.GetCustomAttribute<AssemblyFileVersionAttribute>()?
-                .Version,
+            VersionType.InformationalVersion => assembly
+                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                ?.InformationalVersion,
+            VersionType.FileVersion => assembly
+                .GetCustomAttribute<AssemblyFileVersionAttribute>()
+                ?.Version,
             VersionType.ProductVersion => string.IsNullOrEmpty(assembly.Location)
                 ? null
                 : FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion,
