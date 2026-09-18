@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-09-18
+
 ### Added
 
 - The ability to get different version types
@@ -105,7 +107,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Create a setting for the number of digits in the version display
 
-[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.17.0...HEAD
+[Unreleased]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.18.0...HEAD
+
+[0.18.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.17.0...v0.18.0
 
 [0.17.0]: https://github.com/TJC-Tools/TJC.ConsoleApplication/compare/v0.16.0...v0.17.0
 
