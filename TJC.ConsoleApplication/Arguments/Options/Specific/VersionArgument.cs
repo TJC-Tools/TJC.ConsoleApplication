@@ -1,4 +1,5 @@
 using System.Reflection;
+using TJC.ConsoleApplication.Helpers;
 
 namespace TJC.ConsoleApplication.Arguments.Options.Specific;
 
@@ -32,7 +33,7 @@ public class VersionArgument(
 
     private static void WriteVersionNumber()
     {
-        var assemblyName = Assembly.GetEntryAssembly()?.GetName();
-        ConsoleOutputHandler.WriteLine($"v{assemblyName?.Version}");
+        var version = Assembly.GetEntryAssembly()?.GetVersion();
+        ConsoleOutputHandler.WriteLine($"v{version.FormatVersion(ConsoleSettings.Instance.VersionDigits)}");
     }
 }
