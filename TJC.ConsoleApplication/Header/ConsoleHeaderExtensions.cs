@@ -48,8 +48,11 @@ public static class ConsoleHeaderExtensions
         // Create lines for the header
         var lines = new List<string>();
 
+        var formattedVersion = version.FormatVersion(ConsoleSettings.Instance.VersionDigits);
+        if (formattedVersion is not null && !formattedVersion.StartsWith('v'))
+            formattedVersion = $"v{formattedVersion}";
         if (version != null)
-            title += $" - v{version.FormatVersion(ConsoleSettings.Instance.VersionDigits)}";
+            title += $" - {formattedVersion}";
 
         lines.Add(title);
 
